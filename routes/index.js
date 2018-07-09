@@ -219,7 +219,7 @@ router.get('/mnroi', function(req, res) {
       lib.get_masternodecount(function(totalMnCount) {
         lib.get_masternodeonlinecount(function(activeMnCount) {
           db.get_latest_masternodestats(settings.symbol, function(mnStats) {
-            var blocksPerDay = (60*60*24)/settings.mnroi.block_time_sec;
+            var blocksPerDay = (60*60*24)/settings.mnroi.block_time_sec + 28; //plus super block rewards
             var totalMnRewardsDay = settings.mnroi.block_reward_mn * blocksPerDay;
             var mnRewardsPerDay = totalMnRewardsDay / activeMnCount;
 
@@ -418,6 +418,14 @@ router.get('/ext/summary', function(req, res) {
                   if (hashrate == 'There was an error. Check your console.') {
                     hashrate = 0;
                   }
+
+                  masternodecount = masternodecount == 0 ? 1 : masternodecount; //default 1 mn nodes
+                  var blocksPerDay = (60*60*24)/settings.mnroi.block_time_sec + 28; //plus super block rewards
+                  var totalMnRewardsDay = settings.mnroi.block_reward_mn * blocksPerDay;
+                  var mnRewardsPerDay = totalMnRewardsDay / masternodecount;
+                  var mnRewardsPerYear = mnRewardsPerDay * 365;
+                  var mnroi = formatNum(mnRewardsPerYear/settings.mnroi.masternode_required*100, { maxFraction: 2});
+
                   res.send({ data: [{
                     difficulty: difficulty,
                     difficultyHybrid: difficultyHybrid,
@@ -433,7 +441,7 @@ router.get('/ext/summary', function(req, res) {
                     blockcount: blockcount,
                     cmc: cmc,
                     collateral: settings.mnroi.masternode_required,
-                    mnroi: 0,
+                    mnroi: mnroi,
                   }]});
                 });
               });
