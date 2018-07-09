@@ -7,7 +7,7 @@
   // name your instance!
   "title": "MNOS",
 
-  "address": "127.0.0.1:3001",
+  "address": "https://explorer.mnos.io",
 
   // coin name
   "coin": "MNOS",
@@ -59,7 +59,7 @@
     "host": "localhost",
     "port": 6556,
     "user": "mnosrpc",
-    "pass": "123gfjk3R3pCCVjHtbRde2s5kzdf233sa"
+    "pass": "mnospassword"
   },
 
   // confirmations
@@ -79,8 +79,8 @@
     "search": true,
     "movement": true,
     "network": true,
-    "masternodes": false,
-    "coininfo": false,
+    "masternodes": true,
+    "coininfo": true,
     "coinmarketcap": false
   },
 
@@ -104,7 +104,7 @@
   //supported markets: bittrex, poloniex, yobit, empoex, bleutrade, cryptopia, ccex
   //default market is loaded by default and determines last price in header
   "markets": {
-    "coin": "JBS",
+    "coin": "MNOS",
     "exchange": "BTC",
     "enabled": ["bittrex"],
     "cryptopia_id": "1658",
@@ -124,7 +124,7 @@
   // low flag: greater than this value flagged yellow
   // high flag: greater than this value flagged red
   "movement": {
-    "min_amount": 100,
+    "min_amount": 10,
     "low_flag": 1000,
     "high_flag": 5000
   },
@@ -132,7 +132,7 @@
   // Masternodes page
   // default port: Default port a masternode is running. 
   "masternodes": {
-    "default_port": 12845,
+    "default_port": 6555,
 
     // Use index-based values (starting with 0).
     // 0 is the key of the masterlist data.
@@ -150,20 +150,20 @@
   // Coin info page
   "coininfo": {
     "basic_info_links": [
-      ["Github", "http://github.com/"]
+      ["Github", "http://github.com/MNOSIO"]
     ],
-    "masternode_required": 1000,
+    "masternode_required": 1500,
     "block_time_sec": 120,
-    "block_reward_mn": 5
+    "block_reward_mn": 15
   },
 
   // CoinMarketCap integration
   "coinmarketcap": {
-    "ticker": "BTC"
+    "ticker": "MNOS"
   },
 
   // twitter, facebook, googleplus
-  "twitter": "explorerztop",
+  "twitter": "mnosio",
   "facebook": "yourfacebookpage",
   "googleplus": "yourgooglepluspage",
 
@@ -189,7 +189,7 @@
   // HEAVY: retreive from heavys getsupply api call
   // BALANCES : total of all address balances
   // TXOUTSET : retreive from gettxoutsetinfo api call
-  "supply": "COINBASE",
+  "supply": "GETINFO",
 
   // how to acquire network hashrate
   // getnetworkhashps: uses getnetworkhashps api call, returns in GH/s
