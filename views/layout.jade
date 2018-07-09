@@ -209,6 +209,17 @@ html
                     h3
                       label #{settings.locale.blocks}: &nbsp;
                         label#blocknumber -
+        if settings.display.masternodes == true
+          .col-lg-2.col-md-4.col-sm-4
+            .panel.panel-primary.panel-summary
+              .panel-heading
+                span #{settings.locale.masternodes}
+              .panel-body(style="padding-top: 25px")
+                row.text-center
+                  .col-md-12
+                    h1#masternodeCount -
+                    h3 online:&nbsp;
+                      label#masternodeOnlineCount -
         if settings.index.show_hashrate
           .col-lg-3.col-md-4.col-sm-4
             .panel.panel-primary.panel-summary
@@ -244,17 +255,6 @@ html
                         label#difficultyHybrid -
                       else
                         label#difficulty -
-        if settings.display.masternodes == true
-          .col-lg-2.col-md-4.col-sm-4
-            .panel.panel-primary.panel-summary
-              .panel-heading
-                span #{settings.locale.masternodes}
-              .panel-body(style="padding-top: 25px")
-                row.text-center
-                  .col-md-12
-                    h1#masternodeCount -
-                    h3 online:&nbsp;
-                      label#masternodeOnlineCount -
 
     .col-md-12
       .row.text-center(style='margin-top:10px;margin-bottom:20px;')
