@@ -1,6 +1,6 @@
 This explorer is forked from Luke's Explorer (https://github.com/iquidus/explorer)  with a bit of flavoring from https://github.com/masterhash-us/Explorer, which seems to be gone now. Cleaning up README.md. History can be found in the first upload commit.
 
-Iquidus Explorer - 1.6.1
+MNOS Blockchain Explorer - 1.0.0
 ================
 
 An open source block explorer written in node.js.
@@ -23,7 +23,7 @@ Create databse:
 
 Create user with read/write access:
 
-    > db.createUser( { user: "iquidus", pwd: "3xp!0reR", roles: [ "readWrite" ] } )
+    > db.createUser( { user: "username", pwd: "3xp!0reR", roles: [ "readWrite" ] } )
 
 *note: If you're using mongo shell 2.4.x, use the following to create your user:
 
@@ -31,7 +31,7 @@ Create user with read/write access:
 
 ### Get the source
 
-    git clone https://github.com/SigwoTechnologies/explorer
+    git clone https://github.com/MNOSIO/explorer
 
 ### Install node modules
 
