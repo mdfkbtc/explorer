@@ -20,6 +20,12 @@ https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
     sudo apt-get update
     sudo apt-get install -y mongodb-org
 
+* Install NodeJS
+
+https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
+
+    curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+    sudo apt-get install -y nodejs
 
 
 ### Create database
