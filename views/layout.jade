@@ -267,19 +267,19 @@ html
           li.pull-left
             a.footer-icon(href='https://github.com/MNOSIO/',target='_blank')
               span.glyphicon.fa.fa-github
-          if settings.twitter
+          if settings.display.twitter == true
             li.pull-left
               a.footer-icon(href='https://twitter.com/@#{settings.twitter}',target='_blank')
                 span.glyphicon.fa.fa-twitter
-          if settings.bitcointalk != ""
+          if settings.display.bitcointalk == true
             li.pull-left
               a.footer-icon(href='#{settings.bitcointalk}',target='_blank')
                 span.glyphicon.fa.fa-btc
-          if settings.website != ""
+          if settings.display.website == true
             li.pull-left
               a.footer-icon(href='#{settings.website}',target='_blank')
                 span.glyphicon.fa.fa-link
-          if settings.discord != ""
+          if settings.display.discord == true
             li.pull-left
               a.footer-icon(href='https://discord.gg/#{settings.discord}',target='_blank')
                 span.glyphicon.fa.fa-users
