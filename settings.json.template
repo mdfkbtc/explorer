@@ -154,6 +154,9 @@
   "coininfo": {
     "basic_info_links": [
       ["Github", "http://github.com/MNOSIO"]
+      ["Website", "http://mnos.io"]
+      ["Twitter", "http://twiiter.com/@mnosio"]
+      ["Discord", "http://discord.gg/inivte"]
     ],
     "masternode_required": 1500,
     "block_time_sec": 120,
