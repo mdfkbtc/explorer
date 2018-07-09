@@ -206,7 +206,7 @@ html
               .panel-body(style="padding-top: 25px")
                 row.text-center
                   .col-md-12
-                    h1
+                    h1.text-info
                       label#supply -
                     h3
                       label #{settings.locale.blocks}: &nbsp;
@@ -219,7 +219,7 @@ html
               .panel-body(style="padding-top: 25px")
                 row.text-center
                   .col-md-12
-                    h1
+                    h1.text-warning
                       if settings.index.difficulty == 'Hybrid'
                         label#hashrate -
                         <br>
@@ -256,7 +256,7 @@ html
                 .panel-body(style="padding-top: 25px")
                   row.text-center
                     .col-md-12
-                      h1
+                      h1.text-danger
                         label#masternodeCount -
                       h3 Online:&nbsp;
                         label#masternodeOnlineCount -
@@ -268,8 +268,8 @@ html
                 .panel-body(style="padding-top: 25px")
                   row.text-center
                     .col-md-12
-                      h1
-                        label#masternodeROI.text-success -
+                      h1.text-success
+                        label#masternodeROI -
                       h3 Collateral:&nbsp;
                         label#masternodeCollateral -
 
