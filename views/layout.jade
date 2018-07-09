@@ -149,7 +149,7 @@ html
             if settings.display.mnroi == true
               li#coininfo
                 a.navbar-link.loading(href='/mnroi')
-                  span.fa.fa-vcard-o
+                  span.fa.fa-bar-chart
                   span.menu-text #{settings.locale.menu_mnroi}
             if settings.display.api == true
               li#info
@@ -206,6 +206,9 @@ html
                 row.text-center
                   .col-md-12
                     h1#supply -
+                    h3
+                      label #{settings.locale.blocks}: &nbsp;
+                        label#blocknumber -
         if settings.index.show_hashrate
           .col-lg-3.col-md-4.col-sm-4
             .panel.panel-primary.panel-summary
