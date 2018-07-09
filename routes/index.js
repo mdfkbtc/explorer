@@ -423,7 +423,7 @@ router.get('/ext/summary', function(req, res) {
                   var totalMnRewardsDay = settings.mnroi.block_reward_mn * blocksPerDay;
                   var mnRewardsPerDay = masternodecount == 0 ? totalMnRewardsDay / 1 : totalMnRewardsDay / masternodecount;
                   var mnRewardsPerYear = mnRewardsPerDay * 365;
-                  var mnroi = formatNum(mnRewardsPerYear*100/settings.mnroi.masternode_required, { maxFraction: 2});
+                  var mnroi = formatNum(mnRewardsPerYear * 100 / settings.mnroi.masternode_required, { maxFraction: 2});
 
                   res.send({ data: [{
                     difficulty: difficulty,
