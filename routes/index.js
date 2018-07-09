@@ -419,10 +419,9 @@ router.get('/ext/summary', function(req, res) {
                     hashrate = 0;
                   }
 
-                  masternodecount = masternodecount == 0 ? 1 : masternodecount; //default 1 mn nodes
                   var blocksPerDay = (60*60*24)/settings.mnroi.block_time_sec + 28; //plus super block rewards
                   var totalMnRewardsDay = settings.mnroi.block_reward_mn * blocksPerDay;
-                  var mnRewardsPerDay = totalMnRewardsDay / masternodecount;
+                  var mnRewardsPerDay = masternodecount == 0 ? totalMnRewardsDay / 1 : totalMnRewardsDay / masternodecount;
                   var mnRewardsPerYear = mnRewardsPerDay * 365;
                   var mnroi = formatNum(mnRewardsPerYear/settings.mnroi.masternode_required*100, { maxFraction: 2});
 
