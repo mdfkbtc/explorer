@@ -208,8 +208,8 @@ router.get('/masternodes', function(req, res) {
   res.render('masternodes', {active: 'masternodes'});
 });
 
-router.get('/coininfo', function(req, res) {
-  if (settings.display.coininfo === false) {
+router.get('/mnroi', function(req, res) {
+  if (settings.display.mnroi === false) {
     route_get_index(res, null);
     return;
   }
@@ -219,8 +219,8 @@ router.get('/coininfo', function(req, res) {
       lib.get_masternodecount(function(totalMnCount) {
         lib.get_masternodeonlinecount(function(activeMnCount) {
           db.get_latest_masternodestats(settings.symbol, function(mnStats) {
-            var blocksPerDay = (60*60*24)/settings.coininfo.block_time_sec;
-            var totalMnRewardsDay = settings.coininfo.block_reward_mn * blocksPerDay;
+            var blocksPerDay = (60*60*24)/settings.mnroi.block_time_sec;
+            var totalMnRewardsDay = settings.mnroi.block_reward_mn * blocksPerDay;
             var mnRewardsPerDay = totalMnRewardsDay / activeMnCount;
 
             var priceBtc = (cmc.price_btc) ? cmc.price_btc : stats.last_price;
@@ -233,11 +233,11 @@ router.get('/coininfo', function(req, res) {
             }
 
             var mnRewardsPerYear = mnRewardsPerDay * 365;
-            var mnRoi = ((mnRewardsPerYear / settings.coininfo.masternode_required) * 100).toFixed(2);
-            var coinsLocked = totalMnCount * settings.coininfo.masternode_required;
+            var mnRoi = ((mnRewardsPerYear / settings.mnroi.masternode_required) * 100).toFixed(2);
+            var coinsLocked = totalMnCount * settings.mnroi.masternode_required;
             var coinsLockedPerc = coinsLocked / (stats.supply/100);
-            var nodeWorthBtc = (settings.coininfo.masternode_required * priceBtc).toFixed(8);
-            var nodeWorthUsd = (cmc.price_usd) ? (settings.coininfo.masternode_required * cmc.price_usd).toFixed(2) : null;
+            var nodeWorthBtc = (settings.mnroi.masternode_required * priceBtc).toFixed(8);
+            var nodeWorthUsd = (cmc.price_usd) ? (settings.mnroi.masternode_required * cmc.price_usd).toFixed(2) : null;
 
             var dailyCoin = formatNum(mnRewardsPerDay, { maxFraction: 4});
             var dailyBtc = formatNum(mnRewardsPerDay * priceBtc, { maxFraction: 8 });
@@ -253,8 +253,8 @@ router.get('/coininfo', function(req, res) {
             var yearlyUsd = formatCurrency(mnRewardsPerDay * cmc.price_usd * 365, { maxFraction: 2 });
 
             var data = {
-              active: 'coininfo',
-              coininfo: settings.coininfo,
+              active: 'mnroi',
+              mnroi: settings.mnroi,
               lastPriceBtc: formatCurrency(stats.last_price, { maxFraction: 8 }),
               lastPriceUsd: cmc.price_usd ? formatCurrency(cmc.price_usd, { maxFraction: 6 }) : null,
               pricePercChange24h: cmc.percent_change_24h,
@@ -268,7 +268,7 @@ router.get('/coininfo', function(req, res) {
               supply: formatNum(stats.supply, { maxFraction: 4 }),
               coinsLocked: formatNum(coinsLocked, { maxFraction: 8 }),
               coinsLockedPerc: formatNum(coinsLockedPerc, { maxFraction: 2 }),
-              mnRequiredCoins: settings.coininfo.masternode_required,
+              mnRequiredCoins: settings.mnroi.masternode_required,
               nodeWorthBtc: formatCurrency(nodeWorthBtc, { maxFraction: 8 }),
               nodeWorthUsd: nodeWorthUsd ? formatCurrency(nodeWorthUsd, { maxFraction: 2 }) : null,
               dailyCoin: dailyCoin,
@@ -291,7 +291,7 @@ router.get('/coininfo', function(req, res) {
               data.avgBlockTime = mnStats.block_avg_time;
             }
 
-            res.render('coininfo', data);
+            res.render('mnroi', data);
           });
         });
       });
@@ -512,7 +512,7 @@ router.get('/ext/coindetails', function(req, res) {
         db.get_cmc(settings.coinmarketcap.ticker, function(cmc){
           db.get_stats(settings.coin, function (stats) {
             db.get_latest_masternodestats(settings.symbol, function(mnStats) {
-              var blocks_24h = (24*3600)/settings.coininfo.block_time_sec;
+              var blocks_24h = (24*3600)/settings.mnroi.block_time_sec;
 
               var data = {
                 coin_name: settings.coin,
@@ -528,14 +528,14 @@ router.get('/ext/coindetails', function(req, res) {
                 price_perc_change_24h: cmc.percent_change_24h,
                 price_perc_change_7d: cmc.percent_change_7d,
                 price_last_updated: cmc.last_updated,
-                block_count_24h: (24*3600) / settings.coininfo.block_time_sec,
-                block_time: settings.coininfo.block_time_sec,
+                block_count_24h: (24*3600) / settings.mnroi.block_time_sec,
+                block_time: settings.mnroi.block_time_sec,
                 masternode_count_total: masternodecount,
                 masternode_count_enabled: masternodeonlinecount,
-                masternode_required_coins: settings.coininfo.masternode_required,
-                masternode_coin_rewards_24h: (blocks_24h * settings.coininfo.block_reward_mn)/masternodeonlinecount,
-                block_mn_reward: settings.coininfo.block_reward_mn,
-                info_links: settings.coininfo.basic_info_links,
+                masternode_required_coins: settings.mnroi.masternode_required,
+                masternode_coin_rewards_24h: (blocks_24h * settings.mnroi.block_reward_mn)/masternodeonlinecount,
+                block_mn_reward: settings.mnroi.block_reward_mn,
+                info_links: settings.mnroi.basic_info_links,
                 calculations_bases_on_real_data: false
               };
 

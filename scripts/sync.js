@@ -257,7 +257,7 @@ is_locked(function (exists) {
                     explorer.get_masternodecount(function (mnCountTotal) {
                       explorer.get_masternodeonlinecount(function (mnCountEnabled) {
                         var mnReward24h = mnRewards24h / mnPayees.length;
-                        var roiDays = settings.coininfo.masternode_required / mnReward24h;
+                        var roiDays = settings.mnroi.masternode_required / mnReward24h;
                         var avgBlockTimeSec = Math.round((24*3600) / blockCount24h);
 
                         console.log('    Data since ts : ', ts24h);

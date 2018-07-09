@@ -146,11 +146,11 @@ html
                 a.navbar-link.loading(href='/masternodes')
                   span.fa.fa-server
                   span.menu-text #{settings.locale.menu_masternodes}
-            if settings.display.coininfo == true
+            if settings.display.mnroi == true
               li#coininfo
-                a.navbar-link.loading(href='/coininfo')
+                a.navbar-link.loading(href='/mnroi')
                   span.fa.fa-vcard-o
-                  span.menu-text #{settings.locale.menu_coininfo}
+                  span.menu-text #{settings.locale.menu_mnroi}
             if settings.display.api == true
               li#info
                 a.navbar-link(href='/info')

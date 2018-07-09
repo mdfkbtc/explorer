@@ -83,7 +83,7 @@
     "movement": true,
     "network": true,
     "masternodes": true,
-    "coininfo": true,
+    "mnroi": true,
     "coinmarketcap": false
   },
 
@@ -151,7 +151,7 @@
 
 
   // Coin info page
-  "coininfo": {
+  "mnroi": {
     "basic_info_links": [
       ["Github", "http://github.com/MNOSIO"]
       ["Website", "http://mnos.io"]

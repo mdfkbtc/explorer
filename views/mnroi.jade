@@ -4,15 +4,15 @@ block content
   .col-md-12(style="margin-bottom: 4%")
     .panel.panel-primary.coin-info
       .panel-heading
-        strong #{settings.locale.coininfo_head}
+        strong #{settings.locale.mnroi_head}
       .panel-body
         .row
           .col-md-3
             .panel.panel-default
               .panel-heading
-                strong #{settings.locale.coininfo_basicinfo}
+                strong #{settings.locale.mnroi_basicinfo}
               .panel-body
-                each item in coininfo.basic_info_links
+                each item in mnroi.basic_info_links
                   a(href="#{item[1]}", target="_blank") #{item[0]}
                   <br>
           .col-md-9
