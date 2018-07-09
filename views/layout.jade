@@ -198,7 +198,7 @@ html
           .col-lg-3.col-md-0
 
         if settings.index.show_coin_supply
-          - supplyPanelSize = settings.display.coinmarketcap == true ? "col-lg-2 col-md-4 col-sm-4" : "col-lg-3 col-md-4 col-sm-4"
+          - supplyPanelSize = settings.display.coinmarketcap == true ? "col-lg-2 col-md-4 col-sm-4" : "col-md-2 col-md-offset-1"
           div(class=supplyPanelSize)
             .panel.panel-primary.panel-summary
               .panel-heading
@@ -211,7 +211,7 @@ html
                       label #{settings.locale.blocks}: &nbsp;
                         label#blocknumber -
         if settings.display.masternodes == true
-          .col-lg-2.col-md-4.col-sm-4
+          .col-md-2
             .panel.panel-primary.panel-summary
               .panel-heading
                 span #{settings.locale.masternodes}
@@ -221,8 +221,10 @@ html
                     h1#masternodeCount -
                     h3 online:&nbsp;
                       label#masternodeOnlineCount -
+        .col-md-2.col-sm-12
+          img(src='#{settings.logo}', style='margin-top:-15px;height:128px;')
         if settings.index.show_hashrate
-          .col-lg-3.col-md-4.col-sm-4
+          .col-md-2
             .panel.panel-primary.panel-summary
               .panel-heading
                 span #{settings.locale.network}
