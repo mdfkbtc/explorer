@@ -43,8 +43,8 @@ html
             $("#lblConnections").text(json.data[0].connections + ' connections');
             $("#lblBlockcountValue").text(json.data[0].blockcount);
             $("#blocknumber").text(json.data[0].blockcount);
-            $("#masternodeCollateral").text(json.data[0].collateral);
-            $("#masternodeROI").text(json.data[0].mnroi);
+            $("#masternodeCollateral").text(json.data[0].collateral + ' MNOS');
+            $("#masternodeROI").text(json.data[0].mnroi + ' %');
 
 
             if (json.data[0].cmc) {
@@ -206,7 +206,8 @@ html
               .panel-body(style="padding-top: 25px")
                 row.text-center
                   .col-md-12
-                    h1#supply -
+                    h1
+                      label#supply -
                     h3
                       label #{settings.locale.blocks}: &nbsp;
                         label#blocknumber -
@@ -255,7 +256,8 @@ html
                 .panel-body(style="padding-top: 25px")
                   row.text-center
                     .col-md-12
-                      h1#masternodeCount -
+                      h1
+                        label#masternodeCount -
                       h3 Online:&nbsp;
                         label#masternodeOnlineCount -
           if settings.display.masternodes == true
@@ -266,7 +268,8 @@ html
                 .panel-body(style="padding-top: 25px")
                   row.text-center
                     .col-md-12
-                      h1#masternodeROI -
+                      h1
+                        label#masternodeROI -
                       h3 Collateral:&nbsp;
                         label#masternodeCollateral -
 
