@@ -1,7 +1,7 @@
 body {
-  padding: 80px 40px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-   background-image: url('../images/background3.jpg') !important;
+  	padding: 80px 40px;
+  	font: 14px "Oswald", Helvetica, Arial, sans-serif;
+	background-image: url('../images/background3.jpg') !important;
 }
 
 #index-search {
