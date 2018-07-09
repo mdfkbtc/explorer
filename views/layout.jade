@@ -43,6 +43,8 @@ html
             $("#lblConnections").text(json.data[0].connections + ' connections');
             $("#lblBlockcountValue").text(json.data[0].blockcount);
             $("#blocknumber").text(json.data[0].blockcount);
+            $("#masternodeCollateral").text(json.data[0].collateral);
+            $("#masternodeROI").text(json.data[0].mnroi);
 
 
             if (json.data[0].cmc) {
@@ -265,8 +267,8 @@ html
                   row.text-center
                     .col-md-12
                       h1#masternodeROI -
-                      h3 MN Worth:&nbsp;
-                        label#masternodeWorth -
+                      h3 Collateral:&nbsp;
+                        label#masternodeCollateral -
 
     .col-md-12
       .row.text-center(style='margin-top:10px;margin-bottom:20px;')

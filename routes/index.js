@@ -432,6 +432,8 @@ router.get('/ext/summary', function(req, res) {
                     connections: connections,
                     blockcount: blockcount,
                     cmc: cmc,
+                    collateral: settings.mnroi.masternode_required,
+                    mnroi: 0,
                   }]});
                 });
               });
