@@ -168,7 +168,7 @@
   "googleplus": "yourgooglepluspage",
   "discord": "invite",
   "website": "https://mnos.io",
-  "bitcointalk": "https://bitcointalk.org/"
+  "bitcointalk": "https://bitcointalk.org/",
 
   //genesis
   "genesis_tx": "65f705d2f385dc85763a317b3ec000063003d6b039546af5d8195a5ec27ae410",
