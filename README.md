@@ -9,6 +9,14 @@ An open source block explorer written in node.js.
 *  mongodb 2.6.x
 *  *coind
 
+### Installation
+
+Install MongoDB
+
+https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
+
+
+
 ### Create database
 
 Enter MongoDB cli:
