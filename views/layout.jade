@@ -109,7 +109,7 @@ html
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.navbar-brand(href='https://mercurytoken.io') #{settings.title}
+          a.navbar-brand(href='https://mnos.io') #{settings.title}
         .collapse.navbar-collapse(id='navbar-collapse')
           ul.nav.navbar-nav
             li#home
@@ -262,6 +262,27 @@ html
             button.btn.btn-success(type='submit') #{settings.locale.ex_search_button}
     block content
     .navbar.navbar-default.navbar-fixed-bottom.hidden-xs
+      .col-md-4
+        ul.nav
+          li.pull-left
+            a#github-icon(href='https://github.com/MNOSIO/',target='_blank')
+              span.glyphicon.fa.fa-github
+          if settings.twitter
+            li.pull-left
+              a#twitter-icon(href='https://twitter.com/@{settings.twitter}',target='_blank')
+                span.glyphicon.fa.fa-twitter
+          if settings.bitcointalk
+            li.pull-left
+              a#bitcoin-icon(href='{settings.bitcointalk}',target='_blank')
+                span.glyphicon.fa.fa-btc
+          if settings.website
+            li.pull-left
+              a#website-icon(href='{settings.website}',target='_blank')
+                span.glyphicon.fa.fa-link
+          if settings.discord
+            li.pull-left
+              a#website-icon(href='https://discord.gg/{settings.discord}',target='_blank')
+                span.glyphicon.fa.fa-users
       .col-md-4
         ul.nav
           li.text-center(style='margin-left:80px;margin-right:80px;')
