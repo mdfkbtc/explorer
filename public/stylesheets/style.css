@@ -103,6 +103,9 @@ tr {
 #twitter-icon {
 	font-size: 20px;
 }
+.footer-icon{
+	font-size: 24px;
+}
 .connections {
 	position: absolute;
 	bottom: 15px;
