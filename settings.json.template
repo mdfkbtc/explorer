@@ -5,15 +5,15 @@
 */
 {
   // name your instance!
-  "title": "Explorerz.top",
+  "title": "MNOS",
 
   "address": "127.0.0.1:3001",
 
   // coin name
-  "coin": "Darkcoin",
+  "coin": "MNOS",
 
   // coin symbol
-  "symbol": "DRK",
+  "symbol": "MNOS",
 
   // coin type
   //  Options:
@@ -43,7 +43,7 @@
 
   // database settings (MongoDB)
   "dbsettings": {
-    "user": "iquidus",
+    "user": "username",
     "password": "3xp!0reR",
     "database": "explorerdb",
     "address": "localhost",
@@ -57,13 +57,13 @@
   // wallet settings
   "wallet": {
     "host": "localhost",
-    "port": 9332,
-    "user": "darkcoinrpc",
+    "port": 6556,
+    "user": "mnosrpc",
     "pass": "123gfjk3R3pCCVjHtbRde2s5kzdf233sa"
   },
 
   // confirmations
-  "confirmations": 40,
+  "confirmations": 101,
 
   // language settings
   "locale": "locale/en.json",
