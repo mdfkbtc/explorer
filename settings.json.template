@@ -5,15 +5,15 @@
 */
 {
   // name your instance!
-  "title": "MNOS",
+  "title": "WAVI Blockchain Explorer",
 
-  "address": "https://explorer.mnos.io",
+  "address": "http://explorer.wavicom.info/",
 
   // coin name
-  "coin": "MNOS",
+  "coin": "WAVI",
 
   // coin symbol
-  "symbol": "MNOS",
+  "symbol": "WAVI",
 
   // coin type
   //  Options:
@@ -39,7 +39,7 @@
   "theme": "Slate",
 
   // port to listen for requests on.
-  "port" : 3001,
+  "port" : 80,
 
   // database settings (MongoDB)
   "dbsettings": {
@@ -57,9 +57,9 @@
   // wallet settings
   "wallet": {
     "host": "localhost",
-    "port": 6556,
-    "user": "mnosrpc",
-    "pass": "mnospassword"
+    "port": 9984,
+    "user": "WAVIoneLoVe",
+    "pass": "h7fdf1JdD1J3dHfFdssd23dsdSDd"
   },
 
   // confirmations
@@ -97,17 +97,17 @@
 
   // ensure links on API page are valid
   "api": {
-    "blockindex": 1337,
-    "blockhash": "1733320247b15ca2262be646397d1ffd6be953fa638ebb8f5dcbb4c2b91b34f1",
-    "txhash": "f270cd3813254c9922a2e222a56ba745842d9112223a1394062e460b33d27b7e",
-    "address": "RBiXWscC63Jdn1GfDtRj8hgv4Q6Zppvpwb"
+    "blockindex": 48730,
+    "blockhash": "0000002205428ffa7f565bc4728bbf3a08248357be6cb41f4355eede9c0cea24",
+    "txhash": "c17ad9809b07ebacf2c9ceefabea6e240312d036715215b0924c8d9ba3ab9a80",
+    "address": "WSUf2rJXQ2khmV71HBxKVNSgmJon61C6fV"
   },
 
   // market settings
   //supported markets: bittrex, poloniex, yobit, empoex, bleutrade, cryptopia, ccex
   //default market is loaded by default and determines last price in header
   "markets": {
-    "coin": "MNOS",
+    "coin": "WAVI",
     "exchange": "BTC",
     "enabled": ["bittrex"],
     "cryptopia_id": "1658",
@@ -135,7 +135,7 @@
   // Masternodes page
   // default port: Default port a masternode is running. 
   "masternodes": {
-    "default_port": 6555,
+    "default_port": 9983,
 
     // Use index-based values (starting with 0).
     // 0 is the key of the masterlist data.
@@ -153,32 +153,32 @@
   // Coin info page
   "mnroi": {
     "basic_info_links": [
-      ["Github", "http://github.com/MNOSIO"],
-      ["Website", "http://mnos.io"],
-      ["Twitter", "http://twiiter.com/@mnosio"],
-      ["Discord", "http://discord.gg/inivte"]
+      ["Github", "https://github.com/wavidev-the-man/wavi"],
+      ["Website", "https://wavidev-the-man.github.io/wavi/index2.html"],
+      ["Twitter", "https://twitter.com/OfficialWAVI"],
+      ["Discord", "https://discord.gg/zfrJx73"]
     ],
-    "masternode_required": 1500,
+    "masternode_required": 1000,
     "block_time_sec": 120,
-    "block_reward_mn": 8
+    "block_reward_mn": 4.5
   },
 
   // CoinMarketCap integration
   "coinmarketcap": {
-    "ticker": "MNOS"
+    "ticker": "WAVI"
   },
 
   // twitter, facebook, googleplus
-  "twitter": "mnosio",
+  "twitter": "OfficialWAVI",
   "facebook": "yourfacebookpage",
   "googleplus": "yourgooglepluspage",
-  "discord": "invite",
-  "website": "https://mnos.io",
-  "bitcointalk": "https://bitcointalk.org/",
+  "discord": "https://discord.gg/zfrJx73",
+  "website": "https://wavidev-the-man.github.io/wavi/index2.html",
+  "bitcointalk": "https://bitcointalk.org/index.php?topic=3146751.0",
 
   //genesis
-  "genesis_tx": "65f705d2f385dc85763a317b3ec000063003d6b039546af5d8195a5ec27ae410",
-  "genesis_block": "b2926a56ca64e0cd2430347e383f63ad7092f406088b9b86d6d68c2a34baef51",
+  "genesis_tx": "a995d4dbdb823bd9dc5e2b6b5d6401f5255ebeae5ed200c6ad79d2c568c1b017",
+  "genesis_block": "00000d39b78c04cc35653abe2442a106a428c5e92ba41ec4967a80a09abf4725",
 
   // Fetch blocks from <index>
   "fetch_blocks_from": 0,
@@ -198,7 +198,7 @@
   // HEAVY: retreive from heavys getsupply api call
   // BALANCES : total of all address balances
   // TXOUTSET : retreive from gettxoutsetinfo api call
-  "supply": "GETINFO",
+  "supply": "COINBASE",
 
   // how to acquire network hashrate
   // getnetworkhashps: uses getnetworkhashps api call, returns in GH/s
@@ -207,7 +207,7 @@
 
   // nethash unitd: sets nethash API return units
   // valid options: "P" (PH/s), "T" (TH/s), "G" (GH/s), "M" (MH/s), "K" (KH/s)
-  "nethash_units": "G",
+  "nethash_units": "K",
 
   // Address labels
   // example : "JhbrvAmM7kNpwA6wD5KoAsbtikLWWMNPcM": {"label": "This is a burn address", "type":"danger", "url":"http://example.com"}
@@ -215,6 +215,10 @@
   // type (optional) = class of label, valid types: default, primary, warning, danger, success
   // url (optional) = url to link to for more information
   "labels": {
+  "WSUf2rJXQ2khmV71HBxKVNSgmJon61C6fV": {"label": "Suprnova's WaviCoin Pool", "url":"https://wavi.suprnova.cc/index.php"},
+  "WbVAdfBmXppC3QbNLDesmGZ4gLUcYJJETW": {"label": "WAVI Mining Pool - 大人の自由研究", "url":"https://wavi.ukkey3.space/index.php"},
+  "WNoL4w3CRsBDqn36nnNhf3GYG4d5QWapNY": {"label": "WAVI Bluepool", "url":"https://wavi.bluepool.info"},
+  "WizsmSWubm3TDTpp6CmUz5BpsNphPAnnCu": {"label": "WAVI CoinSump", "url":"https://wavi.coinsump.com/index.php"}
   //  "JSoEdU717hvz8KQVq2HfcqV9A79Wihzusu": {"label": "Developers address", "type":"primary", "url":"http://example.com"},
   //  "JSWVXHWeYNknPdG9uDrcBoZHztKMFCsndw": {"label": "Cryptsy"}
   }
