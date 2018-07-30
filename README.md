@@ -1,4 +1,4 @@
-MNOS Blockchain Explorer - 1.0.0
+WAVI Blockchain Explorer - 1.0.0
 ================
 
 An open source block explorer written in node.js.
@@ -48,7 +48,7 @@ Create user with read/write access:
 
 ### Get the source
 
-    git clone https://github.com/MNOSIO/explorer
+    git clone https://github.com/wavicom/explorer
 
 ### Install node modules
 
