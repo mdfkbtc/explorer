@@ -146,9 +146,9 @@ Where [SIZE] is an integer higher than the default.
 ### License
 
 Copyright (c) 2015, Iquidus Technology  
-Copyright (c) 2015, Luke Williams
-Copyright (c) 2018, MNOS Developers
-Copyright (c) 2018, WAVI Community Developers
+Copyright (c) 2015, Luke Williams  
+Copyright (c) 2018, MNOS Developers  
+Copyright (c) 2018, WAVI Community Developers  
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
