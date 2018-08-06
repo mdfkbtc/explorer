@@ -46,7 +46,6 @@ Add this content to the mongod_vm_settings.conf:
 Reboot your system
 
     sudo reboot
-    sudo service mongod start
 
 Running MongoDB - reference
 
