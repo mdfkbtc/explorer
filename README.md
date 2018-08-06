@@ -11,20 +11,6 @@ An open source block explorer written in node.js.
 
 ### Installation
 
-* Install WAVI Core
-
-Use a special script for Ubuntu 16.04:
-
-    wget -q https://raw.githubusercontent.com/wavicom/wavi_scripts/master/setup_wavi_for_explorer.sh
-    chmod 755 setup_wavi_for_explorer.sh
-    ./setup_wavi_for_explorer.sh
-
-Or for Ubuntu 18.04:
-
-    wget -q https://raw.githubusercontent.com/wavicom/wavi_scripts_ubuntu18/master/setup_wavi_for_explorer.sh
-    chmod 755 setup_wavi_for_explorer.sh
-    ./setup_wavi_for_explorer.sh
-
 * Install MongoDB Community Edition
 
 https://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/
@@ -98,6 +84,19 @@ https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-di
     curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
     sudo apt-get install -y nodejs
 
+### Install WAVI Core
+
+Use a special script for Ubuntu 16.04:
+
+    wget -q https://raw.githubusercontent.com/wavicom/wavi_scripts/master/setup_wavi_for_explorer.sh
+    chmod 755 setup_wavi_for_explorer.sh
+    ./setup_wavi_for_explorer.sh
+
+Or for Ubuntu 18.04:
+
+    wget -q https://raw.githubusercontent.com/wavicom/wavi_scripts_ubuntu18/master/setup_wavi_for_explorer.sh
+    chmod 755 setup_wavi_for_explorer.sh
+    ./setup_wavi_for_explorer.sh
 
 ### Create database
 
