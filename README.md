@@ -56,6 +56,10 @@ To add the file /etc/init/mongod_vm_settings.conf with the following content:
     echo "never" > /sys/kernel/mm/transparent_hugepage/defrag
     end script
 
+This will cause the script to run before mongod. Restart mongod and run:
+
+    sudo service mongod restart
+
 * Install NodeJS
 
 https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
