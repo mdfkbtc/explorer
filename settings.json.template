@@ -58,8 +58,8 @@
   "wallet": {
     "host": "localhost",
     "port": 9984,
-    "user": "wavirpc",
-    "pass": "password"
+    "user": "waviexplorer",
+    "pass": "wYRVcNX80iosRMu48NV1"
   },
 
   // confirmations
