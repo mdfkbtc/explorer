@@ -29,10 +29,11 @@ block content
           }
         },
         columns: [
-          { data: 'address', width: '25%', className: 'text-left' },
+          { data: 'address', width: '20%', className: 'text-left' },
           { data: 'status', width: '15%' },
-          { data: 'lastseen', width:'25%' },
-          { data: 'lastpaid', width:'25%' },
+          { data: 'lastseen', width:'20%' },
+          { data: 'lastpaid', width:'20%' },
+          { data: 'ip', width:'15%' className: 'text-right' },
         ]
       });
     });
@@ -47,4 +48,5 @@ block content
             th.text-center #{settings.locale.mn_status}
             th.text-center #{settings.locale.mn_lastseen}
             th.text-center #{settings.locale.mn_lastpaid}
+            th.text-center #{settings.locale.mn_ip}
         tbody.text-center
