@@ -26,7 +26,7 @@ Install Upstart
     
     sudo apt-get install upstart-sysv -y
 
-* Reboot your system
+Reboot your system
 
     sudo reboot
     sudo service mongod start
