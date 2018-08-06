@@ -143,8 +143,8 @@
     "list_format": {
       "address": 3,
       "status": 1,
-      "lastseen": 5,
-      "lastpaid": -1,
+      "lastseen": 4,
+      "lastpaid": 6,
       "ip": 0
     }
   },
