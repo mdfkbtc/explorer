@@ -168,8 +168,8 @@ WAVI Explorer is intended to be generic so it can be used with any wallet follow
 
 ### Donate (Left Luke's addresses, please contribute!)  
 
-    BTC: 168hdKA3fkccPtkxnX8hBrsxNubvk4udJi
-    JBS: JZp9893FMmrm1681bDuJBU7c6w11kyEY7D (no longer valid, use BTC address)
+    BTC: 1Jb499cNYren3t29p85bMEECEmixxchEbR
+    WAVI: WZuKpHDcTDLjWYgdzoxFQ1qPwhSJzmQ6in
 
 ### Known Issues
 
