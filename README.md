@@ -153,6 +153,12 @@ sync.js (located in scripts/) is used for updating the local databases. This scr
     */1 * * * * cd /path/to/explorer && /usr/bin/nodejs scripts/sync.js index update > /dev/null 2>&1
     */2 * * * * cd /path/to/explorer && /usr/bin/nodejs scripts/sync.js market > /dev/null 2>&1
     */5 * * * * cd /path/to/explorer && /usr/bin/nodejs scripts/peers.js > /dev/null 2>&1
+    
+If you want to date database of the blockchain can be downloaded here http://explorer.wavicom.info/downloads/blockchain_database.tar then you also need to add in crontab this:
+
+    0 */12 * * * /root/arch_blockchain.sh > /dev/null 2>&1
+    
+Thus, the blockchain database will be archived every 12 hours and will be available at the above link.
 
 ### Wallet
 
