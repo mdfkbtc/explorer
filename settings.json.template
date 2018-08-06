@@ -132,6 +132,12 @@
     "high_flag": 5000
   },
 
+  // Peers page settings
+  // ipstack_api_key: ipstack.com Geo IP. You need an unique API Key for the Requests 
+  "peers": {
+    "ipstack_api_key": "0764a82424be7c839adb88534f8ec5a9" 
+  },
+
   // Masternodes page
   // default port: Default port a masternode is running. 
   "masternodes": {
