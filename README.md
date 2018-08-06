@@ -17,13 +17,13 @@ Use a special script for Ubuntu 16.04:
 
     wget -q https://raw.githubusercontent.com/wavicom/wavi_scripts/master/setup_wavi_for_explorer.sh
     chmod 755 setup_wavi_for_explorer.sh
-    ./setup_wavi_for_explore.sh
+    ./setup_wavi_for_explorer.sh
 
 Or for Ubuntu 18.04:
 
     wget -q https://raw.githubusercontent.com/wavicom/wavi_scripts_ubuntu18/master/setup_wavi_for_explorer.sh
     chmod 755 setup_wavi_for_explorer.sh
-    ./setup_wavi_for_explore.sh
+    ./setup_wavi_for_explorer.sh
 
 * Install MongoDB Community Edition
 
