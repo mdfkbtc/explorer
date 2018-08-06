@@ -100,6 +100,8 @@ Create user with read/write access:
 
 *Make required changes in settings.json*
 
+Note: user (61 line) and password (62 line) must match the your local wavi.conf file.
+
 ### Start Explorer
 
     npm start
