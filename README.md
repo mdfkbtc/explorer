@@ -37,9 +37,9 @@ Running MongoDB - reference
     sudo service mongod stop
     sudo service mongod restart
 
-***Note: if you later see this warning from mongo:
+Note: if you later see this warning from mongo:
 
-WARNING: /sys/kernel/mm/transparent_hugepage/enabled is 'always'.
+    WARNING: /sys/kernel/mm/transparent_hugepage/enabled is 'always'.
 
 then you can solve it by the following steps:
 
