@@ -54,12 +54,12 @@
   "update_timeout": 10,
   "check_timeout": 250,
 
-  // wallet settings
+  // wallet settings (user and password must match the your local wavi.conf file)
   "wallet": {
     "host": "localhost",
     "port": 9984,
-    "user": "WAVIoneLoVe",
-    "pass": "h7fdf1JdD1J3dHfFdssd23dsdSDd"
+    "user": "wavirpc",
+    "pass": "password"
   },
 
   // confirmations
