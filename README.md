@@ -40,6 +40,23 @@ Install Upstart
     
     sudo apt-get install upstart-sysv -y
 
+To add the file /etc/init/mongod_vm_settings.conf with the following content:
+
+    nano /etc/init/mongod_vm_settings.conf
+
+Add this content to the mongod_vm_settings.conf:
+
+    # Ubuntu upstart file at /etc/init/mongod_vm_settings.conf
+    #
+    #   This file will set the correct kernel VM settings for MongoDB
+    #   This file is maintained in Ansible
+    
+    start on (starting mongod)
+    script
+    echo "never" > /sys/kernel/mm/transparent_hugepage/enabled
+    echo "never" > /sys/kernel/mm/transparent_hugepage/defrag
+    end script
+
 Reboot your system
 
     sudo reboot
