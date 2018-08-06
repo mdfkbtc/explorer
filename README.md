@@ -92,7 +92,7 @@ Create user with read/write access:
 
     > db.addUser( { user: "username", pwd: "password", roles: [ "readWrite"] })
 
-### Get the source
+### Get the source WAVI Explorer
 
     git clone https://github.com/wavicom/explorer
 
