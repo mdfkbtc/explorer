@@ -53,29 +53,6 @@ Running MongoDB - reference
     sudo service mongod stop
     sudo service mongod restart
 
-Note: if you later see this warning from mongo:
-
-    WARNING: /sys/kernel/mm/transparent_hugepage/enabled is 'always'.
-
-then you can solve it by the following steps:
-
-To add the file /etc/init/mongod_vm_settings.conf with the following content:
-
-    # Ubuntu upstart file at /etc/init/mongod_vm_settings.conf
-    #
-    #   This file will set the correct kernel VM settings for MongoDB
-    #   This file is maintained in Ansible
-    
-    start on (starting mongod)
-    script
-    echo "never" > /sys/kernel/mm/transparent_hugepage/enabled
-    echo "never" > /sys/kernel/mm/transparent_hugepage/defrag
-    end script
-
-This will cause the script to run before mongod. Restart mongod and run:
-
-    sudo service mongod restart
-
 * Install NodeJS
 
 https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
