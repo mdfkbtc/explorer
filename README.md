@@ -9,6 +9,10 @@ An open source block explorer written in node.js.
 *  mongodb 2.6.x
 *  *coind
 
+Note: it is recommended to install root access before all actions. This can be done by command:
+
+`sudo -i`
+
 ### Installation
 
 * Install MongoDB Community Edition
