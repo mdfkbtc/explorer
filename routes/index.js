@@ -309,44 +309,6 @@ router.get('/network', function(req, res) {
   res.render('network', {active: 'network'}); 
 });
 
-router.get('/test', function(req, res) {
-
-
-  db.get_stats(settings.coin, function(stats){
-      lib.get_masternodecount(function(totalMnCount) {
-        lib.get_masternodeonlinecount(function(activeMnCount) {
-          db.get_latest_masternodestats(settings.symbol, function(mnStats) {
-            var blocksPerDay = (60*60*24)/settings.mnroi.block_time_sec + 28; //plus super block rewards
-            var totalMnRewardsDay = settings.mnroi.block_reward_mn * blocksPerDay;
-            var mnRewardsPerDay = totalMnRewardsDay / activeMnCount;
-
-            var calculatedBasedOnRealData = false;
-            if (mnStats) {
-              calculatedBasedOnRealData = true;
-              mnRewardsPerDay = mnStats.reward_coins_24h;
-            }
-
-            var dailyCoin = formatNum(mnRewardsPerDay, { maxFraction: 4});
-            var weeklyCoin = formatNum(mnRewardsPerDay * 7, { maxFraction: 4});
-            var monthlyCoin = formatNum(mnRewardsPerDay * (365/12), { maxFraction: 4});
-            var yearlyCoin = formatNum(mnRewardsPerDay * 365, { maxFraction: 4});
-
-            var data = {
-              active: 'test',
-              dailyCoin: dailyCoin,
-              weeklyCoin: weeklyCoin,
-              monthlyCoin: monthlyCoin,
-              yearlyCoin: yearlyCoin,
-              calculatedBasedOnRealData: calculatedBasedOnRealData
-            };
-
-            res.render('test', data);
-          });
-        });
-      });
-  });
-});
-
 router.get('/reward', function(req, res){
   //db.get_stats(settings.coin, function (stats) {
     console.log(stats);
@@ -484,7 +446,7 @@ router.get('/ext/summary', function(req, res) {
                     cmc: cmc,
                     collateral: settings.mnroi.masternode_required,
                     mnroi: mnroi,
-			        dailyCoin: dailyCoin,
+		    dailyCoin: dailyCoin,
                     weeklyCoin: weeklyCoin,
                     monthlyCoin: monthlyCoin,
                   }]});
