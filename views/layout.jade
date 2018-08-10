@@ -7,6 +7,7 @@ html
     link(rel='stylesheet', href='//cdn.datatables.net/plug-ins/725b2a2115b/integration/bootstrap/3/dataTables.bootstrap.css')
     link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
     link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Play:700,400')
+    link(href='https://fonts.googleapis.com/css?family=Montserrat:400,700%7CVarela+Round', rel='stylesheet')
     link(rel='stylesheet', href='/stylesheets/style.css')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js')
     script(src='//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js')
@@ -23,6 +24,11 @@ html
     script(src='//cdn.datatables.net/plug-ins/725b2a2115b/integration/bootstrap/3/dataTables.bootstrap.js')
     script(src='/javascripts/chart.js')
     script(src='/javascripts/analytics.js')
+    script(type='text/javascript', src='/javascripts/bootstrap.min.js')
+    script(type='text/javascript', src='/javascripts/owl.carousel.min.js')
+    script(type='text/javascript', src='/javascripts/jquery.magnific-popup.js')
+    script(type='text/javascript', src='/javascripts/main.js')
+    script(type='text/javascript', src='/javascripts/dailywavi.js')
     script.
       $(document).ready(function(){
         $('##{active}').addClass('active');
@@ -39,6 +45,9 @@ html
             $("#price_usd").text(json.data[0].lastPriceUsd);
             $("#cmc_market_cap").text(json.data[0].marketCapUsd);
             $("#cmc_volume_24h").text(json.data[0].marketVolumeUsd);
+            $("#dailyCoin").text(json.data[0].dailyCoin);
+            $("#weeklyCoin").text(json.data[0].weeklyCoin);
+            $("#monthlyCoin").text(json.data[0].monthlyCoin);
 
             $("#lblConnections").text(json.data[0].connections + ' connections');
             $("#lblBlockcountValue").text(json.data[0].blockcount);
@@ -78,7 +87,7 @@ html
         }, 60000);
         update_stats();
       });
-  body
+  body.bg-img(style="background-image: url('../images/background3.jpg');")
     - function format_unixtime(unixtime) {
       - var a = new Date(unixtime*1000);  
       - var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -104,63 +113,60 @@ html
       - var time = date + suffix + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;   
       - return time
     -  };
-    .nav.navbar.navbar-default.navbar-fixed-top(role='navigation')
-      .container-fluid
+    nav#nav.navbar.nav-transparent.navbar-fixed-top
+      .container
         .navbar-header
-          button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-collapse')
-            span.sr-only Toggle navigation
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-          a.navbar-brand(href='http://wavicom.info/index.html') #{settings.title}
-        .collapse.navbar-collapse(id='navbar-collapse')
-          ul.nav.navbar-nav
-            li#home
-              a.navbar-link(href='/') 
-                span.glyphicon.glyphicon-search
-                span.menu-text #{settings.locale.menu_explorer}
-            if settings.heavy == true
-              li#reward
-                a.navbar-link(href='/reward')
-                  span.fa.fa-star
-                  span.menu-text #{settings.locale.menu_reward}
-            if settings.display.movement == true
-              li#movement 
-                a.navbar-link.loading(href='/movement') 
-                  span.fa.fa-money
-                  span.menu-text #{settings.locale.menu_movement}
-            if settings.display.network == true
-              li#network
-                a.navbar-link(href='/network')
-                  span.fa.fa-share-alt
-                  span.menu-text #{settings.locale.menu_network}
-            if settings.display.richlist == true
-              li#richlist
-                a.navbar-link(href='/richlist')
-                  span.fa.fa-btc
-                  span.menu-text #{settings.locale.menu_richlist}
-            if settings.display.markets == true
-              li#markets
-                a.navbar-link.loading(href='/markets/#{settings.markets.default}') 
-                  span.fa.fa-line-chart
-                  span.menu-text #{settings.locale.menu_markets}
-            if settings.display.masternodes == true
-              li#masternodes
-                a.navbar-link.loading(href='/masternodes')
-                  span.fa.fa-server
-                  span.menu-text #{settings.locale.menu_masternodes}
-            if settings.display.mnroi == true
-              li#coininfo
-                a.navbar-link.loading(href='/mnroi')
-                  span.fa.fa-bar-chart
-                  span.menu-text #{settings.locale.menu_mnroi}
-            if settings.display.api == true
-              li#info
-                a.navbar-link(href='/info')
-                  span.glyphicon.glyphicon-info-sign
-                  span.menu-text #{settings.locale.menu_api}
-          ul.nav.nav-bar.navbar-right
-            img(src='#{settings.logo}', style='margin-top:4px;height:40px;vertical-align: middle;')
+          .navbar-brand
+            a(href='index.html')
+              img.logo(src='#{settings.logo}', alt='logo')
+              img.logo-alt(src='#{settings.logo}', alt='logo')
+        .nav-collapse
+            span
+          ul.main-nav.nav.navbar-nav.navbar-right
+            li
+              a(href='http://wavicom.info/index.html') Home
+            li
+              a(href='http://wavicom.info/index.html#overview') Overview
+            li
+              a(href='http://wavicom.info/index.html#specs') Specs
+            li
+              a(href='http://wavicom.info/index.html#download') Download
+            li
+              a(href='http://wavicom.info/index.html#roadmap') Roadmap
+            li
+              a(href='http://wavicom.info/index.html#exchanges') Exchanges
+            li
+              a(href='http://wavicom.info/index.html#team') Team
+            li
+              a(href='http://wavicom.info/index.html#forum') Forum
+            li.has-dropdown
+              a(href='/') Explorer
+              ul.dropdown
+                 li
+                   a(href='/') Latest Transactions
+                 li
+                   a(href='/movement') Movement coins
+                 li
+                   a(href='/network') WAVI Network
+                 li
+                   a(href='/richlist') Top 100
+                 li
+                   a(href='/masternodes') Masternodes
+                 li
+                   a(href='/mnroi') MN ROI
+                 li
+                   a(href='/info') API
+                 li
+                   a(href='http://explorer.wavicom.info/downloads/blockchain_database.tar') Get up-to-date blockchain
+            li.has-dropdown
+              a(href='#more') More
+              ul.dropdown
+                 li
+                   a(href='http://wavicom.info/faucet/index.php') Faucet
+                 li
+                   a(href='http://airdrop.wavicom.info') Airdrop
+                 li
+                   a(href='http://wavicalc.tk/') WaviCalk
 
     .col-md-12
       .row.text-center
@@ -245,9 +251,19 @@ html
                         <br>
                         label#difficultyHybrid -
                       else
-                        label#difficulty -
-          .col-md-2.col-sm-12
-            img(src='#{settings.logo}', style='margin-top:-15px;height:128px;vertical-align: middle;')
+                        label#difficulty - 
+          .col-md-2
+            .panel.panel-primary.panel-summary
+              .panel-heading
+                span Earnings WAVI for 1 MN
+              .panel-body(style="padding-top: 25px")
+                row.text-center
+                  .col-md-12
+                      h1.text-success Daily: &nbsp;
+                        label#dailyCoin -
+                      br
+                      h1.text-success Monthly: &nbsp;
+                        label#monthlyCoin -
           if settings.display.masternodes == true
             .col-md-2
               .panel.panel-primary.panel-summary
@@ -317,3 +333,10 @@ html
           else
             span  blocks
         label#lblConnections.label.label-default -
+
+        #preloader
+          .preloader
+            span
+            span
+            span
+            span
