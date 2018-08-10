@@ -36,7 +36,7 @@
   //     Cerulean, Cosmo, Cyborg, Darkly, Flatly, Journal, Lumen, Paper,
   //     Readable, Sandstone, Simplex, Slate, Spacelab, Superhero, United, Yeti
   // theme (see /public/themes for available themes)
-  "theme": "Slate",
+  "theme": "wavicom",
 
   // port to listen for requests on.
   "port" : 80,
@@ -127,7 +127,7 @@
   // low flag: greater than this value flagged yellow
   // high flag: greater than this value flagged red
   "movement": {
-    "min_amount": 10,
+    "min_amount": 100,
     "low_flag": 1000,
     "high_flag": 5000
   },
