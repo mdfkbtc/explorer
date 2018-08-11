@@ -426,16 +426,16 @@ router.get('/ext/summary', function(req, res) {
                   var mnRewardsPerYear = mnRewardsPerDay * 365;
                   var mnroi = formatNum(mnRewardsPerYear * 100 / settings.mnroi.masternode_required, { maxFraction: 2});
 				  				  
-                  var dailyCoin = formatNum(mnRewardsPerDay, { maxFraction: 4});
-                  var weeklyCoin = formatNum(mnRewardsPerDay * 7, { maxFraction: 4});
-                  var monthlyCoin = formatNum(mnRewardsPerDay * (365/12), { maxFraction: 4});				  
+                  var dailyCoin = formatNum(mnRewardsPerDay, { maxFraction: 2});
+                  var weeklyCoin = formatNum(mnRewardsPerDay * 7, { maxFraction: 2});
+                  var monthlyCoin = formatNum(mnRewardsPerDay * (365/12), { maxFraction: 2});				  
 
                   res.send({ data: [{
                     difficulty: difficulty,
                     difficultyHybrid: difficultyHybrid,
                     masternodeCount: masternodecount,
                     masternodeOnlineCount: masternodeonlinecount,
-                    supply: formatNum(stats.supply, { maxFraction: 4 }),
+                    supply: formatNum(stats.supply, { maxFraction: 0 }),
                     hashrate: hashrate,
                     lastPriceBtc: formatNum(stats.last_price, { maxFraction: 8 }),
                     lastPriceUsd: formatCurrency(cmc.price_usd, { maxFraction: 6 }),
