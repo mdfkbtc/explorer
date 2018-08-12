@@ -127,7 +127,7 @@
   // low flag: greater than this value flagged yellow
   // high flag: greater than this value flagged red
   "movement": {
-    "min_amount": 100,
+    "min_amount": 30,
     "low_flag": 1000,
     "high_flag": 5000
   },
