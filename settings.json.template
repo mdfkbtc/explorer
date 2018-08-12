@@ -221,6 +221,7 @@
   // type (optional) = class of label, valid types: default, primary, warning, danger, success
   // url (optional) = url to link to for more information
   "labels": {
+  "Wbh4kdmRRwnGFqJcdJuf2HKj8iPq3e5UKt": {"label": "Suprnova's WaviCoin Pool", "url":"https://wavi.suprnova.cc/index.php"},
   "WSUf2rJXQ2khmV71HBxKVNSgmJon61C6fV": {"label": "Suprnova's WaviCoin Pool", "url":"https://wavi.suprnova.cc/index.php"},
   "WbVAdfBmXppC3QbNLDesmGZ4gLUcYJJETW": {"label": "WAVI Mining Pool - 大人の自由研究", "url":"https://wavi.ukkey3.space/index.php"},
   "WNoL4w3CRsBDqn36nnNhf3GYG4d5QWapNY": {"label": "WAVI Bluepool", "url":"https://wavi.bluepool.info"},
