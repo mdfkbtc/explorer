@@ -161,7 +161,7 @@
     "basic_info_links": [
       ["Github", "https://github.com/wavidev-the-man/wavi"],
       ["Website", "https://wavidev-the-man.github.io/wavi/index2.html"],
-      ["Twitter", "https://twitter.com/OfficialWAVI"],
+      ["Twitter", "https://twitter.com/CommunityWavi"],
       ["Discord", "https://discord.gg/zfrJx73"]
     ],
     "masternode_required": 1000,
@@ -175,7 +175,7 @@
   },
 
   // twitter, facebook, googleplus
-  "twitter": "OfficialWAVI",
+  "twitter": "CommunityWavi",
   "facebook": "yourfacebookpage",
   "googleplus": "yourgooglepluspage",
   "discord": "https://discord.gg/zfrJx73",
