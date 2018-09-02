@@ -32,7 +32,7 @@ block content
         ]
       });
     });
-  .col-md-12(style="margin-bottom: 4%")
+  .col-md-10(style="margin-bottom: 4%")
     .row.text-center(style='margin-bottom:15px;')
       font(color='white') #{settings.locale.net_warning}
     .panel.panel-default
@@ -46,3 +46,28 @@ block content
             th.text-center #{settings.locale.net_subversion}
             th.text-center #{settings.locale.net_country}
         tbody.text-center
+  .col-md-2(style="margin-bottom: 4%")
+    .row.text-center(style='margin-bottom:15px;')
+      font(color='white') Add these nodes to your wavi.conf
+    .panel.panel-default
+      .panel-heading
+        strong WAVI nodes
+      .panel-body
+        p
+          | addnode=47.75.54.241
+          br
+          | addnode=167.99.45.159
+          br
+          | addnode=207.246.95.82
+          br
+          | addnode=109.95.53.26
+          br
+          | addnode=195.133.201.144
+          br
+          | addnode=180.126.197.62
+          br
+          | addnode=80.82.215.18
+          br
+          | addnode=167.99.194.240
+        p
+          font(color='green') You can also find the nearest nodes using the search bar in the table on the left. Just type the name of your country.
