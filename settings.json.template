@@ -215,6 +215,11 @@
   // valid options: "P" (PH/s), "T" (TH/s), "G" (GH/s), "M" (MH/s), "K" (KH/s)
   "nethash_units": "K",
 
+  // Address labels
+  // example : "JhbrvAmM7kNpwA6wD5KoAsbtikLWWMNPcM": {"label": "This is a burn address", "type":"danger", "url":"http://example.com"}
+  // label (required) = test to display
+  // type (optional) = class of label, valid types: default, primary, warning, danger, success
+  // url (optional) = url to link to for more information
   "labels": {
   "Wbh4kdmRRwnGFqJcdJuf2HKj8iPq3e5UKt": {"label": "Suprnova's WaviCoin Pool", "url":"https://wavi.suprnova.cc/index.php"},
   "WSUf2rJXQ2khmV71HBxKVNSgmJon61C6fV": {"label": "Suprnova's WaviCoin Pool", "url":"https://wavi.suprnova.cc/index.php"},
