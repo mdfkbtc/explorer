@@ -166,7 +166,7 @@
     ],
     "masternode_required": 1000,
     "block_time_sec": 120,
-    "block_reward_mn": 4.5
+    "block_reward_mn": 5.625
   },
 
   // CoinMarketCap integration
