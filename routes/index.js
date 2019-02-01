@@ -208,6 +208,15 @@ router.get('/masternodes', function(req, res) {
   res.render('masternodes', {active: 'masternodes'});
 });
 
+/* Baggins - calculator addition */
+router.get('/calculator', function(req, res) {
+  res.render('calculator', {active: 'calculator'});
+});
+router.get('/miningstats', function(req, res) {
+  res.render('miningstats', {active: 'miningstats'});
+});
+
+
 router.get('/coininfo', function(req, res) {
   if (settings.display.coininfo === false) {
     route_get_index(res, null);
@@ -493,13 +502,13 @@ settings.masternodes.list_format.lastpaid = 6;
         // last paid
         if (settings.masternodes.list_format.lastpaid > -1)
           mnItem.lastpaid = mnData[settings.masternodes.list_format.lastpaid - 1];
-// / *
+
         // IP
         if (settings.masternodes.list_format.ip === 0)
           mnItem.ip = key.trim().replace(':'+settings.masternodes.default_port, '');
         else if (settings.masternodes.list_format.ip > -1)
           mnItem.ip = mnData[settings.masternodes.list_format.ip - 1].trim().replace(':'+settings.masternodes.default_port, '');
-// * /
+ 
         mnList.push(mnItem);
       }
     }
