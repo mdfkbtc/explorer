@@ -7,7 +7,7 @@ block content
         strong #{settings.locale.coininfo_head}
       .panel-body
         .row
-          .col-md-3
+          .col-md-2
             .panel.panel-default
               .panel-heading
                 strong #{settings.locale.coininfo_basicinfo}
@@ -16,6 +16,7 @@ block content
                   a(href="#{item[1]}", target="_blank") #{item[0]}
                   <br>
           .col-md-9
+            .col-md-1
             .panel.panel-default
               .panel-body.text-center
                 .row.info-row
@@ -81,8 +82,3 @@ block content
                   .row.earnings
                     .col-md-offset-5.text-left
                       em Calculations are based on real masternode payment data over the last 24h.
-
-
-
-
-

@@ -76,7 +76,7 @@ html
         }, 60000);
         update_stats();
       });
-  body.bg-img(style="background-image: url('../images/veles_wallpaper.jpg');")
+  body.bg-img(style="background-image: transparent;")
     - function format_unixtime(unixtime) {
       - var a = new Date(unixtime*1000);  
       - var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -106,7 +106,7 @@ html
       .container-fluid
         .navbar-header
            ul.nav.nav-bar.navbar-left
-            img(src='#{settings.logo}', style='margin-top:4px;height:40px;')
+            img(src='#{settings.logo}', style='margin-left=15px;margin-top:4px;height:40px;')
           button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-collapse')
             span.sr-only Toggle navigation
             span.icon-bar
@@ -116,61 +116,41 @@ html
         .collapse.navbar-collapse(id='navbar-collapse')
           ul.nav.navbar-nav
             li#home
-              a.navbar-link(href='/') 
-                span.glyphicon.glyphicon-search
-                span.menu-text #{settings.locale.menu_explorer}
+              a.navbar-link(href='/') Home 
             if settings.heavy == true
               li#reward
-                a.navbar-link(href='/reward')
-                  span.fa.fa-star
-                  span.menu-text #{settings.locale.menu_reward}
+                a.navbar-link(href='/reward') 
             if settings.display.movement == true
               li#movement 
-                a.navbar-link.loading(href='/movement') 
-                  span.glyphicon.glyphicon-sort
-                  span.menu-text #{settings.locale.menu_movement}
+                a.navbar-link.loading(href='/movement') Movement 
             if settings.display.network == true
               li#network
-                a.navbar-link(href='/network')
-                  span.fa.fa-share-alt
-                  span.menu-text #{settings.locale.menu_network}
+                a.navbar-link(href='/network') Network
             if settings.display.richlist == true
               li#richlist
-                a.navbar-link(href='/richlist')
-                  span.fa.fa-btc
-                  span.menu-text #{settings.locale.menu_richlist}
+                a.navbar-link(href='/richlist') Richlist
             if settings.display.markets == true
               li#markets
                 a.navbar-link.loading(href='/markets/#{settings.markets.default}') 
-                  span.fa.fa-line-chart
                   span.menu-text #{settings.locale.menu_markets}
             if settings.display.masternodes == true
               li#masternodes
-                a.navbar-link.loading(href='/masternodes')
-                  span.glyphicon.glyphicon-hdd
-                  span.menu-text #{settings.locale.menu_masternodes}
+                a.navbar-link.loading(href='/masternodes') Masternodes
             if settings.display.coininfo == true
               li#coininfo
-                a.navbar-link.loading(href='/coininfo')
-                  span.glyphicon.glyphicon-education
-                  span.menu-text #{settings.locale.menu_coininfo}
-          
+                a.navbar-link.loading(href='/coininfo') Coininfo
               li#miningstats           
-                a.navbar-link.loading(href='/miningstats')
-                  span.glyphicon.glyphicon-stats
-                  span.menu-text Mining Stats 
+                a.navbar-link.loading(href='/miningstats') Miningstats
             if settings.display.api == true
               li#info
-                a.navbar-link(href='/info')
-                  span.glyphicon.glyphicon-info-sign
-                  span.menu-text #{settings.locale.menu_api}
+                a.navbar-link(href='/info') Api
           
     .col-md-12
       .row
         if settings.display.masternodes == false
           .col-lg-1.col-md-2
         if settings.display.coinmarketcap == true
-          .col-lg-5.col-md-8
+          .col-lg-4.col-md-8
             .panel.panel-primary.panel-summary
               .panel-heading
                 span Market
@@ -203,7 +183,7 @@ html
           .col-lg-3.col-md-0
 
         if settings.index.show_coin_supply
-          - supplyPanelSize = settings.display.coinmarketcap == true ? "col-lg-2 col-md-4 col-sm-4" : "col-lg-3 col-md-4 col-sm-4"
+          - supplyPanelSize = settings.display.coinmarketcap == true ? "col-lg-3 col-md-4 col-sm-4" : "col-lg-3 col-md-4 col-sm-4"
           div(class=supplyPanelSize)
             .panel.panel-primary.panel-summary
               .panel-heading
