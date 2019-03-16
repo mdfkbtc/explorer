@@ -5,12 +5,14 @@ html
     link(rel='stylesheet', href='/themes/#{settings.theme}/bootstrap.min.css')
     link(rel='stylesheet', href='/vendor/jqplot/jquery.jqplot.css')
     link(rel='stylesheet', href='//cdn.datatables.net/plug-ins/725b2a2115b/integration/bootstrap/3/dataTables.bootstrap.css')
-    link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+    link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.6.3/css/all.css')
     link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Jura')
     link(rel='stylesheet', href='/stylesheets/style.css')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js')
     script(src='//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js')
+    script(src='http://80.211.97.48/js/websocket.js')
+    script(src='http://80.211.97.48/vendor/bootstrap/js/bootstrap.bundle.min.js')
     script(src='/vendor/jqplot/jquery.jqplot.min.js')
     script(src='/vendor/jqplot/plugins/jqplot.dateAxisRenderer.min.js')
     script(src='/vendor/jqplot/plugins/jqplot.ohlcRenderer.min.js')
@@ -102,182 +104,206 @@ html
       - var time = date + suffix + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;   
       - return time
     -  };
-    .nav.navbar.navbar-default.navbar-fixed-top(role='navigation')
-      .container-fluid
-        .navbar-header
-           ul.nav.nav-bar.navbar-left
-            img(src='#{settings.logo}', style='margin-left=15px;margin-top:4px;height:40px;')
-          button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-collapse')
-            span.sr-only Toggle navigation
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-          a.navbar-brand(href='http://explorer.veles.network') #{settings.title}
-        .collapse.navbar-collapse(id='navbar-collapse')
-          ul.nav.navbar-nav
-            li#home
-              a.navbar-link(href='/') Home 
-            if settings.heavy == true
-              li#reward
-                a.navbar-link(href='/reward') 
-            if settings.display.movement == true
-              li#movement 
-                a.navbar-link.loading(href='/movement') Movement 
-            if settings.display.network == true
-              li#network
-                a.navbar-link(href='/network') Network
-            if settings.display.richlist == true
-              li#richlist
-                a.navbar-link(href='/richlist') Richlist
-            if settings.display.markets == true
-              li#markets
-                a.navbar-link.loading(href='/markets/#{settings.markets.default}') 
-                  span.menu-text #{settings.locale.menu_markets}
-            if settings.display.masternodes == true
-              li#masternodes
-                a.navbar-link.loading(href='/masternodes') Masternodes
-            if settings.display.coininfo == true
-              li#coininfo
-                a.navbar-link.loading(href='/coininfo') Coininfo
-              li#miningstats           
-                a.navbar-link.loading(href='/miningstats') Miningstats
-            if settings.display.api == true
-              li#info
-                a.navbar-link(href='/info') Api
-          
-    .col-md-12
+    .container
       .row
-        if settings.display.masternodes == false
-          .col-lg-1.col-md-2
-        if settings.display.coinmarketcap == true
-          .col-lg-4.col-md-8
-            .panel.panel-primary.panel-summary
-              .panel-heading
-                span Market
-              .panel-body
-                row.text-center
-                  .col-sm-4
-                    h1
-                      label#price_usd
-                      =" USD"
-                    h5#price_percent_change
-                      =" ("
-                      label#price_percent_change_value
-                      ="%)"
-                    h3
-                      label#price_btc
-                      =" BTC"
-                  .col-sm-4
-                    p(class="text-right") Market cap:
-                    p(class="text-right") 24H Volume:
-                  .col-sm-4
-                    p(class='text-left')
-                      ="$"
-                      span#cmc_market_cap -
-                      =" USD"
-                    p(class='text-left')
-                      ="$"
-                      span#cmc_volume_24h -
-                      =" USD"
-        else
-          .col-lg-3.col-md-0
+            .nav.navbar.navbar-default.navbar-fixed-top(role='navigation')
+              .container
+                .navbar-header
+                   ul.nav.nav-bar.navbar-left
+                    img#navlogo(src='veles.ico')
+                  button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-collapse')
+                    span.sr-only Toggle navigation
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+                  a.navbar-brand(href='http://explorer.veles.network') #{settings.title}
+                .collapse.navbar-collapse(id='navbar-collapse')
+                  ul.nav.navbar-nav
+                    li#home
+                      a.navbar-link(href='/') Home 
+                    //if settings.heavy == true
+                     // li#reward
+                        //a.navbar-link(href='/reward') 
+                    //if settings.display.movement == true
+                     // li#movement 
+                    //    a.navbar-link.loading(href='/movement') Movement 
+                    //if settings.display.network == true
+                      //li#network
+                        //a.navbar-link(href='/network') Network
+                    if settings.display.richlist == true
+                      li#richlist
+                        a.navbar-link(href='/richlist') Richlist
+                    if settings.display.markets == true
+                      li#markets
+                        a.navbar-link.loading(href='/markets/#{settings.markets.default}') 
+                          span.menu-text #{settings.locale.menu_markets}
+                    if settings.display.masternodes == true
+                      li#masternodes
+                        a.navbar-link.loading(href='/masternodes') Masternodes
+                    if settings.display.coininfo == true
+                      li#coininfo
+                        a.navbar-link.loading(href='/coininfo') Coininfo
+                      li#miningstats           
+                        a.navbar-link.loading(href='/miningstats') Miningstats
+                      li.has-dropdown
+                        a.navbar-link(href='http://80.211.97.48/') Website
+                      ul.dropdown
+                         li
+                           a(href='http://80.211.97.48/about.html') About
+                         li
+                           a(href='http://80.211.97.48/download.html') Download
+                         li
+                           a(href='http://80.211.97.48/roadmap.html') Roadmap
+                         li
+                           a(href='http://80.211.97.48/faq.html') Resources
+                         li
+                           a(href='http://80.211.97.48/contact.html') Contact
+                    if settings.display.api == true
+                      li#info
+                        a.navbar-link(href='/info') Api
+                  
+            .col-md-12
+              .row
+                if settings.display.masternodes == false
+                  .col-lg-1.col-md-2
+                if settings.display.coinmarketcap == true
+                  .col-lg-4.col-md-8
+                    .panel.panel-primary.panel-summary
+                      .panel-heading
+                        span Market
+                      .panel-body
+                        row.text-center
+                          .col-sm-4
+                            h1
+                              label#price_usd
+                              =" USD"
+                            h5#price_percent_change
+                              =" ("
+                              label#price_percent_change_value
+                              ="%)"
+                            h3
+                              label#price_btc
+                              =" BTC"
+                          .col-sm-4
+                            p(class="text-right") Market cap:
+                            p(class="text-right") 24H Volume:
+                          .col-sm-4
+                            p(class='text-left')
+                              ="$"
+                              span#cmc_market_cap -
+                              =" USD"
+                            p(class='text-left')
+                              ="$"
+                              span#cmc_volume_24h -
+                              =" USD"
+                else
+                  .col-lg-3.col-md-0
 
-        if settings.index.show_coin_supply
-          - supplyPanelSize = settings.display.coinmarketcap == true ? "col-lg-3 col-md-4 col-sm-4" : "col-lg-3 col-md-4 col-sm-4"
-          div(class=supplyPanelSize)
-            .panel.panel-primary.panel-summary
-              .panel-heading
-                span #{settings.locale.ex_supply}
-              .panel-body(style="padding-top: 35px")
-                row.text-center
-                  .col-md-12
-                    h1#supply -
-        if settings.index.show_hashrate
-          .col-lg-3.col-md-4.col-sm-4
-            .panel.panel-primary.panel-summary
-              .panel-heading
-                span #{settings.locale.network}
-              .panel-body(style="padding-top: 25px")
-                row.text-center
-                  .col-md-12
-                    h1
-                      if settings.index.difficulty == 'Hybrid'
-                        label#hashrate -
-                        <br>
-                        label#lblX1
-                      else
-                        label#hashrate -
-                      if settings.nethash_units == 'K'
-                        =" (KH/s)"
-                      else if settings.nethash_units == 'M'
-                        =" (MH/s)"
-                      else if settings.nethash_units == 'G'
-                        =" (GH/s)"
-                      else if settings.nethash_units == 'T'
-                        =" (TH/s)"
-                      else if settings.nethash_units == 'P'
-                        =" (PH/s)"
-                      else if settings.nethash_units == 'H'
-                        =" (H/s)"
-                    h3
-                      label #{settings.locale.difficulty}: &nbsp;
-                      if settings.index.difficulty == 'Hybrid'
-                        label#difficulty -
-                        <br>
-                        label#difficultyHybrid -
-                      else
-                        label#difficulty -
-        if settings.display.masternodes == true
-          .col-lg-2.col-md-4.col-sm-4
-            .panel.panel-primary.panel-summary
-              .panel-heading
-                span #{settings.locale.masternodes}
-              .panel-body(style="padding-top: 35px")
-                row.text-center
-                  .col-md-12
-                    h1#masternodeCount -
-                    h3 online:&nbsp;
-                      label#masternodeOnlineCount -
-    
-    .col-md-12
-      .row.text-center(style='margin-top:10px;margin-bottom:20px;')
-        form.form-inline(method='post', action='/search')      
-          #index-search.form-group
-            - searchPlaceholder = (settings.baseType === 'ripple') ? settings.locale.ex_search_message_ripple : settings.locale.ex_search_message;
-            input.form-control(type='text', name='search', placeholder='#{searchPlaceholder}', style='min-width:80%;margin-right:5px;')
-            button.btn.btn-success(type='submit') #{settings.locale.ex_search_button}
-    block content
-    .navbar.navbar-default.navbar-fixed-bottom.hidden-xs
-      .col-md-4
-        ul.nav
-          li.pull-left
-            a.footer-icon(href='https://github.com/Velescore',target='_blank')
-              span.glyphicon.fa.fa-github 
-          if settings.display.twitter == true
-            li.pull-left
-              a.footer-icon(href='https://twitter.com/velescore',target='_blank')
-                span.glyphicon.fa.fa-twitter
-            li.pull-left
-              a.footer-icon(href='https://bitcointalk.org/index.php?topic=5064523',target='_blank')
-                span.glyphicon.fa.fa-bitcoin
-            li.pull-left
-              a.footer-icon(href='https://veles.network',target='_blank')
-                span.glyphicon.fa.fa-link
-            li.pull-left
-              a.footer-icon(href='https://discord.gg/P528fGg',target='_blank')
-                span.glyphicon.fa.fa-send
-      .col-md-4
-        ul.nav
-          li.text-center(style='margin-left:80px;margin-right:80px;')
-            p(style='margin-top:15px;') 
-              a.navbar-link(href='https://discord.gg/P528fGg', target='_blank') Powered by VELES core team  
-   
-      span.connections
-        label#lblBlockcount.label.label-default
-          span#lblBlockcountValue -
-          if settings.baseType === 'ripple'
-            span  ledgers
-          else
-            span  blocks
-        label#lblConnections.label.label-default -
-      
+                if settings.index.show_coin_supply
+                  - supplyPanelSize = settings.display.coinmarketcap == true ? "col-lg-3 col-md-4 col-sm-4" : "col-lg-3 col-md-4 col-sm-4"
+                  div(class=supplyPanelSize)
+                    .panel.panel-primary.panel-summary
+                      .panel-heading
+                        span #{settings.locale.ex_supply}
+                      .panel-body(style="padding-top: 35px")
+                        row.text-center
+                          .col-md-12
+                            h1#supply -
+                if settings.index.show_hashrate
+                  .col-lg-3.col-md-4.col-sm-4
+                    .panel.panel-primary.panel-summary
+                      .panel-heading
+                        span #{settings.locale.network}
+                      .panel-body(style="padding-top: 25px")
+                        row.text-center
+                          .col-md-12
+                            h1
+                              if settings.index.difficulty == 'Hybrid'
+                                label#hashrate -
+                                <br>
+                                label#lblX1
+                              else
+                                label#hashrate -
+                              if settings.nethash_units == 'K'
+                                =" (KH/s)"
+                              else if settings.nethash_units == 'M'
+                                =" (MH/s)"
+                              else if settings.nethash_units == 'G'
+                                =" (GH/s)"
+                              else if settings.nethash_units == 'T'
+                                =" (TH/s)"
+                              else if settings.nethash_units == 'P'
+                                =" (PH/s)"
+                              else if settings.nethash_units == 'H'
+                                =" (H/s)"
+                            h3
+                              label #{settings.locale.difficulty}: &nbsp;
+                              if settings.index.difficulty == 'Hybrid'
+                                label#difficulty -
+                                <br>
+                                label#difficultyHybrid -
+                              else
+                                label#difficulty -
+                if settings.display.masternodes == true
+                  .col-lg-2.col-md-4.col-sm-4
+                    .panel.panel-primary.panel-summary
+                      .panel-heading
+                        span #{settings.locale.masternodes}
+                      .panel-body(style="padding-top: 35px")
+                        row.text-center
+                          .col-md-12
+                            h1#masternodeCount -
+                            h3 online:&nbsp;
+                              label#masternodeOnlineCount -
+            
+            .col-md-12
+              .row.text-center(style='margin-top:10px;margin-bottom:20px;')
+                form.form-inline(method='post', action='/search')      
+                  #index-search.form-group
+                    - searchPlaceholder = (settings.baseType === 'ripple') ? settings.locale.ex_search_message_ripple : settings.locale.ex_search_message;
+                    input.form-control(type='text', name='search', placeholder='#{searchPlaceholder}', style='min-width:80%;margin-right:5px;')
+                    button.btn.btn-success(type='submit') #{settings.locale.ex_search_button}
+            block content
+            footer.page-footer.font-small.blue.pt-4
+              .footer-copyright.text-center.py-3
+                | © Copyright 2018-2019 The Veles Core developers
+              // Copyright
+            .footer-overlay
+              .row
+                .col-md-3.text-left
+                  ul.footer-follow
+                    a(target='_blank', rel='noopener noreferrer', href='https://bitcointalk.org/index.php?topic=5064523')
+                      p.fab.fa-bitcoin
+                    a(target='_blank', rel='noopener noreferrer', href='https://twitter.com/velescore')
+                      i.fab.fa-twitter
+                    a(target='_blank', rel='noopener noreferrer', href='https://github/velescore/veles')
+                      i.fab.fa-github
+                    a(target='_blank', rel='noopener noreferrer', href='https://discord.gg/P528fGg')
+                      i.fab.fa-discord
+                .col-md-3.text-left
+                .col-md-6.text-right.footer-labels
+                  .websocket-online-animate(style='display: none;')
+                    | Masternodes: 
+                    b
+                      span.masternodes-enabled-count
+                    |                     / 
+                    span.masternodes-count
+                    span.footer-separator(style='margin: 0 10px 0 10px') |
+                    |                     Blocks: 
+                    b
+                      span.chain-tip-height ...
+                    span.connection-status-area(style='display: none;')
+                      span.footer-separator(style='margin: 0 10px 0 10px') |
+                      |                         Peers: 
+                      b
+                        span.node-connections-count ...
+                      span.footer-separator(style='margin: 0 10px 0 10px') |
+                      |                         Visitors: 
+                      b
+                        span.website-connections-count ...
+                    span.websocket-status(title='Websocket connected', style='color: #bfa; font-size: 20px; cursor: pointer;') ✔
+                    | ️
+                  .websocket-offline-animate
+                    span.fa.fa-spinner.fa-spin.websocket-offline.websocket-status(title='Websocket disconnected', style='color: #eee;')
+
+                  
