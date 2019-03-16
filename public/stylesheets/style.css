@@ -16,6 +16,15 @@ body {
 	background-color: black;
 }
 
+.dropdown>a:before {
+    font-family: 'ForkAwesome', sans-serif;
+    content: "\f0da";
+    font-size: 13px;
+    margin-left: 6px;
+    float: right;
+    transform: rotate(90deg);
+}
+
 .dropdown-item:hover {
     color: black!important;
     text-decoration: none;
@@ -202,6 +211,14 @@ my1 {
     margin-left: 10px;
 }
 
+.fa-discord:before {
+    content: "\f392"!important;
+}
+
+.fa-bitcoin:before {
+    content: "\f15a";
+}
+
 .form-inline .form-control {
     border-radius: 17px;
     border: 2px #262626;
@@ -225,6 +242,7 @@ div.dataTables_filter label {
 
 .navbar-default .navbar-nav>li>a {
     color: white;
+    letter-spacing: 0.1px;
 }
 
 .btn {
