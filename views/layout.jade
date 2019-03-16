@@ -145,19 +145,15 @@ html
                         a.navbar-link.loading(href='/coininfo') Coininfo
                       li#miningstats           
                         a.navbar-link.loading(href='/miningstats') Miningstats
-                      li.has-dropdown
-                        a.navbar-link(href='http://80.211.97.48/') Website
-                      ul.dropdown
-                         li
-                           a(href='http://80.211.97.48/about.html') About
-                         li
-                           a(href='http://80.211.97.48/download.html') Download
-                         li
-                           a(href='http://80.211.97.48/roadmap.html') Roadmap
-                         li
-                           a(href='http://80.211.97.48/faq.html') Resources
-                         li
-                           a(href='http://80.211.97.48/contact.html') Contact
+                      li.nav-item.dropdown
+                        a#navbarDropdownBlog.nav-link.dropdown-toggle(href='resources.html', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                          | Website
+                        .dropdown-menu.dropdown-menu-right(aria-labelledby='navbarDropdownBlog')
+                          a.dropdown-item(href='http://80.211.97.48/about.html') About
+                          a.dropdown-item(href='http://80.211.97.48/download.html') Download
+                          a.dropdown-item(href='http://80.211.97.48/roadmap.html') Roadmap
+                          a.dropdown-item(href='http://80.211.97.48/faq.html') Resources
+                          a.dropdown-item(href='http://80.211.97.48/contact.html') Contact
                     if settings.display.api == true
                       li#info
                         a.navbar-link(href='/info') Api
