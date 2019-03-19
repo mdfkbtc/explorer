@@ -11,9 +11,8 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js')
-    script(src='//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js')
+    script(src='//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js')
     script(src='http://80.211.97.48/js/websocket.js')
-    script(src='http://80.211.97.48/vendor/bootstrap/js/bootstrap.bundle.min.js')
     script(src='/vendor/jqplot/jquery.jqplot.min.js')
     script(src='/vendor/jqplot/plugins/jqplot.dateAxisRenderer.min.js')
     script(src='/vendor/jqplot/plugins/jqplot.ohlcRenderer.min.js')
@@ -27,10 +26,11 @@ html
     script(src='//cdn.datatables.net/plug-ins/725b2a2115b/integration/bootstrap/3/dataTables.bootstrap.js')
     script(src='/javascripts/chart.js')
     script(src='/javascripts/analytics.js')
+    script(src='/javascripts/dialog.js')
     script.
       $(document).ready(function(){
         $('##{active}').addClass('active');
-        function update_stats(){   
+        update_stats = function() {   
           $.ajax({url: '/ext/summary', success: function(json){
             $("#supply").text(json.data[0].supply);
             $("#difficulty").text(json.data[0].difficulty);
@@ -111,7 +111,7 @@ html
               .container
                 .navbar-header
                    ul.nav.nav-bar.navbar-left
-                    img#navlogo(src='veles.ico')
+                    img#navlogo(src='/veles.ico')
                   button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-collapse')
                     span.sr-only Toggle navigation
                     span.icon-bar
@@ -262,9 +262,11 @@ html
                     input.form-control(type='text', name='search', placeholder='#{searchPlaceholder}', style='min-width:80%;margin-right:5px;')
                     button.btn.btn-success(type='submit') #{settings.locale.ex_search_button}
             block content
+
             footer.page-footer.font-small.blue.pt-4
-              .footer-copyright.text-center.py-3
-                | © Copyright 2018-2019 The Veles Core developers
+              .col-md-12
+                 .footer-copyright.text-center.py-3
+                   | @ Copyright 2018-2019 The Veles Core developers
               // Copyright
             .footer-overlay
               .row
@@ -304,4 +306,103 @@ html
                   .websocket-offline-animate
                     span.fa.fa-spinner.fa-spin.websocket-offline.websocket-status(title='Websocket disconnected', style='color: #eee;')
 
-                  
+  #block-detail-modal.modal.fade
+    .modal-dialog(style='width: 820px;')
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+          h4#modal-title.modal-title VLS block: 
+            span.block-hash
+        .modal-body
+          .panel
+            .panel-heading
+              strong Block Header
+            table.table.table-bordered.summary-table
+              thead
+                tr
+                  th Height
+                  th
+                  th Difficulty
+                  th Confirmations
+                  th.hidden-xs Size (kB)
+                  th.hidden-xs Bits
+                  th.hidden-xs Nonce
+                  th.hidden-xs Timestamp
+              tbody
+                tr.success
+                  td 83456
+                  td nist5
+                  td 14673.9933
+                  td 376
+                  td.hidden-xs 0.52
+                  td.hidden-xs 1b047750
+                  td.hidden-xs 305585431
+                  td.hidden-xs 16th Mar 2019 23:50:14
+          .panel
+            .panel-heading
+              strong Transactions
+            table.table.table-bordered.table-striped.summary-table
+              thead
+                tr
+                  th.hidden-xs Hash
+                  th Recipients
+                  th Amount (VLS)
+                  th
+              tbody
+        .modal-footer
+          button.btn.btn-default.btn-sm(type='button', data-dismiss='modal') OK
+
+  #tx-detail-modal.modal.fade
+    .modal-dialog(style='width: 940px;')
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+          h4#modal-title.modal-title VLS txid: 
+            span.tx-hash
+        .modal-body
+          .row
+            .col-md-12
+              .panel
+                .panel-heading.hidden-xs
+                  strong Transaction Summary
+                table.table.table-bordered.table-striped.summary-table
+                  thead
+                    tr
+                      th Confirmations
+                      th.hidden-xs Block Hash
+                      th Timestamp
+                      th
+                  tbody
+                    tr.danger
+                      td 7
+                      td.hidden-xs
+                        a.mono(href='/block/db23dae488df0ec98e2dea5f87587bf30a9795b39fb746973fb2ae209f891952') db23dae488df0ec98e2dea5f87587bf30a9795b39fb746973fb2ae209f891952
+                      td 19th Mar 2019 00:10:45
+                      td.view_tx
+                        a(href='/block/db23dae488df0ec98e2dea5f87587bf30a9795b39fb746973fb2ae209f891952')
+                          span.glyphicon.glyphicon-eye-open
+          .row
+            .col-md-6
+              .panel.panel-default
+                .panel-heading
+                  strong Inputs
+                  span.glyphicon.glyphicon-arrow-right.pull-right.hidden-xs
+                table.table.table-bordered.table-striped.summary-table
+                  thead
+                    tr
+                      th Address
+            .col-md-6
+              .panel.panel-default
+                .panel-heading
+                  strong Recipients
+                table.table.table-bordered.table-striped.summary-table
+                  thead
+                    tr
+                      th Address
+                      th.hidden-xs Amount (VLS)
+                  tbody
+        .modal-footer
+          button.btn.btn-default.btn-sm(type='button', data-dismiss='modal') OK
+
+
+

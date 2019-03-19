@@ -3,7 +3,6 @@ extends layout
 block content
   - var sent = address.sent /100000000
   - var received = address.received / 100000000
-    img.qrcode.pull-right.hidden-xs(src='/qr/#{address.a_id}')
   .col-xs-12.col-md-10.col-md-offset-1
     .panel.panel-default.panel-address-summary
       .panel-heading(style='position:relative;')        
@@ -30,6 +29,7 @@ block content
               if settings.show_sent_received == true
                 th #{settings.locale.total_received} (#{settings.symbol})
               th #{settings.locale.rl_balance} (#{settings.symbol})
+              th QR Code
         tbody             
           tr
             if settings.show_sent_received == true 
@@ -38,6 +38,8 @@ block content
               if settings.show_sent_received == true
                 td #{received.toFixed(8)}
               td #{balance}
+            td
+              img.qrcode(src='/qr/#{address.a_id}')
     .panel.panel-default.hidden-xs
       .panel-heading
         strong #{settings.locale.ex_latest_transactions}

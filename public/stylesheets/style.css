@@ -10,8 +10,29 @@ body {
         transition: 0.5s;
 }
 
+.pagination>li>a {
+	background: #262626;
+}
+
+.pagination>li.disabled>a, .pagination>li.disabled>a:hover {
+	background: #393939;
+}
+
+.nav>li>a:hover {
+	background: #363636;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+	background: #363636;
+}
+ 
+.modal-content {
+        background-color: #393939;
+        background: repeating-linear-gradient(135deg, #3b3b3b 0%, #3b3b3b 10%, #393939 0%, #393939 50%) 0 / 15px 15px;
+}
+
 .dropdown-menu  {
-    padding-bottom: 6px;
+        padding-bottom: 6px;
 	font-size: 15px;
 	background-color: black;
 }
@@ -489,9 +510,8 @@ tr {
 }
 
 .qrcode {
-	position: absolute;
-	top: 65px;
-	right: 15px;
+	max-height: 40px;
+	margin-left: 10px;
 }
 
 .footer-logo {
@@ -556,3 +576,4 @@ tr {
 .coin-info .row.earnings {
 	margin-bottom: 5px;
 }
+
