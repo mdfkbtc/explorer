@@ -263,10 +263,47 @@ html
                     button.btn.btn-success(type='submit') #{settings.locale.ex_search_button}
             block content
 
-            footer.page-footer.font-small.blue.pt-4
-              .col-md-12
-                 .footer-copyright.text-center.py-3
-                   | @ Copyright 2018-2019 The Veles Core developers
+            .lookWrap
+              hr
+              #tomotto.tomottoWrap.text-center
+                | “In such seconds of decision entire futures are made.”
+                | ― Dan Simmons, Hyperion              
+              .row
+                #look
+                  .section.col-md-3
+                    h5#h5 Website
+                    a(href='/about.html') About
+                    a(href='/download.html') Download
+                    a(href='/faq.html') FAQ
+                    a(href='/wiki.html') WIKI
+                    a(href='/coin-specs.html') Coins-specs
+                    a(href='/services.html') External-services
+                  .section.col-md-3
+                    h5#h5 Explorer
+                    a(href='http://35.240.96.108:88/') Search
+                    a(href='http://35.240.96.108:88/richlist') Richlist
+                    a(href='http://35.240.96.108:88/masternodes') Masternodes
+                    a(href='http://35.240.96.108:88/coininfo') Coin-info
+                    a(href='http://35.240.96.108:88/miningstats') Mining-stats
+                    a(href='http://35.240.96.108:88/info') Api
+                  .section.col-md-3
+                    h5#h5 Community
+                    a(href='https://twitter.com/velescore') Twitter
+                    a(href='https://discord.gg/P528fGg') Discord
+                    a(href='https://steemit.com/@velescore/') Steemit
+                    a(href='https://bitcointalk.org/index.php?topic=5064523') Bitcointalk
+                    a(href='https://www.coingecko.com/en/coins/veles') Coingecko
+                    a(href='https://coinpaprika.com/coin/vls-veles/') Coinpaprika
+                    a(href='https://masternodecap.com/coins/VLS') Masternodecap
+                  .section.col-md-3
+                    h5#h5 About Us
+                    a(href='/about.html') About
+                    a(href='/roadmad.html') Roadmap
+                    a(href='/contact.html') Contact Us
+            .footer-copyright.text-center.py-3
+              | © Copyright 2018-
+              | The Veles Core developers
+
               // Copyright
             .footer-overlay
               .row
@@ -403,6 +440,4 @@ html
                   tbody
         .modal-footer
           button.btn.btn-default.btn-sm(type='button', data-dismiss='modal') OK
-
-
 
