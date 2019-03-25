@@ -71,16 +71,23 @@ block content
         stable.api().ajax.reload(null, false);
       }, 60000 );
     });
-  .row
-    .col-md-12
+  .col-md-12.text-center
+    .panel.panel-default#header
+      h3#header-text Blockexplorer
+      hr#header-hr 
+      br
+      form.form-inline(method='post', action='/search')      
+        - searchPlaceholder = (settings.baseType === 'ripple') ? settings.locale.ex_search_message_ripple : settings.locale.ex_search_message;
+        input.form-control#search-bar(type='text', name='search', placeholder='#{searchPlaceholder}', style='min-width:45%;margin-right:5px;')
+        button.btn.btn-success(type='submit') #{settings.locale.ex_search_button}        
       if error !== null        
         .alert.alert-danger.alert-dismissable(role='alert')
-          button.close(type='button', data-dismiss='alert') ×
-          strong #{settings.locale.ex_error} : #{error}
+        button.close(type='button', data-dismiss='alert') ×
+        strong #{settings.locale.ex_error} : #{error}
       if warning !== null        
         .alert.alert-warning.alert-dismissable(role='alert')
-          button.close(type='button', data-dismiss='alert') ×
-          strong #{settings.locale.ex_warning} #{warning}
+        button.close(type='button', data-dismiss='alert') ×
+        strong #{settings.locale.ex_warning} #{warning}
   
   .col-md-12
     .panel.panel-default

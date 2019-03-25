@@ -1,6 +1,14 @@
 extends layout
 
 block content   
+  .col-md-12
+    h1#bread-text.mt-4.mb-3
+      | Coininfo
+      small#bread-small section
+    ol#breadcrumb-1.breadcrumb
+      li.breadcrumb-item
+        a(href='/') Search
+      li.breadcrumb-item.active Coininfo
   .col-md-12(style="margin-bottom: 4%")
     .panel.panel-primary.coin-info
       .panel-heading

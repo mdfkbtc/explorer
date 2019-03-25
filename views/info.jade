@@ -1,6 +1,14 @@
 extends layout
 
 block content
+  .col-md-12
+    h1#bread-text.mt-4.mb-3
+      | Api
+      small#bread-small section
+    ol#breadcrumb-1.breadcrumb
+      li.breadcrumb-item
+        a(href='/') Search
+      li.breadcrumb-item.active Api
   .col-md-12.col-xs-12
     .panel.panel-default
       .panel-heading
@@ -144,5 +152,4 @@ block content
              [#{address}/qr/#{hashes.address}](/qr/#{hashes.address})
 
     .footer-padding
-    hr
 

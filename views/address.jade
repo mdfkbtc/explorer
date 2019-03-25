@@ -3,6 +3,14 @@ extends layout
 block content
   - var sent = address.sent /100000000
   - var received = address.received / 100000000
+  .col-md-12
+    h1#bread-text.mt-4.mb-3
+      | Address
+      small#bread-small section
+    ol#breadcrumb-1.breadcrumb
+      li.breadcrumb-item
+        a(href='/') Search
+      li.breadcrumb-item.active Address
   .col-xs-12.col-md-10.col-md-offset-1
     .panel.panel-default.panel-address-summary
       .panel-heading(style='position:relative;')        
@@ -52,3 +60,4 @@ block content
         include ./includes/address_history.jade    
     .footer-padding
             
+

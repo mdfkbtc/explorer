@@ -42,6 +42,14 @@ block content
       ]
       });
     });
+  .col-md-12
+    h1#bread-text.mt-4.mb-3
+      | Masternodes
+      small#bread-small section
+    ol#breadcrumb-1.breadcrumb
+      li.breadcrumb-item
+        a(href='/') Search
+      li.breadcrumb-item.active Masternodes
   .col-md-12(style="margin-bottom: 4%")
     .panel.panel-default
       .panel-heading
@@ -55,3 +63,4 @@ block content
             th.text-center #{settings.locale.mn_lastpaid}
             th. #{settings.locale.mn_ip}
         tbody.text-center
+
