@@ -367,7 +367,8 @@ hr {
     background-color: rgba(100, 100, 100, 0.3)
 }
 
-.navbar-brand.active {
+a.navbar-brand.active {
+    height: 60px;
 	border-bottom: 2px solid #e4b99c;
 }
 
@@ -388,7 +389,7 @@ li.nav-item:hover {
     background-color: rgba(100, 100, 100, 0.3)
 }
 
-li.nav-item.active {
+li.nav-item:active {
 	border-bottom: 2px solid #e4b99c;
 }
 
@@ -465,6 +466,11 @@ img {
 
 .navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
     margin-left: 0px;
+}
+
+a.navbar-brand {
+    margin-top: 1px;
+    height: 59px;
 }
 
 .navbar-default .navbar-brand {

@@ -27,8 +27,10 @@ html
     script(src='/javascripts/chart.js')
     script(src='/javascripts/analytics.js')
     script(src='/javascripts/dialog.js')
+    script(src='/javascripts/footer.js')
+    script(src='/javascripts/websocket-ui.js')
     script.
-      $(document).ready(function(){
+      $(document).ready(function(){  
         $('##{active}').addClass('active');
         update_stats = function() {   
           $.ajax({url: '/ext/summary', success: function(json){
