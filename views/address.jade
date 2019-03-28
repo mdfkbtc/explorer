@@ -47,7 +47,9 @@ block content
                 td #{received.toFixed(8)}
               td #{balance}
             td
-              img.qrcode(src='/qr/#{address.a_id}')
+              a(href='/qr/#{address.a_id}', onclick="window.open('/qr/#{address.a_id}', 'newwindow', 'width=300, height=250'); return false;")
+                img.qrcode(src='/qr/#{address.a_id}')
+              
     .panel.panel-default.hidden-xs
       .panel-heading
         strong #{settings.locale.ex_latest_transactions}
@@ -60,4 +62,5 @@ block content
         include ./includes/address_history.jade    
     .footer-padding
             
+
 
