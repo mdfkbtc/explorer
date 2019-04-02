@@ -1,14 +1,20 @@
 extends layout
 
 block content   
-  .col-md-12
-    h1#bread-text.mt-4.mb-3
-      | Coininfo
-      small#bread-small section
-    ol#breadcrumb-1.breadcrumb
-      li.breadcrumb-item
-        a(href='/') Search
-      li.breadcrumb-item.active Coininfo
+  h1.mt-4.mb-3#bread-text Coininfo
+  .row
+    .col-sm-12#bread-bar
+      .bread-button.bread
+        span.label Home
+        span.icon
+          span
+        span.icon2
+      #bread-button.bread-button.bread.active
+        span.label Coininfo
+        span.icon
+          span
+        span.icon2
+      ol#breadcrumb-1.breadcrumb
   .col-md-12(style="margin-bottom: 4%")
     .panel.panel-primary.coin-info
       .panel-heading
@@ -88,5 +94,6 @@ block content
                   .row.earnings
                     .col-md-offset-5.text-left
                       em Calculations are based on real masternode payment data over the last 24h.
+
 
 

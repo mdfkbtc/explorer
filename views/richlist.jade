@@ -36,14 +36,20 @@ block content
     $(window).resize(function () { 
       pieWealthDist.replot( { resetAxes: false } );
     });
-  .col-md-12
-    h1#bread-text.mt-4.mb-3
-      | Richlist
-      small#bread-small section
-    ol#breadcrumb-1.breadcrumb
-      li.breadcrumb-item
-        a(href='/') Search
-      li.breadcrumb-item.active Richlist
+  h1.mt-4.mb-3#bread-text Richlist
+  .row
+    .col-sm-12#bread-bar
+      .bread-button.bread
+        span.label Home
+        span.icon
+          span
+        span.icon2
+      #bread-button.bread-button.bread.active
+        span.label Richlist
+        span.icon
+          span
+        span.icon2
+      ol#breadcrumb-1.breadcrumb
   .col-xs-12.col-md-8
     .tabpanel
       ul.nav.nav-tabs(role='tablist')
@@ -107,4 +113,5 @@ block content
         center
           div#pieChart(style="width:300px;height:305px;margin:0px;")
   .row.footer-margin
+
 

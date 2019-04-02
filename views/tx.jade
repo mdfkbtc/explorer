@@ -2,14 +2,20 @@ extends layout
 
 block content
   - var time = format_unixtime(tx.timestamp)
-  .col-md-12
-    h1#bread-text.mt-4.mb-3
-      | Tx
-      small#bread-small section  
-    ol#breadcrumb-1.breadcrumb
-      li.breadcrumb-item
-        a(href='/') Search
-      li.breadcrumb-item.active Tx
+  h1.mt-4.mb-3#bread-text Tx
+  .row
+    .col-sm-12#bread-bar
+      .bread-button.bread
+        span.label Home
+        span.icon
+          span
+        span.icon2
+      #bread-button.bread-button.bread.active
+        span.label Tx
+        span.icon
+          span
+        span.icon2
+      ol#breadcrumb-1.breadcrumb
   .col-xs-12.col-md-10.col-md-offset-1
     .well.well-sm.hidden-lg.hidden-md(style='word-wrap:break-word;')
       | #{tx.txid}
@@ -123,4 +129,5 @@ block content
                     tr.hidden-lg.hidden-md
                       td.success #{ramount.toFixed(8)} #{settings.symbol} 
     .footer-padding
+
 

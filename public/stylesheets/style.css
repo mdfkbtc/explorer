@@ -4,8 +4,8 @@ body {
         font-size: 15px;
         color: #fff;
         font-weight: 500;
-        background-color: #393939;
-        background: repeating-linear-gradient(135deg, #3b3b3b 0%, #3b3b3b 10%, #393939 0%, #393939 50%) 0 / 15px 15px;
+        background-color: #c4bebe;
+      	background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAQAAABuBnYAAAAAU0lEQVQIHQXBwRGDIBAAwO2/AMcCDHAcPjIRxjJ8Je1kl1uqUgphsWu6w0sIG6npLpcUBql4e/wsVRKabrkNTacIYbMrwsF06rqUhsnXVKVT+Hj+Ue4rPSONk4kAAAAASUVORK5CYII=);
         text-rendering: optimizeLegibility;
         transition: 0.5s;
 }
@@ -20,13 +20,14 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-    background-color: black;
-    outline: 1px solid slategrey;
-    border-left: 4px solid transparent;
+  background-color: black;
+  outline: 1px solid slategrey;
+  border-left: 3px solid #262626;
 }
 
 body::-webkit-scrollbar-thumb:hover {
     border-color: #F19B7E;
+  	box-shadow: 0 0 30px #F19B7E, 0 0 50px #F19B7E;
 }
 
 a {
@@ -109,6 +110,7 @@ a:hover {
 }
 
 .nav>li>a {
+    background-color: black;
     display: block;
     padding: 10px 8px;
 }
@@ -392,7 +394,6 @@ a.navbar-brand.active {
 }
 
 .nav-link {
-	height: 59px;
 	font-size: 15px;
 	color: #fff;
 }
@@ -920,43 +921,196 @@ tr {
 	margin-bottom: 5px;
 }
 
+#bread-bar {
+    margin-bottom: 28px;
+}
+
+.breadcrumb {
+    border: 0!important;
+	background: linear-gradient(90deg, #262626, #e4b99c);
+	transform: skew(-40deg, 0deg) scaleX(1);
+	max-width: 100%;
+	margin-top: 20px;
+	height: 44px;
+	opacity: 0.75;
+	margin: 10px;
+    display: -webkit-box;
+}
+
+.bread-button {
+  margin: 10px;
+  float: left;
+  position: relative;
+  color: #fff;
+  cursor: pointer;
+  margin-left: 7px;
+}
+.bread-button.active {	/* Active button is always the last */
+	margin-right: 20px;
+}
+.bread-button .label {
+  padding: 10px;
+  display: inline-block;
+}
+.bread-button.bread .label {
+  padding: 10px 30px;
+  font-size: 14px;
+  display: inline-block;
+  z-index: 10;
+  position: relative;
+  white-space: nowrap;
+  line-height: 24px;
+  transition: all 0.225s;
+  transition-delay: 0.45s;
+  letter-spacing: 2px;
+}
+.bread-button.bread.bread-button-start .label {
+  padding: 12px 65px;
+}
+.bread-button.bread .icon2 {
+  display: block;
+  opacity: 0.75;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: all 0.225s;
+  transform: skew(-40deg, 0deg) scaleX(1);
+  background: rgba(38, 38, 38, 0.9);
+  transition-delay: 0.45s;
+}
+.bread-button.bread .icon {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: all 0.225s;
+  transform: scale(0.9) skew(0deg, 0deg);
+  transition-delay: 0.15s;
+}
+.bread-button.bread .icon:before, .bread-button.bread .icon:after {
+  width: 60px;
+  opacity: 0;
+  content: '';
+  height: 1px;
+  position: absolute;
+  display: block;
+  background: #f19b7e;
+  transition: all 0.375s;
+  transition-delay: 0.3s;
+}
+.bread-button.bread .icon:before {
+  top: 0;
+  left: calc(50% - 30px);
+}
+.bread-button.bread .icon:after {
+  bottom: 0;
+  right: calc(50% - 30px);
+}
+.bread-button.bread .icon span:before, .bread-button.bread .icon span:after {
+  height: 0;
+  transition-delay: 0s;
+  content: '';
+  background: #f19b7e;
+  position: absolute;
+  display: block;
+  width: 2px;
+  transition: all 0.225s;
+}
+.bread-button.bread .icon span:before {
+  left: 0;
+  top: 0;
+}
+.bread-button.bread .icon span:after {
+  right: 0;
+  bottom: 0;
+}
+.bread-button.bread:hover .icon {
+  transform: skew(-40deg, 0deg);
+}
+.bread-button.bread:hover .icon:before, .bread-button.bread:hover .icon:after {
+  transition-delay: 0s;
+  width: 30px;
+  opacity: 1;
+}
+.bread-button.bread:hover .icon:before {
+  left: 0;
+}
+.bread-button.bread:hover .icon:after {
+  right: 0;
+}
+.bread-button.bread:hover .icon span:before, .bread-button.bread:hover .icon span:after {
+  height: 30px;
+  transition-delay: 0.45s;
+}
+.bread-button.bread:hover .icon2 {
+  transform: skew(-40deg, 0deg) scaleX(0.2);
+  background: transparent;
+  transition-delay: 0s;
+  opacity: 0;
+}
+.bread-button.bread.white:hover .label {
+  color: #fff;
+  transition-delay: 0s;
+}
+.bread-button.bread.white .icon2 {
+  background: #fff;
+}
+.bread-button.bread.white .icon:before, .bread-button.bread.white .icon:after {
+  background: #fff;
+}
+.bread-button.bread.white .icon span:before, .bread-button.bread.white .icon span:after {
+  background: #fff;
+}
+.bread-button.bread.labelred .label {
+  color: #f0202f;
+}
+.bread-button.bread.labelgray .label {
+  color: #1d1d1d;
+}
+.bread-button.bread.transparent {
+  float: none;
+  display: inline-block;
+  -webkit-transform: translateZ(0px);
+  transform: translateZ(0px);
+}
+.bread-button.bread.transparent .label {
+  color: #fff;
+  transition-delay: 0s;
+}
+.bread-button.bread.transparent .icon2 {
+  background: transparent;
+}
+.bread-button.bread.transparent .icon {
+  transform: scale(1) skew(10deg, 0deg);
+}
+.bread-button.bread.transparent .icon:before, .bread-button.bread.transparent .icon:after {
+  background: #fff;
+}
+.bread-button.bread.transparent .icon span:before, .bread-button.bread.transparent .icon span:after {
+  background: #fff;
+}
+.bread-button.bread.transparent:hover .icon {
+  transform: scale(1) skew(-40deg, 0deg);
+}
+
+span.label {
+    font-family: 'Jura';
+    font-weight: 100;
+}
+
 #bread-text {
+    margin-bottom: 6px;
+    margin-top: -3px;
     display: block;
-    margin-block-start: 0.67em;
-    margin-block-end: 0.67em;
-    margin-inline-end: 0px;
     font-family: inherit;
     font-size: 4rem;
     font-weight: 500;
     line-height: 1.2;
     color: inherit;
-}
-
-#bread-small {
-    margin-left: 15px;
-    color: inherit!important;
-    font-size: 80%!important;
-    font-weight: 400!important;
-}
-
-.mb-3 {
-    margin-bottom: 11px;
-    margin-top: -0.2rem!important;
-}
-
-#breadcrumb-1 {
-	border-radius: 12px;
-	margin-bottom: 30px;
-	background: linear-gradient(90deg, #262626, #e4b99c);
-}
-
-.breadcrumb {
-    list-style: none;
-    height: 52px;
-    padding-top: 15px;
-    font-size: 16px;
-    margin-top: -11px;
-    border: 0px;
 }
 
 ol {
