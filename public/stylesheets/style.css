@@ -101,18 +101,8 @@ a:hover {
 	background: #393939;
 }
 
-.nav>li>a:hover {
-	background: #363636;
-}
-
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
 	background: #363636;
-}
-
-.nav>li>a {
-    background-color: black;
-    display: block;
-    padding: 10px 8px;
 }
 
 .modal-content {
@@ -400,7 +390,7 @@ a.navbar-brand.active {
 
 li.nav-item {
 	border-bottom: 2px solid transparent;
-	padding: 11px 0 6px 0;
+	padding: 21px 0 6px 0;
     height: -webkit-fill-available;
 }
 
@@ -424,7 +414,6 @@ img {
     vertical-align: middle;
 }
 
-
 #coin-info {
     display: contents;
 }
@@ -433,6 +422,11 @@ img {
     background: #262626;
     float: left;
     margin-bottom: -1px;
+}
+
+.navbar-nav {
+    height: 60px;
+    float: right;
 }
 
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
@@ -450,6 +444,10 @@ img {
     color: blue !important;
 }
 
+.navbar-nav>li>a:hover {
+    background-image: none!important;
+}
+
 .nav {
     font-size: 15px;
     margin-bottom: 0;
@@ -462,8 +460,15 @@ img {
     background-color: transparent;
 }
 
-.navbar-nav {
-    margin-right: 0px;
+.navbar-default .navbar-nav>li>a {
+    color: white;
+    margin-top: -10px;
+}
+
+.nav>li>a {
+    position: relative;
+    display: block;
+    padding: 10px 8px;
 }
 
 #text-brand {
@@ -516,11 +521,6 @@ a.navbar-brand {
 	color: #fff;
 	font-size: 21px;
 	border-bottom: 2px solid transparent;
-}
-
-.navbar-nav {
-    height: 60px;
-    float: right;
 }
 
 #hr-miningstats {
@@ -620,30 +620,17 @@ div.dataTables_filter label {
     padding-right: 15px;
 }
 
-tr {
-    width: 100%;
-    background: #262626;
-}
 
 tbody>tr:hover {
     background-color: #464646 !important;
 }
 
 table {
-    background-color: #262626;
+    background-color: transparent;
 }
 
 table.table-bordered.dataTable {
     border: 0px;
-}
-
-.table-striped>tbody>tr:nth-of-type(odd) {
-    background-color: #262626;
-}
-
-table.table-bordered.dataTable {
-    background: #262626;
-    border-collapse: separate !important;
 }
 
 table.jqplot-table-legend, table.jqplot-cursor-legend {
@@ -668,7 +655,7 @@ table.jqplot-table-legend, table.jqplot-cursor-legend {
 
 .panel {
     padding-top: 3px;
-    background: #262626;
+    background-color: #26262688;
     border: 1px !important;
 }
 
@@ -677,34 +664,34 @@ table.jqplot-table-legend, table.jqplot-cursor-legend {
 }
 
 .panel-primary {
-    background: #262626
+    background: #26262688;
 }
 
 .panel-primary>.panel-heading {
     color: #ffffff;
-    background-color: #262626;
+    background-color: transparent;
     -webkit-border-image: -webkit-gradient(linear, left top, left bottom, from(transparent), to(transparent), color-stop(0.5, transparent), color-stop(0.5, #e4b99c)) 21 30 30 21 repeat repeat;
 }
 
 .panel>.table:last-child, .panel>.table-responsive:last-child>.table:last-child {
     border-bottom-right-radius: 3px;
     border-bottom-left-radius: 3px;
-    background: #262626;
+    background-color: transparent;
 }
 
 .panel-body {
-    background: #262626;
+    background-color: transparent;
     padding: 15px;
 }
 
 .panel-heading {
     -webkit-border-image: -webkit-gradient(linear, left top, left bottom, from(transparent), to(transparent), color-stop(0.5, transparent), color-stop(0.5, #e4b99c)) 21 30 30 21 repeat repeat;
-    background: #262626;
+    background-color: transparent;
 }
 
 .panel-default>.panel-heading {
     color: #c8c8c8;
-    background-color: #262626;
+    background-color: transparent;
     -webkit-border-image: -webkit-gradient(linear, left top, left bottom, from(transparent), to(transparent), color-stop(0.5, transparent), color-stop(0.5, #e4b99c)) 21 30 30 21 repeat repeat;
 }
 
@@ -757,6 +744,11 @@ table.jqplot-table-legend, table.jqplot-cursor-legend {
 table {
 	width: 100% !important;
 }
+
+.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #26262688;
+}
+
 .dataTables_info, .dataTables_length {
 	padding-left: 10px;
 }
@@ -922,6 +914,8 @@ tr {
 }
 
 #bread-bar {
+    margin-left: 15px;
+    max-width: 1140px;
     margin-bottom: 28px;
 }
 
@@ -1103,8 +1097,9 @@ span.label {
 }
 
 #bread-text {
-    margin-bottom: 6px;
-    margin-top: -3px;
+    margin-left: 15px;
+    margin-bottom: 5px;
+    margin-top: -5px;
     display: block;
     font-family: inherit;
     font-size: 4rem;
