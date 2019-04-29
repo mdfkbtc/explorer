@@ -9,6 +9,7 @@ html
     link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Jura')
     link(rel='stylesheet', href='https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(href='js/src/jquery.jqplot.css', rel='stylesheet')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js')
     script(src='//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js')
@@ -26,9 +27,20 @@ html
     script(src='//cdn.datatables.net/plug-ins/725b2a2115b/integration/bootstrap/3/dataTables.bootstrap.js')
     script(src='/javascripts/chart.js')
     script(src='/javascripts/analytics.js')
-    script(src='/javascripts/dialog.js')
-    script(src='/javascripts/footer.js')
-    script(src='/javascripts/websocket-ui.js')
+    // Common dependencies
+    script(src='https://code.jquery.com/jquery-3.3.1.js')
+    script(src='https://canvasjs.com/assets/script/jquery.canvasjs.min.js')
+    script(type='text/javascript', src='js/src/jquery.jqplot.js')
+    script(type='text/javascript', src='js/src/plugins/jqplot.dateAxisRenderer.js')
+    script(type='text/javascript', src='js/src/plugins/jqplot.categoryAxisRenderer.js')
+    script(type='text/javascript', src='js/src/plugins/jqplot.ohlcRenderer.js')
+    script(type='text/javascript', src='js/src/plugins/jqplot.highlighter.js')
+    script(type='text/javascript', src='js/src/plugins/jqplot.cursor.js')
+    script(src='public/javascripts/charts.js')
+    script(src='public/javascripts/websocket.js')
+    script(src='public/javascripts/websocket-ui.js')
+    script(src='public/javascripts/footer.js')
+    script(src='public/javascripts/console.js')
     script.
       $(document).ready(function(){  
         $('##{active}').addClass('active');
@@ -189,131 +201,55 @@ html
 
               // Copyright
             .footer-overlay
-              .row
-                .col-md-3.text-left
-                  ul.footer-follow
-                    a(target='_blank', rel='noopener noreferrer', href='https://bitcointalk.org/index.php?topic=5064523')
-                      p.fab.fa-bitcoin
-                    a(target='_blank', rel='noopener noreferrer', href='https://twitter.com/velescore')
-                      i.fab.fa-twitter
-                    a(target='_blank', rel='noopener noreferrer', href='https://github/velescore/veles')
-                      i.fab.fa-github
-                    a(target='_blank', rel='noopener noreferrer', href='https://discord.gg/P528fGg')
-                      i.fab.fa-discord
-                #connection-tooltip.footer-tooltip
-                  ul
-                    li
-                      i.fa.fa-signal
-                      |  Websocket Status:
-                      b.label-success.websocket-online online
-                      b.label-error.websocket-offline offline
-                    li
-                      | Peer Connections: 
-                      b 8
-                    li
-                      | Websocket Connections: 
-                      b 25
-                #chain-tip-tooltip.footer-tooltip
-                  ul
-                    li
-                      i.fa.fa-cube
-                      |  Current Block Height: 
-                      b.chain-tip-height 0
-                    li
-                      | Best block hash: 
-                      b
-                        a.chain-tip-hash-short
-                    li
-                      | Found at: 
-                      b.chain-tip-time
-                    li.first-row
-                      | Size: 
-                      b.chain-tip-size-kb
-                      |  kB
-                    li.second-row
-                      | Algo: 
-                      b.chain-tip-algo
-                    li
-                      | Transactions: 
-                      b.chain-tip-ntx
-                #masternodes-tooltip.footer-tooltip
-                  ul
-                    li
-                      i.fa.fa-server
-                      |  Masternodes Total: 
-                      b.masternodes-count 0
-                    li
-                      | Enabled: 
-                      b.masternodes-enabled-count.label-success 0
-                    li
-                      | Pre-Enabled: 
-                      b.masternodes-pre-enabled-count.label-warning 0
-                    li
-                      | New Start Required: 
-                      b.masternodes-new-start-required-count.label-warning 0
-                    li
-                      | Expired: 
-                      b.masternodes-expired-count.label-error 0
-                    li.list-separator
-                      | Masternode collateral: 
-                      b.masternodes-collateral-amount 2000
-                      |  VLS
-                    li
-                      | MN block reward part: 
-                      b.masternodes-reward-percent 0
-                      |  %
-                    li.list-separator.tooltip-icons
-                      i.fab.fa-wikipedia-w
-                #chain-pow-tooltip.footer-tooltip
-                  ul
-                    li
-                      i.fa.fa-chart-bar
-                      |  Hashrate Total: 
-                      b.chain-pow-totalhashrate-human 0
-                    li.first-row
-                      | sha256d: 
-                      b.chain-pow-sha256d-hashrate 0
-                    li.second-row
-                      | scrypt: 
-                      b.chain-pow-scrypt-hashrate 0
-                    li.first-row
-                      | lyra2z: 
-                      b.chain-pow-lyra2z-hashrate 0
-                    li.second-row
-                      | x11: 
-                      b.chain-pow-x11-hashrate 0
-                    li.first-row
-                      | x16r: 
-                      b.chain-pow-x16r-hashrate 0
-                    li.second-row
-                      | nist5: 
-                      b.chain-pow-nist5-hashrate 0
-                    li.list-separator
-                      | Blocks to next halving check: 
-                      b.chain-pow-blocks-to-next-epoch 0
-                    li
-                      | Epoch supply reached: 
-                      b.chain-pow-supply-target-reached 0
-                      |  of min 80%
-                      .col-md-6.text-right
-                #connection-status.status-area
-                  span.fa.fa-spinner.fa-spin.websocket-offline(title='Websocket Status: OFFLINE', style='color: #eee;')
-                  span.websocket-online(title='Websocket Status: ONLINE', style='color: #bfa; font-size: 20px; display: none;') ✔
-                  | ️
-                #chain-tip-status.status-area.websocket-online-animate(style='display: none;')
-                  | Blocks: 
-                  b
-                    span.chain-tip-height 0
-                #masternodes-status.status-area.websocket-online-animate(style='display: none;')
-                  | Masternodes: 
-                  b
-                    span.masternodes-count
-                #chain-pow-status.status-area.websocket-online-animate(style='display: none;')
-                  | Hashrate: 
-                  b
-                    span.chain-pow-totalhashrate-human 0
-      
-
+            .footer-overlay
+              .row.footer-panel-row
+                .col-md-12.text-left
+                  #console-toggle.status-area
+                    span.fa.fa-terminal.websocket-online(title='Toggle Veles Node Console')
+                    span.fa.fa-window-close.console-area(title='Close Console')
+                  #console-maximize.status-area.console-area
+                    span.fa.fa-window-maximize(title='Maximize Console')
+                  .footer-follow-wide
+                    ul.osx-dock
+                      li.active
+                        span Bitcointalk
+                        a(target='_blank', rel='noopener noreferrer', href='https://bitcointalk.org/index.php?topic=5064523')
+                          i.fab.fa-bitcoin
+                      li
+                        span Twitter
+                        a(target='_blank', rel='noopener noreferrer', href='https://twitter.com/velescore')
+                          i.fab.fa-twitter
+                      li
+                        span GitHub
+                        a(target='_blank', rel='noopener noreferrer', href='https://github.com/velescore/veles')
+                          i.fab.fa-github
+                      li
+                        span Discord
+                        a(target='_blank', rel='noopener noreferrer', href='https://discord.gg/P528fGg')
+                          i.fab.fa-discord
+                  #price-status.status-area.websocket-online-animate
+                    span.status-label-wide Price:
+                    span(data-entity-id='market.price', data-attribute='price_btc', data-format='coin_amount')
+                    span.status-label-wide BTC
+                  #connection-status.status-area
+                    span.fa.fa-spinner.fa-spin.websocket-offline(title='Websocket Status: OFFLINE', style='color: rgb(238, 238, 238); display: none;')
+                    span.websocket-online(title='Websocket Status: ONLINE', style='color: rgb(187, 255, 170); font-size: 20px;') ✔
+                    | ️
+                  #chain-tip-status.status-area.websocket-online-animate
+                    span.status-label-wide Blocks:
+                    b
+                      span(data-entity-id='chain.tip', data-attribute='height') 0
+                  #masternodes-status.status-area.websocket-online-animate
+                    span.status-label-wide Masternodes:
+                    b
+                      span(data-entity-id='masternodes', data-attribute='count') 0
+                    span.status-label-short MNs
+                  #chain-pow-status.status-area.websocket-online-animate
+                    span.status-label-wide Hashrate:
+                    span(data-entity-id='chain.pow', data-attribute='totalhashrate', data-format='hashrate')
+              #dev-console
+                .jquery-console-message Loading blockchain client ...
+              
   #block-detail-modal.modal.fade
     .modal-dialog(style='width: 820px;')
       .modal-content
