@@ -358,16 +358,15 @@ a:hover {
 .footer-overlay .status-area {
     float: right;
     font-size: 1.31rem;
-    letter-spacing: 0.022rem!important;
     cursor: pointer;
     height: 39px;
     border-top: 2px solid transparent;
-    padding: 7px 10px 0 9px;
-    text-align: center
+    padding: 7px 11px 0 10px;
+    text-align: center;
 }
 
 .row.footer-panel-row {
-    margin-left: -11px;
+    margin-left: -15px;
 }
 
 .footer-overlay .status-area::after {
@@ -515,6 +514,12 @@ span.status-label-short {
 
 /*end footer*/
 /* dev console */
+.fa-terminal:before {
+    font-weight: bold;
+    font-size: 17px;
+    content: "\f120";
+}
+
 #dev-console {
 	display: none;
 	font-size: 15px;
