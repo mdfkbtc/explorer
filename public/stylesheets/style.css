@@ -696,6 +696,7 @@ hr {
     height: 61px;
     top: 0;
     border-width: 0px;
+    border-bottom: 1px solid #322c1e;
 }
 
 .navbar-default .navbar-toggle {
