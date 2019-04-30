@@ -339,6 +339,10 @@ a:hover {
 	font-weight: bold;
 }
 
+.label-success {
+    background-color: none!important;
+}
+
 .footer-tooltip .label-success {
 	color: #8cff8c;
 }
@@ -362,6 +366,10 @@ a:hover {
     text-align: center
 }
 
+.row.footer-panel-row {
+    margin-left: -11px;
+}
+
 .footer-overlay .status-area::after {
 	content: " ";
 	margin: 0 5px 0 5px;
@@ -381,6 +389,7 @@ a:hover {
 }
 
 span.status-label-wide {
+    margin-right: 4px;
 	display: initial;
 }
 span.status-label-short {
