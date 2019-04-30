@@ -13,7 +13,6 @@ html
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js')
     script(src='//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js')
-    script(src='http://80.211.97.48/js/websocket.js')
     script(src='/vendor/jqplot/jquery.jqplot.min.js')
     script(src='/vendor/jqplot/plugins/jqplot.dateAxisRenderer.min.js')
     script(src='/vendor/jqplot/plugins/jqplot.ohlcRenderer.min.js')
@@ -40,6 +39,7 @@ html
     script(src='http://80.211.97.48/js/websocket.js')
     script(src='http://80.211.97.48/js/websocket-ui.js')
     script(src='http://80.211.97.48/js/footer.js')
+    script(src='http://80.211.97.48/js/nav.js')
     script(src='http://80.211.97.48/js/console.js')
     script.
       $(document).ready(function(){  
@@ -75,6 +75,11 @@ html
             }
           }});
         }
+        $('.history-table').dataTable( {        
+          searching: false,
+          ordering: false,
+          responsive: true
+        });
         $('.iquidus').css('color',$('.table').css('color'));
         $(window).resize(function () { 
           $($.fn.dataTable.tables( true ) ).DataTable().columns.adjust();
