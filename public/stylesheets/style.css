@@ -340,7 +340,7 @@ a:hover {
 }
 
 .label-success {
-    background-color: none!important;
+    background-color: transparent!important;
 }
 
 .footer-tooltip .label-success {
