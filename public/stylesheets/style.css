@@ -352,6 +352,7 @@ a:hover {
 }
 
 .footer-overlay .status-area {
+    float: right;
     font-size: 1.31rem;
     letter-spacing: 0.022rem!important;
     cursor: pointer;
