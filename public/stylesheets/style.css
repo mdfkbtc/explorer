@@ -40,6 +40,18 @@ a:hover {
     text-decoration: underline;
 }
 
+.success {
+    background-color: #62c46288;
+}
+
+.warning {
+    background-color: #ffc10788;
+}
+
+.danger {
+    background-color: #ee5f5b88;
+}
+
 #h5 {
     font-family: 'Jura'!important;
     font-weight: 500;
@@ -1606,4 +1618,3 @@ ol {
     background-color: #e4b99c88!important;
     background-image:none;
 }
-
