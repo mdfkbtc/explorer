@@ -66,6 +66,7 @@ a:hover {
 }
 
 #tomotto{
+    font-size: 16px;
     text-align: center;
     width: 100%;
     letter-spacing: 2px;
@@ -74,27 +75,24 @@ a:hover {
     margin: auto;
 }
 
-.lookWrap{
+.lookWrap {
     position: relative;
     float: left;
     width: 100%;
+    margin-top: 4%;
     margin-bottom: 15px;
 }
 
 #look{
-    margin: auto;
-    width: 700px;
+    margin-left: 9%;
+    width: 87%;
 }
 
-.section{
-    padding-inline-start: 20px;
-    overflow: hidden;
-    float: left;
-    display: inline;
-    width: 160px;
-    margin: 0 15px 15px 0;
-    font-size:14px;
-    line-height: 1.6em;
+.section {
+    line-height: 28px;
+    font-size: 16px;
+    padding-inline-start: 50px;
+    margin: 17px -5px 0px 4px;
 }
 
 .section a {
