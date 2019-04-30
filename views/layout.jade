@@ -200,7 +200,139 @@ html
               | The Veles Core developers
 
               // Copyright
-            .footer-overlay
+            .footer.container
+              #connection-tooltip.footer-tooltip
+                ul
+                  li
+                    i.fa.fa-signal
+                    |  Websocket Status:
+                    b.label-success.websocket-online online
+                    b.label-error.websocket-offline(style='display: none;') offline
+                  li
+                    | Peer Connections: 
+                    b 8
+                  li
+                    | Websocket Connections: 
+                    b 25
+              #chain-tip-tooltip.footer-tooltip
+                ul
+                  li
+                    i.fa.fa-cube
+                    |  Current Block Height:
+                    b(data-entity-id='chain.tip', data-attribute='height') 0
+                  li
+                    | Best block hash: 
+                    b
+                      a.chain-tip-hash-short(href='#')
+                  li
+                    | Found at: 
+                    b.chain-tip-time
+                  li.first-row
+                    | Size: 
+                    b.chain-tip-size-kb 0
+                    |  kB
+                  li.second-row
+                    | Algo: 
+                    b.chain-tip-algo
+                  li
+                    | Transactions: 
+                    b.chain-tip-ntx 0
+              #masternodes-tooltip.footer-tooltip
+                ul
+                  li
+                    i.fa.fa-server
+                    |  Masternodes Total: 
+                    b(data-entity-id='masternodes', data-attribute='count') 0
+                  li
+                    | Enabled: 
+                    b.label-success(data-entity-id='masternodes', data-attribute='enabled-count') 0
+                  li(style='display: none;')
+                    | Pre-Enabled:
+                    b.label-warning(data-entity-id='masternodes', data-attribute='pre-enabled-count') 0
+                  li
+                    | New Start Required:
+                    b.abel-warning(data-entity-id='masternodes', data-attribute='new-start-required-count') 0
+                  li(style='display: none;')
+                    | Expired:
+                    b.label-error(data-entity-id='masternodes', data-attribute='expired-count') 0
+                  li.list-separator
+                    | Masternode collateral: 
+                    b.masternodes-collateral-amount 0
+                    |  VLS
+                  li
+                    | MN block reward part: 
+                    b.masternodes-reward-percent 0
+                    |  %
+                  // <li class="list-separator tooltip-icons"><i class="fab fa-wikipedia-w"></i></li>
+              #chain-pow-tooltip.footer-tooltip
+                ul
+                  li
+                    i.fa.fa-chart-bar
+                    |                     Hashrate Total:
+                    span(data-entity-id='chain.pow', data-attribute='totalhashrate', data-format='hashrate') 0
+                  li.first-row
+                    | sha256d: 
+                    span(data-entity-id='chain.pow', data-attribute='multialgo.sha256d.hashrate', data-format='hashrate') 0
+                  li.second-row
+                    | scrypt: 
+                    span(data-entity-id='chain.pow', data-attribute='multialgo.scrypt.hashrate', data-format='hashrate') 0
+                  li.first-row
+                    | lyra2z: 
+                    span(data-entity-id='chain.pow', data-attribute='multialgo.lyra2z.hashrate', data-format='hashrate') 0
+                  li.second-row
+                    | x11: 
+                    span(data-entity-id='chain.pow', data-attribute='multialgo.x11.hashrate', data-format='hashrate') 0
+                  li.first-row
+                    | x16r: 
+                    span(data-entity-id='chain.pow', data-attribute='multialgo.x16r.hashrate', data-format='hashrate') 0
+                  li.second-row
+                    | nist5: 
+                    span(data-entity-id='chain.pow', data-attribute='multialgo.nist5.hashrate', data-format='hashrate') 0
+                  li.list-separator
+                    | Blocks to next halving check: 
+                    b.chain-pow-blocks-to-next-epoch
+                  li
+                    | Epoch supply reached: 
+                    b.chain-pow-supply-target-reached 0%
+                    |  of min 80%
+              #price-status-tooltip.footer-tooltip
+                ul
+                  li
+                    i.fa.fa-chart-line
+                    |  VLS Price:
+                    .tooltip-price
+                      span(data-entity-id='market.price', data-attribute='price_btc', data-format='coin_amount', data-unit='BTC') 0.00000000
+                      br
+                      span(data-entity-id='market.price', data-attribute='price_usd', data-format='number', data-fixed-decimals='2', data-unit-before='$') 0.00
+                  li.tooltip-row-tall
+                    #price-tooltip-chart
+                  li.list-separator
+                    | Volume 24h: 
+                    b
+                      span(data-entity-id='market.price', data-attribute='24h_volume_usd', data-unit-before='$')
+                  li.second-row
+                    | Δ 24h: 
+                    b
+                      span(data-entity-id='market.price', data-attribute='percent_change_24h', data-unit='%')
+                  li.first-row
+                    | Market Cap: 
+                    b
+                      span(data-entity-id='market.price', data-attribute='market_cap_usd', data-unit-before='$')
+                  li.second-row
+                    | Δ 7d: 
+                    b
+                      span(data-entity-id='market.price', data-attribute='percent_change_7d', data-unit='%')
+                  li
+                    | Total Supply: 
+                    b
+                      span(data-entity-id='market.price', data-attribute='total_supply', data-multiplier='0.000001', data-format='number', data-fixed-decimals='1', data-title='{total_supply} VLS')
+                      | m
+                    |                     of maximum 
+                    b
+                      span(data-entity-id='market.price', data-attribute='max_supply', data-multiplier='0.000001', data-format='number', data-fixed-decimals='1', data-title='{max_supply} VLS')
+                      | m
+                    |  VLS
+
             .footer-overlay
               .row.footer-panel-row
                 .col-md-12.text-left
