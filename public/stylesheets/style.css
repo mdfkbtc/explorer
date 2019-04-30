@@ -10,9 +10,10 @@ body {
         transition: 0.5s;
 }
 
+/* scroll bar */
 body::-webkit-scrollbar {
-    width: 1em;
-    background-color: #393939;
+    width: 10px;
+    background-color: black;
 }
 
 body::-webkit-scrollbar-track {
@@ -20,9 +21,9 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: black;
+  background-color: #262626;
   outline: 1px solid slategrey;
-  border-left: 3px solid #262626;
+  border-left: 3px solid #e4b99cbb;
 }
 
 body::-webkit-scrollbar-thumb:hover {
@@ -351,12 +352,13 @@ a:hover {
 }
 
 .footer-overlay .status-area {
-	float: right;
-	cursor: pointer;
-	height: 100%;
-	border-top: 2px solid transparent;
-	padding: 3px 10px 0 10px;
-	text-align: center;
+    font-size: 1.31rem;
+    letter-spacing: 0.022rem!important;
+    cursor: pointer;
+    height: 39px;
+    border-top: 2px solid transparent;
+    padding: 7px 10px 0 9px;
+    text-align: center
 }
 
 .footer-overlay .status-area::after {
@@ -369,7 +371,6 @@ a:hover {
 }
 
 .footer-overlay .status-area:hover {
-	max-height: 39px;
     border-top: 2px solid #F19B7E;	/*	#e4b99c; */
     background-color: rgba(100, 100, 100, 0.3)
 }
