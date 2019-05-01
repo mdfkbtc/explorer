@@ -78,7 +78,7 @@ block content
       br
       form.form-inline(method='post', action='/search')      
         - searchPlaceholder = (settings.baseType === 'ripple') ? settings.locale.ex_search_message_ripple : settings.locale.ex_search_message;
-        input.form-control#search-bar(type='text', name='search', placeholder='#{searchPlaceholder}', style='min-width:45%;margin-right:5px;')
+        input.form-control#search-bar(type='text', name='search', placeholder='#{searchPlaceholder}', style='min-width:63%;margin-right:5px;')
         button.button.button-effect(type='submit') #{settings.locale.ex_search_button}
           span.label
           span.icon
