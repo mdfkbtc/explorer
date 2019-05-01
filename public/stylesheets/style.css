@@ -931,11 +931,11 @@ my1 {
 }
 
 #search-bar {
-    margin-right: 20px!important;
+    margin-right: 25px!important;
     margin-bottom: 6px;
     display: inline-block;
     opacity: 0.8;
-    height: 30px;
+    height: 38px;
     padding: 8px 12px;
     font-size: 14px;
     line-height: 1.42857143;
@@ -977,17 +977,17 @@ button {
     color: #fff;
     text-align: center;
     width: 10%;
-    padding-top: 6px;
+    padding-top: 10px;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     outline: 0;
-	-moz-transition: opacity 300ms;
-	-o-transition: opacity 300ms;
-	-webkit-transition: opacity 300ms;
-	transition: opacity 300ms;
-    height: 30px;
+    -moz-transition: opacity 300ms;
+    -o-transition: opacity 300ms;
+    -webkit-transition: opacity 300ms;
+    transition: opacity 300ms;
+    height: 39px;
     background: none;
-    border:0;
+    border: 0;
 }
 
 .button-effect {
