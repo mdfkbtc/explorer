@@ -947,10 +947,6 @@ my1 {
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
 
-.form-control {
-    width: 63%;
-}
-
 .form-inline .form-control {
     border: 2px #262626;
     opacity: 0.8;
@@ -1661,7 +1657,7 @@ ol {
 }
 
 .dataTables_paginate {
-    opacity:0.88;
+    opacity:0.77;
     max-height: 41px;
     float: right;
     margin: 0;
@@ -1698,7 +1694,7 @@ ol {
 }
 
 form.form-inline {
-    margin-bottom: 35px;
+    margin-bottom: 28px;
 }
 
 .header-tile .tile-label {
