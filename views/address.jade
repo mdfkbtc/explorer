@@ -6,11 +6,12 @@ block content
     h1.mt-4.mb-3#bread-text Address
     .row
       .col-sm-12#bread-bar
-        .bread-button.bread
-          span.label Home
-          span.icon
-            span
-          span.icon2
+        a(href='/')
+          .bread-button.bread
+            span.label Home
+            span.icon
+              span
+            span.icon2
         #bread-button.bread-button.bread.active
           span.label Address
           span.icon
@@ -68,4 +69,3 @@ block content
         include ./includes/address_history.jade    
     .footer-padding
             
-
