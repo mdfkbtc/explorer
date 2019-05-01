@@ -1168,14 +1168,17 @@ table.jqplot-table-legend, table.jqplot-cursor-legend {
 
 #header {
     margin-top: 10px;
-    min-height: 400px;
+    min-height: 395px;
     border-bottom: solid 5px a;
     margin-bottom: 50px;
 }
 
 #header-text {
+    text-transform: uppercase;
+    font-size: 4.2em;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
     font-family: 'Jura';
-    font-size: 50px;
     text-shadow: 0px -1px 0 rgba(0,0,0,0.3);
     margin-top: 40px;
     margin-bottom: 40px;
