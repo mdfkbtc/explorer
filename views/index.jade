@@ -74,6 +74,17 @@ block content
     });
   .col-md-12.text-center
     .panel.panel-default#header
+      h3#header-text Blockexplorer
+      hr#header-hr 
+      br
+      form.form-inline(method='post', action='/search')      
+        - searchPlaceholder = (settings.baseType === 'ripple') ? settings.locale.ex_search_message_ripple : settings.locale.ex_search_message;
+        input.form-control#search-bar(type='text', name='search', placeholder='#{searchPlaceholder}', style='min-width:45%;margin-right:5px;')
+        button.button.button-effect(type='submit') #{settings.locale.ex_search_button}
+          span.label
+          span.icon
+            span
+          span.icon2
       .header-tile
         .tile-label
           | Circulating supply
@@ -105,18 +116,7 @@ block content
       .header-tile
         .tile-label
           | Masternode collateral
-          span.tile-label-value 2000 VLS
-      h3#header-text Blockexplorer
-      hr#header-hr 
-      br
-      form.form-inline(method='post', action='/search')      
-        - searchPlaceholder = (settings.baseType === 'ripple') ? settings.locale.ex_search_message_ripple : settings.locale.ex_search_message;
-        input.form-control#search-bar(type='text', name='search', placeholder='#{searchPlaceholder}', style='min-width:45%;margin-right:5px;')
-        button.button.button-effect(type='submit') #{settings.locale.ex_search_button}
-          span.label
-          span.icon
-            span
-          span.icon2
+          span.tile-label-value 2000 VLS          
       if error !== null        
         .alert.alert-danger.alert-dismissable(role='alert')
         button.close(type='button', data-dismiss='alert') ×

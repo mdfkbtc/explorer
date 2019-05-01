@@ -1164,7 +1164,7 @@ table.jqplot-table-legend, table.jqplot-cursor-legend {
 }
 
 #header {
-    height: 200px;
+    min-height: 350px;
 }
 
 #header-text {
@@ -1678,7 +1678,7 @@ ol {
 }
 
 .header-tile {
-	display: flex;
+	display: inline-block;
 	background-color: transparent;
 	border: none; /*#2e2d2d;*/
 	border-bottom: none;
