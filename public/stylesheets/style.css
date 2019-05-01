@@ -522,6 +522,7 @@ span.status-label-short {
 
 .footer-copyright.text-center.py-3 {
 	font-size: small;
+    line-height: 30px;
 }
 
 .footer-copyright {
