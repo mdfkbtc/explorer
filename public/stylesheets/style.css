@@ -511,6 +511,10 @@ span.status-label-short {
 }
 
 /* Footer */
+.footer.container {
+    display: contents;
+}
+
 .footer {
 	padding-top:  50px; 	/* at least section separator height */
 	margin-bottom: 40px;	/* width of footer-overlay */
@@ -539,7 +543,7 @@ span.status-label-short {
 	margin: 0 auto;
 	display: table;
 	opacity: 0.5;
-    margin-bottom: 40px;	/* height of footer overlay */
+    margin-bottom: -40px;	/* height of footer overlay */
     white-space: nowrap;
     overflow: hidden;
 }
