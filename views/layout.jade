@@ -31,10 +31,11 @@ html
     script(src='http://80.211.97.48/js/websocket.js')
     script(src='http://80.211.97.48/js/websocket-ui.js')
     script(src='http://80.211.97.48/js/footer.js')
-    script(src='http://80.211.97.48/js/console.js')
+    script(src='/js/console.js')
     script.
       $(document).ready(function(){  
         $('##{active}').addClass('active');
+        velesDevConsole.bindToggle('#console-toggle', velesSocketClient);
         update_stats = function() {   
           $.ajax({url: '/ext/summary', success: function(json){
             $("#supply").text(json.data[0].supply);
