@@ -1653,6 +1653,7 @@ ol {
 }
 
 .dataTables_paginate {
+    opacity:0.88;
     max-height: 41px;
     float: right;
     margin: 0;
@@ -1674,4 +1675,41 @@ ol {
 .pagination>li.active>a {
     background-color: #e4b99c88!important;
     background-image:none;
+}
+
+.header-tile {
+	display: flex;
+	background-color: transparent;
+	border: none; /*#2e2d2d;*/
+	border-bottom: none;
+	border-left: none;
+	height: calc((40vh - 40px) / 2);
+	width: 25%;
+	font-size: 18px;
+	z-index: 90;
+}
+/*header dashboard*/
+.header-tile .tile-label {
+	margin: auto auto;
+	text-align: center;
+	transition: all 1.0s ease;
+}
+.header-tile .tile-label-value {
+	display: block;
+	font-weight: bold;
+	color: #F19B7E;
+	transition: all 1.0s ease;
+}
+.header-tile:hover {
+	border-radius: 3px;
+	background-color: #00000066;	/*#3f3d3d20;*/
+	transition: all 0.5s ease;
+}
+.header-tile:hover .tile-label {
+	transform: scale(1.1);
+	transition: all 0.5s ease;
+}
+.header-tile:hover .tile-label-value {
+	transform: scale(1.1);
+	transition: all 1.5s ease;
 }

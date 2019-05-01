@@ -74,6 +74,38 @@ block content
     });
   .col-md-12.text-center
     .panel.panel-default#header
+      .header-tile
+        .tile-label
+          | Circulating supply
+          span.tile-label-value(data-entity-id='market.price', data-attribute='total_supply', data-format='number', data-fixed-decimals='0', data-title='{total_supply} VLS', data-unit='VLS')
+      .header-tile
+        .tile-label
+          | Maximum supply
+          span.tile-label-value(data-entity-id='market.price', data-attribute='max_supply', data-format='number', data-fixed-decimals='0', data-title='{max_supply} VLS', data-unit='VLS')
+      .header-tile
+        .tile-label
+          | Block time
+          span.tile-label-value 2 min
+      .header-tile
+        .tile-label
+          | Maximum block reward
+          span.tile-label-value 80 VLS
+      .header-tile
+        .tile-label
+          | Avg. block reward 24h
+          span.tile-label-value 22.45 VLS
+      .header-tile
+        .tile-label
+          | Masternode reward
+          span.tile-label-value 7.25%
+      .header-tile
+        .tile-label
+          | Development reward
+          span.tile-label-value 4.25%
+      .header-tile
+        .tile-label
+          | Masternode collateral
+          span.tile-label-value 2000 VLS
       h3#header-text Blockexplorer
       hr#header-hr 
       br
@@ -111,4 +143,3 @@ block content
             th.text-center #{settings.locale.timestamp}
         tbody.text-center
     .footer-padding
-
