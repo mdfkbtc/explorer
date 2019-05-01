@@ -1694,8 +1694,7 @@ form.form-inline {
 }
 
 .header-tile .tile-label {
-    margin-top: 6px;
-	margin: auto auto;
+    margin-top: 13px;
 	text-align: center;
 	transition: all 1.0s ease;
 }
