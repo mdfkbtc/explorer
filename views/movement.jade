@@ -3,7 +3,7 @@ extends layout
 block content
   script.
     var rplot;
-    var colors = [ "#0071bc" ];
+    var colors = [ "#0071bc88" ];
     $(document).ready(function(){
       function format_unixtime(unixtime) {
         var a = new Date(unixtime*1000);  
@@ -68,11 +68,12 @@ block content
   h1.mt-4.mb-3#bread-text Movement
   .row
     .col-sm-12#bread-bar
-      .bread-button.bread
-        span.label Home
-        span.icon
-          span
-        span.icon2
+      a(href='/index')
+        .bread-button.bread
+          span.label Home
+          span.icon
+            span
+          span.icon2
       #bread-button.bread-button.bread.active
         span.label Movement
         span.icon
