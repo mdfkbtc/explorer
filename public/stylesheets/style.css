@@ -1676,20 +1676,25 @@ ol {
     background-color: #e4b99c88!important;
     background-image:none;
 }
-
+/*header dashboard*/
 .header-tile {
 	display: inline-block;
 	background-color: transparent;
 	border: none; /*#2e2d2d;*/
 	border-bottom: none;
 	border-left: none;
-	height: calc((40vh - 40px) / 2);
+	height: 75px;
 	width: 25%;
-	font-size: 18px;
+	font-size: 17px;
 	z-index: 90;
 }
-/*header dashboard*/
+
+form.form-inline {
+    margin-bottom: 35px;
+}
+
 .header-tile .tile-label {
+    margin-top: 6px;
 	margin: auto auto;
 	text-align: center;
 	transition: all 1.0s ease;
