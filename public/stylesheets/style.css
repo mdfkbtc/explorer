@@ -65,7 +65,7 @@ a:hover {
 }
 
 .table>tbody>tr.success {
-    background-color: #62c46288;
+    background-color: #62c46288!important;
 }
 
 .table>tbody>tr.info>td{
