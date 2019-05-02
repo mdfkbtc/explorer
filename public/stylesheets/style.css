@@ -45,27 +45,27 @@ a:hover {
 }
 
 .success {
-    background-color: #62c46288!important;
+    background-color: #62c46288;
 }
 
 .warning {
-    background-color: #ffc10788!important;
+    background-color: #ffc10788;
 }
 
 .danger {
-    background-color: #ee5f5b88!important;
+    background-color: #ee5f5b88;
 }
 
 .table>tbody>tr.danger>td {
-    background-color: #ee5f5b88!important;
+    background-color: #ee5f5b88;
 }
 
 .table>tbody>tr.warning>td {
-    background-color: #ffc10788!important;
+    background-color: #ffc10788;
 }
 
 .table>tbody>tr.success>td {
-    background-color: #62c46288!important;
+    background-color: #62c46288;
 }
 
 .table>tbody>tr.info>td{
