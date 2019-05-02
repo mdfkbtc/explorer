@@ -56,16 +56,20 @@ a:hover {
     background-color: #ee5f5b88!important;
 }
 
-tr.danger {
+.table>tbody>tr.danger>td {
     background-color: #ee5f5b88!important;
 }
 
-tr.warning {
+.table>tbody>tr.warning>td {
     background-color: #ffc10788!important;
 }
 
-tr.success {
+.table>tbody>tr.success>td {
     background-color: #62c46288!important;
+}
+
+.table>tbody>tr.info>td{
+    background-color: #5bc0de88;
 }
 
 .alert-danger {
