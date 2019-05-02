@@ -56,6 +56,18 @@ a:hover {
     background-color: #ee5f5b88!important;
 }
 
+tr.danger {
+    background-color: #ee5f5b88!important;
+}
+
+tr.warning {
+    background-color: #ffc10788!important;
+}
+
+tr.success {
+    background-color: #62c46288!important;
+}
+
 .alert-danger {
     background-color: #ee5f5b88;
     border-color: #ed4d6388;
