@@ -554,6 +554,10 @@ span.status-label-short {
 
 /*end footer*/
 /* dev console */
+#console-tab {
+    height: 50%;
+}
+
 .fa-terminal:before {
     font-weight: bold;
     font-size: 17px;
