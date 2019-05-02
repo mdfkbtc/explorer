@@ -52,12 +52,12 @@ a:hover {
     background-color: #ffc10788;
 }
 
-.danger {
+.table>tbody>tr.danger>td {
     background-color: #ee5f5b88;
 }
 
-.table>tbody>tr.danger>td {
-    background-color: #ee5f5b88;
+.table>tbody>tr>td.danger {
+    background-color: #ee5f5b88!important;
 }
 
 .table>tbody>tr.warning>td {
@@ -80,33 +80,30 @@ a:hover {
     font-size: 20px!important;
 }
 
-.tomottoWrap{
-    position: relative;
-    margin-top: 15px;
-    margin-bottom: 17px;
-}
-
 #tomotto{
-    font-size: 16px;
-    text-align: center;
-    width: 100%;
-    letter-spacing: 2px;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-    line-height: 36px;
-    margin: auto;
+  text-align: center;
+  width: 100%;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  line-height: 36px;
+  margin: auto;
+  position: relative;
+  margin-top: 15px;
+  margin-bottom: 6px;
+  font-size: 16px;
 }
 
-.lookWrap {
-    position: relative;
-    float: left;
-    width: 100%;
-    margin-top: 4%;
-    margin-bottom: 15px;
+.footer-links {
+	margin-left: 10%;	/* Move optically to the right */
+}
+.footer-links .section a {
+	font-color: 14px;
+    color: #e4b99c;
+    display: block;
 }
 
-#look{
-    margin-left: 9%;
-    width: 87%;
+.footer-links .section a:hover {
+    color: #F19B7E;		/* baggins: micro drop of more orange to the mix (was #e4b99c) */
 }
 
 table#alerts-table {
@@ -116,8 +113,8 @@ table#alerts-table {
 .section {
     line-height: 28px;
     font-size: 16px;
-    padding-inline-start: 50px;
-    margin: 17px -5px 0px 4px;
+    padding-inline-start: 24px;
+    margin: 5px -5px 0px 4px;
 }
 
 .section a {
@@ -543,12 +540,12 @@ span.status-label-short {
 
 .footer-copyright.text-center.py-3 {
 	font-size: small;
-    line-height: 30px;
+    line-height: 28px;
 }
 
 .footer-copyright {
 	margin-top: 30px;
-	margin-bottom: 20px;
+	margin-bottom: 37px;
 }
 
 /* initial state of things that depend on websocket */
