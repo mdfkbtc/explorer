@@ -64,7 +64,7 @@ a:hover {
     background-color: #ffc10788;
 }
 
-.table>tbody>tr.success>td {
+.table>tbody>tr.success {
     background-color: #62c46288;
 }
 
