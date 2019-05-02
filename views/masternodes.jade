@@ -42,34 +42,36 @@ block content
       ]
       });
     });
-  h1.mt-4.mb-3#bread-text Masternodes
-  .row
-    br
-  .col-md-12(style="margin-bottom: 4%")
-    .panel.panel-default
-      .panel-heading.panel-dashboard
-        .header-tile.panel-section
-          .tile-label
-            | Masternode collateral
-            span.tile-label-value 2000 VLS
-        .header-tile.panel-section
-          .tile-label
-            | Masternode reward
-            span.tile-label-value 7.25%
-        .header-tile.panel-section
-          .tile-label
-            | Masternode ROI
-            span.tile-label-value 44%
-        .header-tile.panel-section
-          .tile-label
-            | Masternode count
-            span.tile-label-value 180   
-      table#masternodes-table.table.table-bordered.table-striped
-        thead
-          tr
-            th #{settings.locale.mn_address}
-            th.text-center #{settings.locale.mn_status}
-            th.text-center #{settings.locale.mn_lastseen}
-            th.text-center #{settings.locale.mn_lastpaid}
-            th. #{settings.locale.mn_ip}
-        tbody.text-center
+    
+  .container 
+      h1.mt-4.mb-3#bread-text Masternodes
+      .row
+        br
+      .col-md-12(style="margin-bottom: 4%")
+        .panel.panel-default
+          .panel-heading.panel-dashboard
+            .header-tile.panel-section
+              .tile-label
+                | Masternode collateral
+                span.tile-label-value 2000 VLS
+            .header-tile.panel-section
+              .tile-label
+                | Masternode reward
+                span.tile-label-value 7.25%
+            .header-tile.panel-section
+              .tile-label
+                | Masternode ROI
+                span.tile-label-value 44%
+            .header-tile.panel-section
+              .tile-label
+                | Masternode count
+                span.tile-label-value 180   
+          table#masternodes-table.table.table-bordered.table-striped
+            thead
+              tr
+                th #{settings.locale.mn_address}
+                th.text-center #{settings.locale.mn_status}
+                th.text-center #{settings.locale.mn_lastseen}
+                th.text-center #{settings.locale.mn_lastpaid}
+                th. #{settings.locale.mn_ip}
+            tbody.text-center

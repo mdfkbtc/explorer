@@ -65,15 +65,16 @@ block content
         rtable.api().ajax.reload(null, false);
       }, 45000 );
     });
-  h1.mt-4.mb-3#bread-text Movement
-  .row
-    br   
-  .col-xs-12.col-md-10.col-md-offset-1(style="margin-bottom: 5%")
-    .panel.panel-default
-      .panel-heading
-        strong Transactions
-      table#alerts-table.table.table-striped.table-bordered
-        thead
-          th timestamp
-          th.hidden-xs txid
-          th amount
+  .container    
+      h1.mt-4.mb-3#bread-text Movement
+      .row
+        br   
+      .col-xs-12.col-md-10.col-md-offset-1(style="margin-bottom: 5%")
+        .panel.panel-default
+          .panel-heading
+            strong Transactions
+          table#alerts-table.table.table-striped.table-bordered
+            thead
+              th timestamp
+              th.hidden-xs txid
+              th amount
