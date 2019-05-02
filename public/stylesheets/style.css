@@ -45,7 +45,7 @@ a:hover {
 }
 
 .success {
-    background-color: #62c46288;
+    background-color: #62c46288!important;
 }
 
 .warning {
@@ -62,10 +62,6 @@ a:hover {
 
 .table>tbody>tr.warning>td {
     background-color: #ffc10788;
-}
-
-.table>tbody>tr.success {
-    background-color: #62c46288!important;
 }
 
 .table>tbody>tr.info>td{
