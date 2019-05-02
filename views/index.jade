@@ -125,21 +125,21 @@ block content
           button.close(type='button', data-dismiss='alert') ×
           strong #{settings.locale.ex_warning} #{warning}
 
-.container 
-  .col-md-12
-    .panel.panel-default
-      .panel-heading
-        strong #{settings.locale.ex_latest_transactions}
-      table#recent-table.table.table-bordered.table-striped
-        thead
-          tr
-            if settings.baseType === 'ripple'
-              th.text-center #{settings.locale.ex_ledger}
-            else
-              th.text-center #{settings.locale.ex_block}
-            th.hidden-xs.text-center #{settings.locale.tx_hash}
-            th.hidden-xs.text-center #{settings.locale.tx_recipients}
-            th.text-center #{settings.locale.mkt_amount} (#{settings.symbol})
-            th.text-center #{settings.locale.timestamp}
-        tbody.text-center
-    .footer-padding
+  .container 
+    .col-md-12
+      .panel.panel-default
+        .panel-heading
+          strong #{settings.locale.ex_latest_transactions}
+        table#recent-table.table.table-bordered.table-striped
+          thead
+            tr
+              if settings.baseType === 'ripple'
+                th.text-center #{settings.locale.ex_ledger}
+              else
+                th.text-center #{settings.locale.ex_block}
+              th.hidden-xs.text-center #{settings.locale.tx_hash}
+              th.hidden-xs.text-center #{settings.locale.tx_recipients}
+              th.text-center #{settings.locale.mkt_amount} (#{settings.symbol})
+              th.text-center #{settings.locale.timestamp}
+          tbody.text-center
+      .footer-padding
