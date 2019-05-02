@@ -56,6 +56,12 @@ a:hover {
     background-color: #ee5f5b88;
 }
 
+.alert-danger {
+    background-color: #ee5f5b88;
+    border-color: #ed4d6388;
+    color: #ffffff;
+}
+
 #h5 {
     font-family: 'Jura'!important;
     font-weight: 500;

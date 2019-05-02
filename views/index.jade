@@ -118,12 +118,12 @@ block content
           span.tile-label-value 2000 VLS          
       if error !== null        
         .alert.alert-danger.alert-dismissable(role='alert')
-        button.close(type='button', data-dismiss='alert') ×
-        strong #{settings.locale.ex_error} : #{error}
+          button.close(type='button', data-dismiss='alert') ×
+          strong #{settings.locale.ex_error} : #{error}
       if warning !== null        
         .alert.alert-warning.alert-dismissable(role='alert')
-        button.close(type='button', data-dismiss='alert') ×
-        strong #{settings.locale.ex_warning} #{warning}
+          button.close(type='button', data-dismiss='alert') ×
+          strong #{settings.locale.ex_warning} #{warning}
   
   .col-md-12
     .panel.panel-default
