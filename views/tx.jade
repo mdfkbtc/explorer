@@ -4,19 +4,7 @@ block content
   - var time = format_unixtime(tx.timestamp)
   h1.mt-4.mb-3#bread-text Tx
   .row
-    .col-sm-12#bread-bar
-      a(href='/')
-        .bread-button.bread
-          span.label Home
-          span.icon
-            span
-          span.icon2
-      #bread-button.bread-button.bread.active
-        span.label Tx
-        span.icon
-          span
-        span.icon2
-      ol#breadcrumb-1.breadcrumb
+    br
   .col-xs-12.col-md-10.col-md-offset-1
     .well.well-sm.hidden-lg.hidden-md(style='word-wrap:break-word;')
       | #{tx.txid}

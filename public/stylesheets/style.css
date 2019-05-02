@@ -110,6 +110,8 @@ table#alerts-table {
 }
 
 .section {
+    display: inline-grid;
+    width: 25%;
     line-height: 28px;
     font-size: 16px;
     padding-inline-start: 24px;
@@ -1218,7 +1220,6 @@ table.jqplot-table-legend, table.jqplot-cursor-legend {
 .panel-primary>.panel-heading {
     color: #ffffff;
     background-color: transparent;
-    -webkit-border-image: -webkit-gradient(linear, left top, left bottom, from(transparent), to(transparent), color-stop(0.5, transparent), color-stop(0.5, #e4b99c)) 21 30 30 21 repeat repeat;
 }
 
 .panel>.table:last-child, .panel>.table-responsive:last-child>.table:last-child {
@@ -1232,15 +1233,26 @@ table.jqplot-table-legend, table.jqplot-cursor-legend {
     padding: 15px;
 }
 
-.panel-heading {
-    -webkit-border-image: -webkit-gradient(linear, left top, left bottom, from(transparent), to(transparent), color-stop(0.5, transparent), color-stop(0.5, #e4b99c)) 21 30 30 21 repeat repeat;
-    background-color: transparent;
-}
-
 .panel-default>.panel-heading {
+    height: 50px;
     color: #c8c8c8;
     background-color: transparent;
-    -webkit-border-image: -webkit-gradient(linear, left top, left bottom, from(transparent), to(transparent), color-stop(0.5, transparent), color-stop(0.5, #e4b99c)) 21 30 30 21 repeat repeat;
+    margin-bottom: 3px;
+    border: none;
+    margin-top: 10px;
+    border-bottom: solid 1px #e4b99cbb;
+}
+
+.panel-default>.panel-heading.panel-dashboard {
+    padding: 0;
+    height: 76px;
+    margin-bottom: 3px;
+    background-color: transparent;
+    margin-top: -3px;
+    border-top: solid 1px rgba(0,0,0,0.4);
+    margin-right: 0;
+    border-left: solid 1px rgba(0,0,0,0.4);
+    border-bottom: solid 1px rgba(0,0,0,0.4);
 }
 
 .panel-summary .panel-body {
@@ -1709,6 +1721,10 @@ ol {
 	width: 25%;
 	font-size: 17px;
 	z-index: 90;
+}
+
+.header-tile.panel-section {
+    border-right: solid 1px rgba(0,0,0,0.4)!important;
 }
 
 form.form-inline {
