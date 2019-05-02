@@ -45,15 +45,15 @@ a:hover {
 }
 
 .success {
-    background-color: #62c46288;
+    background-color: #62c46288!important;
 }
 
 .warning {
-    background-color: #ffc10788;
+    background-color: #ffc10788!important;
 }
 
 .danger {
-    background-color: #ee5f5b88;
+    background-color: #ee5f5b88!important;
 }
 
 .alert-danger {
