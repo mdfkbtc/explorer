@@ -1205,7 +1205,6 @@ table.jqplot-table-legend, table.jqplot-cursor-legend {
    #header {
       height: unset;
       margin-bottom: 30px;
-      width: 101%;
    }
 }
 
@@ -1227,7 +1226,6 @@ table.jqplot-table-legend, table.jqplot-cursor-legend {
 @media only screen and (max-width: 1025px) {
   .header-background-img {
       height: unset;
-      width: 101%;
   }
 }
 
