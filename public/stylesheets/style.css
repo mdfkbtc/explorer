@@ -1172,6 +1172,9 @@ button {
     padding-right: 15px;
 }
 
+td, th {
+    padding: 7px;
+}
 
 tbody>tr:hover {
     background-color: #464646 !important;
