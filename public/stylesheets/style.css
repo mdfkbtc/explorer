@@ -12,6 +12,7 @@ body {
         text-rendering: optimizeLegibility;
         transition: 0.5s;
         overflow-x: hidden;
+        padding: 30px;
 }
 
 /* scroll bar */
