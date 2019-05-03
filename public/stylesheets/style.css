@@ -1786,7 +1786,29 @@ form.form-inline {
 	transform: scale(1.1);
 	transition: all 1.5s ease;
 }
-/*modal*/
-.modal-content {
+/*pre-loader*/
+#content-overlay .overlay-gradient {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	/*background-color: rgba(0, 0, 0, 0.5);*/
+	background-image: linear-gradient(90deg, transparent, #e4b99c, transparent);
+	z-index: 1100;	/* just over navbar */
+	text-align: center;
+}
 
+#content-overlay .overlay-shadow {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 1101;	/* just over gradient */
+}
+
+#content {
+	transition: margin-top 0.5s ease-in-out;	/* support for easy transition when sliding out */
 }
