@@ -1198,8 +1198,16 @@ table.jqplot-table-legend, table.jqplot-cursor-legend {
 }
 
 #header {
-    height: calc(100vh - 98px) !important;
+    height: calc(100vh - 98px);
     margin-bottom: 30px;
+}
+
+@media only screen and (max-width: 1025px) {
+   #header {
+      height: unset;
+      margin-bottom: 30px;
+      width: 102%;
+   }
 }
 
 .header-background-img {
@@ -1215,6 +1223,12 @@ table.jqplot-table-legend, table.jqplot-cursor-legend {
     top: 0;
     bottom: 0;
     z-index: -600;
+}
+
+@media only screen and (max-width: 1025px) {
+  .header-background-img {
+      height: unset;
+  }
 }
 
 #header-text {
