@@ -1226,7 +1226,8 @@ table.jqplot-table-legend, table.jqplot-cursor-legend {
 
 @media only screen and (max-width: 1025px) {
   .header-background-img {
-      height: unset;
+    background-size: 200%;
+    height: unset!important;
   }
 }
 
