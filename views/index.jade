@@ -77,15 +77,15 @@ block content
       //img.header-background-img(src='https://i.imgur.com/BaDxuwm.jpg')
       h3#header-text Veles-explorer
       br
-      form.form-inline(method='post', action='/search')      
-        - searchPlaceholder = (settings.baseType === 'ripple') ? settings.locale.ex_search_message_ripple : settings.locale.ex_search_message;
-        input.form-control#search-bar(type='text', name='search', placeholder='#{searchPlaceholder}', style='min-width:63%;margin-right:5px;')
-        button.button.button-effect(type='submit') #{settings.locale.ex_search_button}
-          span.label
-          span.icon
-            span
-          span.icon2
-      .container    
+      .container
+        form.form-inline(method='post', action='/search')      
+          - searchPlaceholder = (settings.baseType === 'ripple') ? settings.locale.ex_search_message_ripple : settings.locale.ex_search_message;
+          input.form-control#search-bar(type='text', name='search', placeholder='#{searchPlaceholder}', style='min-width:63%;margin-right:5px;')
+          button.button.button-effect(type='submit') #{settings.locale.ex_search_button}
+            span.label
+            span.icon
+              span
+            span.icon2
         .header-tile
           .tile-label
             | Circulating supply
