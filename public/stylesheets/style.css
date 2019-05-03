@@ -2,7 +2,8 @@
 @import url('https://fonts.googleapis.com/css?family=Inconsolata:300,400,600,700');
 
 body {
-        padding: 60px 40px;
+        padding: 60px 0px;
+        margin-bottom: 20px;
         font-family: 'Jura', sans-serif;
         font-size: 15px;
         color: #fff;
@@ -11,6 +12,7 @@ body {
       	background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAQAAABuBnYAAAAAU0lEQVQIHQXBwRGDIBAAwO2/AMcCDHAcPjIRxjJ8Je1kl1uqUgphsWu6w0sIG6npLpcUBql4e/wsVRKabrkNTacIYbMrwsF06rqUhsnXVKVT+Hj+Ue4rPSONk4kAAAAASUVORK5CYII=);
         text-rendering: optimizeLegibility;
         transition: 0.5s;
+        overflow-x: hidden;
 }
 
 /* scroll bar */
@@ -1663,7 +1665,7 @@ span.label {
 #bread-text {
     margin-left: 15px;
     margin-bottom: 15px;
-    margin-top: 47px;
+    margin-top: 48px;
     display: block;
     font-family: inherit;
     font-size: 4rem;
