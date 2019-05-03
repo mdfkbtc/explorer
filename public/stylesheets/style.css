@@ -1152,7 +1152,7 @@ button {
 }
 
 .container {
-    max-width: 1140px;
+    max-width: 1170px;
     width: 100%;
     padding-right: 15px;
     padding-left: 15px;
@@ -1674,6 +1674,7 @@ span.label {
 
 .grey {
     color: #A0a0a0;
+    margin-right: 8px;
 }
 
 ol {
