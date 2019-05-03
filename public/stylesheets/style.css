@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Inconsolata:300,400,600,700');
 
 body {
-        padding: 80px 40px;
+        padding: 60px 40px;
         font-family: 'Jura', sans-serif;
         font-size: 15px;
         color: #fff;
@@ -50,6 +50,10 @@ a:hover {
 
 .warning {
     background-color: #ffc10788;
+}
+
+.table>tbody>tr.success>td {
+    background-color: transparent;
 }
 
 .table>tbody>tr.danger>td {
@@ -1182,8 +1186,8 @@ table.jqplot-table-legend, table.jqplot-cursor-legend {
 }
 
 #header {
-    min-height: 475px;
-    margin-bottom: 50px;
+    height: calc(100vh - 98px) !important;
+    margin-bottom: 30px;
 }
 
 #header-text {
