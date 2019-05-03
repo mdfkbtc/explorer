@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css?family=Inconsolata:300,400,600,700');
 
 body {
-        padding: 60px 0px;
         margin-bottom: 20px;
         font-family: 'Jura', sans-serif;
         font-size: 15px;
@@ -1206,7 +1205,7 @@ table.jqplot-table-legend, table.jqplot-cursor-legend {
    #header {
       height: unset;
       margin-bottom: 30px;
-      width: 102%;
+      width: 105%;
    }
 }
 
@@ -1228,6 +1227,7 @@ table.jqplot-table-legend, table.jqplot-cursor-legend {
 @media only screen and (max-width: 1025px) {
   .header-background-img {
       height: unset;
+      width: 105%;
   }
 }
 
