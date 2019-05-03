@@ -963,7 +963,7 @@ my1 {
     margin-right: 25px!important;
     margin-bottom: 12px;
     display: inline-block;
-    opacity: 0.8;
+    opacity: 0.6;
     height: 38px;
     padding: 8px 12px;
     font-size: 14px;
@@ -1195,6 +1195,21 @@ table.jqplot-table-legend, table.jqplot-cursor-legend {
 #header {
     height: calc(100vh - 98px) !important;
     margin-bottom: 30px;
+}
+
+.header-background-img {
+    height: 95%;
+    opacity: 0.75;
+    background-position: center center;
+    background-image: url(https://i.imgur.com/BaDxuwm.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -600;
 }
 
 #header-text {
