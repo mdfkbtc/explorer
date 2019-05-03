@@ -1029,7 +1029,7 @@ button {
   z-index: 10;
   position: relative;
   white-space: nowrap;
-  line-height: 24px;
+  line-height: 20px;
   transition: all 0.225s;
   transition-delay: 0.45s;
   letter-spacing: 2px;
