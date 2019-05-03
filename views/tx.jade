@@ -3,7 +3,9 @@ extends layout
 block content
   - var time = format_unixtime(tx.timestamp)
   .container
-    h1.mt-4.mb-3#bread-text Tx
+    h1.mt-4.mb-3#bread-text
+      span.grey The
+      | Movement 
     .row
       br
     .col-xs-12.col-md-10.col-md-offset-1

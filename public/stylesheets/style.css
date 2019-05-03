@@ -1662,14 +1662,18 @@ span.label {
 
 #bread-text {
     margin-left: 15px;
-    margin-bottom: 5px;
-    margin-top: -5px;
+    margin-bottom: 15px;
+    margin-top: 47px;
     display: block;
     font-family: inherit;
     font-size: 4rem;
     font-weight: 500;
     line-height: 1.2;
     color: inherit;
+}
+
+.grey {
+    color: #A0a0a0;
 }
 
 ol {
