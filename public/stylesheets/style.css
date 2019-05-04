@@ -13,6 +13,7 @@ body {
         transition: 0.5s;
         overflow-x: hidden;
         padding: 30px;
+        margin: -15px!important;
 }
 
 /* scroll bar */
@@ -1205,7 +1206,7 @@ table.jqplot-table-legend, table.jqplot-cursor-legend {
 
 .header-background-img {
     height: 95%;
-    opacity: 0.65;
+    opacity: 0.8;
     background-position: center center;
     background-image: url(../images/veles_wallpaper.png);
     background-size: 200%;
