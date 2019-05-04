@@ -963,13 +963,13 @@ my1 {
     margin-right: 25px!important;
     margin-bottom: 12px;
     display: inline-block;
-    opacity: 0.7;
+    opacity: 0.95;
     height: 38px;
     padding: 8px 12px;
     font-size: 14px;
     line-height: 1.42857143;
     color: #272b30;
-    background-color: #ffffff;
+    background-color: #cccccc;
     background-image: none;
     border: 1px solid #cccccc;
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
