@@ -1165,8 +1165,12 @@ button {
     margin-left: auto;
 }
 
-.container.dark-color {
+.container.dark-index {
     background-image: linear-gradient(180deg, transparent,transparent, #383737);
+}
+
+.container.dark-color {
+    background-image: linear-gradient(180deg, transparent, #383737);
 }
 
 .container.light-color {
