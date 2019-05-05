@@ -572,9 +572,9 @@ span.status-label-short {
 	margin: 0 auto;
 	display: table;
 	opacity: 0.5;
-    margin-bottom: -40px;	/* height of footer overlay */
-    white-space: nowrap;
-    overflow: hidden;
+  margin-bottom: 0.8%;	/* height of footer overlay */
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 /*end footer*/
