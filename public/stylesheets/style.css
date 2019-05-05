@@ -1166,8 +1166,7 @@ button {
 }
 
 .container.dark-index {
-    background-image: linear-gradient(180deg, transparent, #383737);
-    margin-top: 45%;
+    background-image: linear-gradient(180deg, transparent,transparent, #383737);
 }
 
 .container-fluid {
