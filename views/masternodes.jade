@@ -56,10 +56,10 @@ block content
               .tile-label
                 | Masternode collateral
                 span.tile-label-value 2000 VLS
-            .header-tile.panel-section
+            .header-tile
               .tile-label
                 | Masternode reward
-                span.tile-label-value 9%
+                span.tile-label-value(data-entity-id='chain.stats.mining', data-attribute='block_reward_mn_percent', data-format='number', data-fixed-decimals='2', data-unit='%') 9 %
             .header-tile.panel-section
               .tile-label
                 | Masternode ROI
