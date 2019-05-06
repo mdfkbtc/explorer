@@ -5,29 +5,40 @@ html
     link(rel='stylesheet', href='/themes/#{settings.theme}/bootstrap.min.css')
     link(rel='stylesheet', href='/vendor/jqplot/jquery.jqplot.css')
     link(rel='stylesheet', href='//cdn.datatables.net/plug-ins/725b2a2115b/integration/bootstrap/3/dataTables.bootstrap.css')
-    link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+    link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.6.3/css/all.css')
     link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Jura')
+    link(rel='stylesheet', href='https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
-    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
-    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js')
-    script(src='//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js')
-    script(src='/vendor/jqplot/jquery.jqplot.min.js')
-    script(src='/vendor/jqplot/plugins/jqplot.dateAxisRenderer.min.js')
-    script(src='/vendor/jqplot/plugins/jqplot.ohlcRenderer.min.js')
-    script(src='/vendor/jqplot/plugins/jqplot.highlighter.min.js')
-    script(src='/vendor/jqplot/plugins/jqplot.pieRenderer.min.js')
-    script(src='/vendor/jqplot/plugins/jqplot.barRenderer.min.js')
-    script(src='/vendor/jqplot/plugins/jqplot.categoryAxisRenderer.min.js')
+    link(rel='stylesheet', href='https://veles.network/css/spincube.css')
+    link(rel='stylesheet', href='https://veles.network/js/src/jquery.jqplot.css')
+    script(src='https://code.jquery.com/jquery-3.3.1.js')
+    script(src='//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js')
     script(src='//cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js')  
     script(src='//cdn.datatables.net/responsive/1.0.1/js/dataTables.responsive.js')
     script(src='//cdn.datatables.net/plug-ins/725b2a2115b/integration/bootstrap/3/dataTables.bootstrap.js')
     script(src='/javascripts/chart.js')
+    script(src='/javascripts/dialog.js')
     script(src='/javascripts/analytics.js')
+    // Common dependencies
+    script(src='https://canvasjs.com/assets/script/jquery.canvasjs.min.js')
+    script(src='https://veles.network/js/src/jquery.jqplot.js')
+    script(src='https://veles.network/js/src/plugins/jqplot.dateAxisRenderer.js')
+    script(src='https://veles.network/js/src/plugins/jqplot.categoryAxisRenderer.js')
+    script(src='https://veles.network/js/src/plugins/jqplot.ohlcRenderer.js')
+    script(src='https://veles.network/js/src/plugins/jqplot.pieRenderer.js')
+    script(src='https://veles.network/js/src/plugins/jqplot.highlighter.js')
+    script(src='https://veles.network/js/src/plugins/jqplot.cursor.js')
+    script(src='https://veles.network/js/charts.js')
+    script(src='https://veles.network/js/websocket.js')
+    script(src='https://veles.network/js/websocket-ui.js')
+    script(src='https://veles.network/js/footer.js')
+    script(src='/js/console.js')
     script.
-      $(document).ready(function(){
+      $(document).ready(function(){  
         $('##{active}').addClass('active');
-        function update_stats(){   
+        velesDevConsole.bindToggle('#console-toggle', velesSocketClient);
+        update_stats = function() {   
           $.ajax({url: '/ext/summary', success: function(json){
             $("#supply").text(json.data[0].supply);
             $("#difficulty").text(json.data[0].difficulty);
@@ -58,10 +69,6 @@ html
             }
           }});
         }
-        $('.block-last-next').tooltip({
-          animation: true,
-          delay: { hide: 500 },   
-        });
         $('.history-table').dataTable( {        
           searching: false,
           ordering: false,
@@ -76,7 +83,7 @@ html
         }, 60000);
         update_stats();
       });
-  body.bg-img(style="background-image: url('../images/veles_wallpaper.jpg');")
+  body.bg-img(style="background-image: transparent;")
     - function format_unixtime(unixtime) {
       - var a = new Date(unixtime*1000);  
       - var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -102,202 +109,373 @@ html
       - var time = date + suffix + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;   
       - return time
     -  };
-    .nav.navbar.navbar-default.navbar-fixed-top(role='navigation')
-      .container-fluid
-        .navbar-header
-           ul.nav.nav-bar.navbar-left
-            img(src='#{settings.logo}', style='margin-top:4px;height:40px;')
-          button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-collapse')
-            span.sr-only Toggle navigation
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-          a.navbar-brand(href='http://explorer.veles.network') #{settings.title}
-        .collapse.navbar-collapse(id='navbar-collapse')
-          ul.nav.navbar-nav
-            li#home
-              a.navbar-link(href='/') 
-                span.glyphicon.glyphicon-search
-                span.menu-text #{settings.locale.menu_explorer}
-            if settings.heavy == true
-              li#reward
-                a.navbar-link(href='/reward')
-                  span.fa.fa-star
-                  span.menu-text #{settings.locale.menu_reward}
-            if settings.display.movement == true
-              li#movement 
-                a.navbar-link.loading(href='/movement') 
-                  span.glyphicon.glyphicon-sort
-                  span.menu-text #{settings.locale.menu_movement}
-            if settings.display.network == true
-              li#network
-                a.navbar-link(href='/network')
-                  span.fa.fa-share-alt
-                  span.menu-text #{settings.locale.menu_network}
-            if settings.display.richlist == true
-              li#richlist
-                a.navbar-link(href='/richlist')
-                  span.fa.fa-btc
-                  span.menu-text #{settings.locale.menu_richlist}
-            if settings.display.markets == true
-              li#markets
-                a.navbar-link.loading(href='/markets/#{settings.markets.default}') 
-                  span.fa.fa-line-chart
-                  span.menu-text #{settings.locale.menu_markets}
-            if settings.display.masternodes == true
-              li#masternodes
-                a.navbar-link.loading(href='/masternodes')
-                  span.glyphicon.glyphicon-hdd
-                  span.menu-text #{settings.locale.menu_masternodes}
-            if settings.display.coininfo == true
-              li#coininfo
-                a.navbar-link.loading(href='/coininfo')
-                  span.glyphicon.glyphicon-education
-                  span.menu-text #{settings.locale.menu_coininfo}
-          
-              li#miningstats           
-                a.navbar-link.loading(href='/miningstats')
-                  span.glyphicon.glyphicon-stats
-                  span.menu-text Mining Stats 
-            if settings.display.api == true
-              li#info
-                a.navbar-link(href='/info')
-                  span.glyphicon.glyphicon-info-sign
-                  span.menu-text #{settings.locale.menu_api}
-          
-    .col-md-12
-      .row
-        if settings.display.masternodes == false
-          .col-lg-1.col-md-2
-        if settings.display.coinmarketcap == true
-          .col-lg-5.col-md-8
-            .panel.panel-primary.panel-summary
-              .panel-heading
-                span Market
-              .panel-body
-                row.text-center
-                  .col-sm-4
-                    h1
-                      label#price_usd
-                      =" USD"
-                    h5#price_percent_change
-                      =" ("
-                      label#price_percent_change_value
-                      ="%)"
-                    h3
-                      label#price_btc
-                      =" BTC"
-                  .col-sm-4
-                    p(class="text-right") Market cap:
-                    p(class="text-right") 24H Volume:
-                  .col-sm-4
-                    p(class='text-left')
-                      ="$"
-                      span#cmc_market_cap -
-                      =" USD"
-                    p(class='text-left')
-                      ="$"
-                      span#cmc_volume_24h -
-                      =" USD"
-        else
-          .col-lg-3.col-md-0
-
-        if settings.index.show_coin_supply
-          - supplyPanelSize = settings.display.coinmarketcap == true ? "col-lg-2 col-md-4 col-sm-4" : "col-lg-3 col-md-4 col-sm-4"
-          div(class=supplyPanelSize)
-            .panel.panel-primary.panel-summary
-              .panel-heading
-                span #{settings.locale.ex_supply}
-              .panel-body(style="padding-top: 35px")
-                row.text-center
-                  .col-md-12
-                    h1#supply -
-        if settings.index.show_hashrate
-          .col-lg-3.col-md-4.col-sm-4
-            .panel.panel-primary.panel-summary
-              .panel-heading
-                span #{settings.locale.network}
-              .panel-body(style="padding-top: 25px")
-                row.text-center
-                  .col-md-12
-                    h1
-                      if settings.index.difficulty == 'Hybrid'
-                        label#hashrate -
-                        <br>
-                        label#lblX1
-                      else
-                        label#hashrate -
-                      if settings.nethash_units == 'K'
-                        =" (KH/s)"
-                      else if settings.nethash_units == 'M'
-                        =" (MH/s)"
-                      else if settings.nethash_units == 'G'
-                        =" (GH/s)"
-                      else if settings.nethash_units == 'T'
-                        =" (TH/s)"
-                      else if settings.nethash_units == 'P'
-                        =" (PH/s)"
-                      else if settings.nethash_units == 'H'
-                        =" (H/s)"
-                    h3
-                      label #{settings.locale.difficulty}: &nbsp;
-                      if settings.index.difficulty == 'Hybrid'
-                        label#difficulty -
-                        <br>
-                        label#difficultyHybrid -
-                      else
-                        label#difficulty -
-        if settings.display.masternodes == true
-          .col-lg-2.col-md-4.col-sm-4
-            .panel.panel-primary.panel-summary
-              .panel-heading
-                span #{settings.locale.masternodes}
-              .panel-body(style="padding-top: 35px")
-                row.text-center
-                  .col-md-12
-                    h1#masternodeCount -
-                    h3 online:&nbsp;
-                      label#masternodeOnlineCount -
     
-    .col-md-12
-      .row.text-center(style='margin-top:10px;margin-bottom:20px;')
-        form.form-inline(method='post', action='/search')      
-          #index-search.form-group
-            - searchPlaceholder = (settings.baseType === 'ripple') ? settings.locale.ex_search_message_ripple : settings.locale.ex_search_message;
-            input.form-control(type='text', name='search', placeholder='#{searchPlaceholder}', style='min-width:80%;margin-right:5px;')
-            button.btn.btn-success(type='submit') #{settings.locale.ex_search_button}
-    block content
-    .navbar.navbar-default.navbar-fixed-bottom.hidden-xs
-      .col-md-4
-        ul.nav
-          li.pull-left
-            a.footer-icon(href='https://github.com/Velescore',target='_blank')
-              span.glyphicon.fa.fa-github 
-          if settings.display.twitter == true
-            li.pull-left
-              a.footer-icon(href='https://twitter.com/velescore',target='_blank')
-                span.glyphicon.fa.fa-twitter
-            li.pull-left
-              a.footer-icon(href='https://bitcointalk.org/index.php?topic=5064523',target='_blank')
-                span.glyphicon.fa.fa-bitcoin
-            li.pull-left
-              a.footer-icon(href='https://veles.network',target='_blank')
-                span.glyphicon.fa.fa-link
-            li.pull-left
-              a.footer-icon(href='https://discord.gg/P528fGg',target='_blank')
-                span.glyphicon.fa.fa-send
-      .col-md-4
-        ul.nav
-          li.text-center(style='margin-left:80px;margin-right:80px;')
-            p(style='margin-top:15px;') 
-              a.navbar-link(href='https://discord.gg/P528fGg', target='_blank') Powered by VELES core team  
-   
-      span.connections
-        label#lblBlockcount.label.label-default
-          span#lblBlockcountValue -
-          if settings.baseType === 'ripple'
-            span  ledgers
-          else
-            span  blocks
-        label#lblConnections.label.label-default -
-      
+      .row
+            .nav.navbar.navbar-default.navbar-fixed-top(role='navigation')
+              .container
+                .navbar-header
+                  button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-collapse')
+                    span.sr-only Toggle navigation
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+                  a.navbar-brand(href='/')
+                    img#navlogo(src='/veles.ico')
+                    p#text-brand Veles
+                .collapse.navbar-collapse(id='navbar-collapse')
+                  ul.nav.navbar-nav
+                    li.nav-item
+                      a.nav-link(href='/') Home
+                    li.nav-item
+                      a.nav-link(href='/movement') Movement
+                    li.nav-item                      
+                      a.nav-link(href='/richlist') Richlist
+                    li.nav-item
+                      a.nav-link(href='/masternodes') Masternodes
+                    li.nav-item
+                      a.nav-link(href='/miningstats') Miningstats  
+                    li.nav-item.dropdown
+                      a#navbarDropdownBlog.nav-link.dropdown-toggle(href='resources.html', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                        | Website
+                        .dropdown-menu.dropdown-menu-right(aria-labelledby='navbarDropdownBlog')
+                          a.dropdown-item(href='https://veles.network/index.html') Home
+                          a.dropdown-item(href='https://veles.network/team.html') Team
+                          a.dropdown-item(href='https://veles.network/download.html') Download
+                          a.dropdown-item(href='https://veles.network/roadmap.html') Roadmap
+                          a.dropdown-item(href='https://veles.network/faq.html') Resources
+                          a.dropdown-item(href='https://veles.network/contact.html') Contact
+                    li.nav-item
+                      a.nav-link(href='/info') Api                  
+            block content
+
+              // Copyright
+            .footer.container
+              #tomotto.tomottoWrap.text-center
+                | “In such seconds of decision entire futures are made.”― Dan Simmons, Hyperion
+              .container
+                .row.footer-links
+                  .section.col-md-3
+                    h5#h5 Website
+                    a(href='https://veles.network/index.html') Home
+                    a(href='https://veles.network/download.html') Download
+                    a(href='https://veles.network/faq.html') FAQ
+                    a(href='https://veles.network/wiki.html') WIKI
+                    a(href='https://veles.network/coin-specs.html') Coins-specs
+                    a(href='https://veles.network/external-services.html') External-services
+                    a(href='https://veles.network/crowdfundings.html') Crowdfundings
+                    a(href='https://veles.network/mining-pools.html') Mining-pools
+                  .section.col-md-3
+                    h5#h5 Explorer
+                    a(href='/') Search
+                    a(href='/richlist') Richlist
+                    a(href='/masternodes') Masternodes
+                    a(href='/movement') Movement
+                    a(href='/miningstats') Mining-stats
+                    a(href='/info') Api
+                  .section.col-md-3
+                    h5#h5 Community
+                    a(href='https://twitter.com/velescore') Twitter
+                    a(href='https://discord.gg/P528fGg') Discord
+                    a(href='https://steemit.com/@velescore/') Steemit
+                    a(href='https://bitcointalk.org/index.php?topic=5064523') Bitcointalk
+                    a(href='https://www.coingecko.com/en/coins/veles') Coingecko
+                    a(href='https://coinpaprika.com/coin/vls-veles/') Coinpaprika
+                    a(href='https://masternodecap.com/coins/VLS') Masternodecap
+                  .section.col-md-3
+                    h5#h5 About Us
+                    a(href='https://veles.network/team.html') Team
+                    a(href='https://veles.network/roadmap.html') Roadmap
+                    a(href='https://veles.network/contact.html') Contact Us
+                    a(href='https://github.com/Velescore') Github
+              .footer-copyright.text-center.py-3
+                | © Copyright MMXIX The Veles Core developers.
+                br
+                |             Non mihi, non tibi, sed nobis.
+              .footer-badges
+                img(src='https://img.shields.io/badge/Main--net-Live-success.svg?style=for-the-badge')
+                img(src='https://camo.githubusercontent.com/94196f0d2a07534cd6b6584cb9df02bdf4cee5db/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f72656c656173652f76656c6573636f72652f76656c65732e7376673f7374796c653d666f722d7468652d6261646765')
+              #connection-tooltip.footer-tooltip
+                ul
+                  li
+                    i.fa.fa-signal
+                    |  Websocket Status:
+                    b.label-success.websocket-online online
+                    b.label-error.websocket-offline(style='display: none;') offline
+                  li
+                    | Peer Connections: 
+                    b 8
+                  li
+                    | Websocket Connections: 
+                    b 25
+              #chain-tip-tooltip.footer-tooltip
+                ul
+                  li
+                    i.fa.fa-cube
+                    |  Current Block Height:
+                    b(data-entity-id='chain.tip', data-attribute='height') 0
+                  li
+                    | Best block hash: 
+                    b
+                      a.chain-tip-hash-short(href='#')
+                  li
+                    | Found at: 
+                    b.chain-tip-time
+                  li.first-row
+                    | Size: 
+                    b.chain-tip-size-kb 0
+                    |  kB
+                  li.second-row
+                    | Algo: 
+                    b.chain-tip-algo
+                  li
+                    | Transactions: 
+                    b.chain-tip-ntx 0
+              #masternodes-tooltip.footer-tooltip
+                ul
+                  li
+                    i.fa.fa-server
+                    |  Masternodes Total: 
+                    b(data-entity-id='masternodes', data-attribute='count') 0
+                  li
+                    | Enabled: 
+                    b.label-success(data-entity-id='masternodes', data-attribute='enabled-count') 0
+                  li(style='display: none;')
+                    | Pre-Enabled:
+                    b.label-warning(data-entity-id='masternodes', data-attribute='pre-enabled-count') 0
+                  li
+                    | New Start Required:
+                    b.abel-warning(data-entity-id='masternodes', data-attribute='new-start-required-count') 0
+                  li(style='display: none;')
+                    | Expired:
+                    b.label-error(data-entity-id='masternodes', data-attribute='expired-count') 0
+                  li.list-separator
+                    | Masternode collateral: 
+                    b.masternodes-collateral-amount 0
+                    |  VLS
+                  li
+                    | MN block reward part: 
+                    b.masternodes-reward-percent 0
+                    |  %
+                  // <li class="list-separator tooltip-icons"><i class="fab fa-wikipedia-w"></i></li>
+              #chain-pow-tooltip.footer-tooltip
+                ul
+                  li
+                    i.fa.fa-chart-bar
+                    |                     Hashrate Total:
+                    span(data-entity-id='chain.pow', data-attribute='totalhashrate', data-format='hashrate') 0
+                  li.first-row
+                    | sha256d: 
+                    span(data-entity-id='chain.pow', data-attribute='multialgo.sha256d.hashrate', data-format='hashrate') 0
+                  li.second-row
+                    | scrypt: 
+                    span(data-entity-id='chain.pow', data-attribute='multialgo.scrypt.hashrate', data-format='hashrate') 0
+                  li.first-row
+                    | lyra2z: 
+                    span(data-entity-id='chain.pow', data-attribute='multialgo.lyra2z.hashrate', data-format='hashrate') 0
+                  li.second-row
+                    | x11: 
+                    span(data-entity-id='chain.pow', data-attribute='multialgo.x11.hashrate', data-format='hashrate') 0
+                  li.first-row
+                    | x16r: 
+                    span(data-entity-id='chain.pow', data-attribute='multialgo.x16r.hashrate', data-format='hashrate') 0
+                  li.second-row
+                    | nist5: 
+                    span(data-entity-id='chain.pow', data-attribute='multialgo.nist5.hashrate', data-format='hashrate') 0
+                  li.list-separator
+                    | Blocks to next halving check: 
+                    b.chain-pow-blocks-to-next-epoch
+                  li
+                    | Epoch supply reached: 
+                    b.chain-pow-supply-target-reached 0%
+                    |  of min 80%
+              #price-status-tooltip.footer-tooltip
+                ul
+                  li
+                    i.fa.fa-chart-line
+                    |  VLS Price:
+                    .tooltip-price
+                      span(data-entity-id='market.price', data-attribute='price_btc', data-format='coin_amount', data-unit='BTC') 0.00000000
+                      br
+                      span(data-entity-id='market.price', data-attribute='price_usd', data-format='number', data-fixed-decimals='2', data-unit-before='$') 0.00
+                  li.tooltip-row-tall
+                    #price-tooltip-chart
+                  li.list-separator
+                    | Volume 24h: 
+                    b
+                      span(data-entity-id='market.price', data-attribute='24h_volume_usd', data-unit-before='$')
+                  li.second-row
+                    | Δ 24h: 
+                    b
+                      span(data-entity-id='market.price', data-attribute='percent_change_24h', data-unit='%')
+                  li.first-row
+                    | Market Cap: 
+                    b
+                      span(data-entity-id='market.price', data-attribute='market_cap_usd', data-unit-before='$')
+                  li.second-row
+                    | Δ 7d: 
+                    b
+                      span(data-entity-id='market.price', data-attribute='percent_change_7d', data-unit='%')
+                  li
+                    | Total Supply: 
+                    b
+                      span(data-entity-id='market.price', data-attribute='total_supply', data-multiplier='0.000001', data-format='number', data-fixed-decimals='1', data-title='{total_supply} VLS')
+                      | m
+                    |                     of maximum 
+                    b
+                      span(data-entity-id='market.price', data-attribute='max_supply', data-multiplier='0.000001', data-format='number', data-fixed-decimals='1', data-title='{max_supply} VLS')
+                      | m
+                    |  VLS
+
+            .footer-overlay
+              .row.footer-panel-row
+                .col-md-12.text-left#console-tab
+                  #console-toggle.status-area
+                    span.fa.fa-terminal.websocket-online(title='Toggle Veles Node Console')
+                    span.fa.fa-window-close.console-area(title='Close Console')
+                  #console-maximize.status-area.console-area
+                    span.fa.fa-window-maximize(title='Maximize Console')
+                  .footer-follow-wide
+                    ul.osx-dock
+                      li.active
+                        span Bitcointalk
+                        a(target='_blank', rel='noopener noreferrer', href='https://bitcointalk.org/index.php?topic=5064523')
+                          i.fab.fa-bitcoin
+                      li
+                        span Twitter
+                        a(target='_blank', rel='noopener noreferrer', href='https://twitter.com/velescore')
+                          i.fab.fa-twitter
+                      li
+                        span GitHub
+                        a(target='_blank', rel='noopener noreferrer', href='https://github.com/velescore/veles')
+                          i.fab.fa-github
+                      li
+                        span Discord
+                        a(target='_blank', rel='noopener noreferrer', href='https://discord.gg/P528fGg')
+                          i.fab.fa-discord
+                  #price-status.status-area.websocket-online-animate
+                    span.status-label-wide Price:
+                    span(data-entity-id='market.price', data-attribute='price_btc', data-format='coin_amount')
+                    span.status-label-wide BTC
+                  #connection-status.status-area
+                    span.fa.fa-spinner.fa-spin.websocket-offline(title='Websocket Status: OFFLINE', style='color: rgb(238, 238, 238); display: none;')
+                    span.websocket-online(title='Websocket Status: ONLINE', style='color: rgb(187, 255, 170); font-size: 20px;') ✔
+                    | ️
+                  #chain-tip-status.status-area.websocket-online-animate
+                    span.status-label-wide Blocks:
+                    b
+                      span(data-entity-id='chain.tip', data-attribute='height') 0
+                  #masternodes-status.status-area.websocket-online-animate
+                    span.status-label-wide Masternodes:
+                    b
+                      span(data-entity-id='masternodes', data-attribute='count') 0
+                    span.status-label-short MNs
+                  #chain-pow-status.status-area.websocket-online-animate
+                    span.status-label-wide Hashrate:
+                    span(data-entity-id='chain.pow', data-attribute='totalhashrate', data-format='hashrate')
+              #dev-console
+                .jquery-console-message Loading blockchain client ...
+              
+  #block-detail-modal.modal.fade
+    .modal-dialog(style='width: 820px;')
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+          h4#modal-title.modal-title VLS block: 
+            span.block-hash
+        .modal-body
+          .panel
+            .panel-heading
+              strong Block Header
+            table.table.table-bordered.summary-table#table-modal
+              thead
+                tr
+                  th Height
+                  th
+                  th Difficulty
+                  th Confirmations
+                  th.hidden-xs Size (kB)
+                  th.hidden-xs Bits
+                  th.hidden-xs Nonce
+                  th.hidden-xs Timestamp
+              tbody
+                tr.success
+                  td 83456
+                  td nist5
+                  td 14673.9933
+                  td 376
+                  td.hidden-xs 0.52
+                  td.hidden-xs 1b047750
+                  td.hidden-xs 305585431
+                  td.hidden-xs 16th Mar 2019 23:50:14
+          .panel
+            .panel-heading
+              strong Transactions
+            table.table.table-bordered.table-striped.summary-table#table-modal
+              thead
+                tr
+                  th.hidden-xs Hash
+                  th Recipients
+                  th Amount (VLS)
+                  th
+              tbody
+        .modal-footer
+          button.button.button-effect(type='submit', data-dismiss='modal')
+            span.label OK
+            span.icon
+              span
+            span.icon2
+  #tx-detail-modal.modal.fade
+    .modal-dialog(style='width: 940px;')
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+          h4#modal-title.modal-title VLS txid: 
+            span.tx-hash
+        .modal-body
+          .row
+            .col-md-12
+              .panel
+                .panel-heading.hidden-xs
+                  strong Transaction Summary
+                table.table.table-bordered.table-striped.summary-table
+                  thead
+                    tr
+                      th Confirmations
+                      th.hidden-xs Block Hash
+                      th Timestamp
+                      th
+                  tbody
+                    tr.danger
+                      td 7
+                      td.hidden-xs
+                        a.mono(href='/block/db23dae488df0ec98e2dea5f87587bf30a9795b39fb746973fb2ae209f891952') db23dae488df0ec98e2dea5f87587bf30a9795b39fb746973fb2ae209f891952
+                      td 19th Mar 2019 00:10:45
+                      td.view_tx
+                        a(href='/block/db23dae488df0ec98e2dea5f87587bf30a9795b39fb746973fb2ae209f891952')
+                          span.glyphicon.glyphicon-eye-open
+          .row
+            .col-md-6
+              .panel.panel-default
+                .panel-heading
+                  strong Inputs
+                  span.glyphicon.glyphicon-arrow-right.pull-right.hidden-xs
+                table.table.table-bordered.table-striped.summary-table#table-modal
+                  thead
+                    tr
+                      th Address
+            .col-md-6
+              .panel.panel-default
+                .panel-heading
+                  strong Recipients
+                table.table.table-bordered.table-striped.summary-table#table-modal
+                  thead
+                    tr
+                      th Address
+                      th.hidden-xs Amount (VLS)
+                  tbody
+        .modal-footer
+          button.button.button-effect(type='submit', data-dismiss='modal')
+            span.label OK
+            span.icon
+              span
+            span.icon2

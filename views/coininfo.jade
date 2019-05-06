@@ -1,13 +1,16 @@
 extends layout
 
 block content   
+  h1.mt-4.mb-3#bread-text Coininfo
+  .row
+    br
   .col-md-12(style="margin-bottom: 4%")
     .panel.panel-primary.coin-info
       .panel-heading
         strong #{settings.locale.coininfo_head}
       .panel-body
         .row
-          .col-md-3
+          .col-md-2
             .panel.panel-default
               .panel-heading
                 strong #{settings.locale.coininfo_basicinfo}
@@ -16,12 +19,11 @@ block content
                   a(href="#{item[1]}", target="_blank") #{item[0]}
                   <br>
           .col-md-9
+            .col-md-1
             .panel.panel-default
               .panel-body.text-center
                 .row.info-row
-                  .col-md-4
-                    img(src='#{settings.logo}', style='')
-                  .col-md-4
+                  .col-md-8#coin-info
                     h2 #{settings.coin} &nbsp(#{settings.symbol})
                     span #{lastPriceBtc} BTC
                     if lastPriceUsd
@@ -81,8 +83,3 @@ block content
                   .row.earnings
                     .col-md-offset-5.text-left
                       em Calculations are based on real masternode payment data over the last 24h.
-
-
-
-
-

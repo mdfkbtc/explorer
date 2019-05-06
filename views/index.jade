@@ -34,6 +34,7 @@ block content
         searching: false,
         ordering: false,
         responsive: true,
+        bPaginate: true,
         lengthChange: true,
         processing: true,
         ajax: {
@@ -71,8 +72,52 @@ block content
         stable.api().ajax.reload(null, false);
       }, 60000 );
     });
-  .row
-    .col-md-12
+  .col-md-12.text-center
+    .panel.panel-default#header
+      .header-background-img
+      h3#header-text Veles-explorer
+      br
+      .container
+        form.form-inline(method='post', action='/search')      
+          - searchPlaceholder = (settings.baseType === 'ripple') ? settings.locale.ex_search_message_ripple : settings.locale.ex_search_message;
+          input.form-control#search-bar(type='text', name='search', placeholder='#{searchPlaceholder}', style='min-width:63%;margin-right:5px;')
+          button.button.button-effect(type='submit')
+            span.label #{settings.locale.ex_search_button}
+            span.icon
+              span
+            span.icon2
+        .header-tile
+          .tile-label
+            | Circulating supply
+            span.tile-label-value(data-entity-id='market.price', data-attribute='total_supply', data-format='number', data-fixed-decimals='0', data-title='{total_supply} VLS', data-unit='VLS')
+        .header-tile
+          .tile-label
+            | Maximum supply
+            span.tile-label-value(data-entity-id='market.price', data-attribute='max_supply', data-format='number', data-fixed-decimals='0', data-title='{max_supply} VLS', data-unit='VLS')
+        .header-tile
+          .tile-label
+            | Block time
+            span.tile-label-value 2 min
+        .header-tile
+          .tile-label
+            | Maximum block reward
+            span.tile-label-value 5 VLS
+        .header-tile
+          .tile-label
+            | Avg. block reward 24h
+            span.tile-label-value 5 VLS
+        .header-tile
+          .tile-label
+            | Masternode reward
+            span.tile-label-value 9%
+        .header-tile
+          .tile-label
+            | Development reward
+            span.tile-label-value 4.65%
+        .header-tile
+          .tile-label
+            | Masternode collateral
+            span.tile-label-value 2000 VLS          
       if error !== null        
         .alert.alert-danger.alert-dismissable(role='alert')
           button.close(type='button', data-dismiss='alert') ×
@@ -81,23 +126,22 @@ block content
         .alert.alert-warning.alert-dismissable(role='alert')
           button.close(type='button', data-dismiss='alert') ×
           strong #{settings.locale.ex_warning} #{warning}
-  
-  .col-md-12
-    .panel.panel-default
-      .panel-heading
-        strong #{settings.locale.ex_latest_transactions}
-      table#recent-table.table.table-bordered.table-striped
-        thead
-          tr
-            if settings.baseType === 'ripple'
-              th.text-center #{settings.locale.ex_ledger}
-            else
-              th.text-center #{settings.locale.ex_block}
-            th.hidden-xs.text-center #{settings.locale.tx_hash}
-            th.hidden-xs.text-center #{settings.locale.tx_recipients}
-            th.text-center #{settings.locale.mkt_amount} (#{settings.symbol})
-            th.text-center #{settings.locale.timestamp}
-        tbody.text-center
-    .footer-padding
-      
-              
+
+  .container.dark-index 
+    .col-md-12
+      .panel.panel-default
+        .panel-heading
+          strong #{settings.locale.ex_latest_transactions}
+        table#recent-table.table.table-bordered.table-striped
+          thead
+            tr
+              if settings.baseType === 'ripple'
+                th.text-center #{settings.locale.ex_ledger}
+              else
+                th.text-center #{settings.locale.ex_block}
+              th.hidden-xs.text-center #{settings.locale.tx_hash}
+              th.hidden-xs.text-center #{settings.locale.tx_recipients}
+              th.text-center #{settings.locale.mkt_amount} (#{settings.symbol})
+              th.text-center #{settings.locale.timestamp}
+          tbody.text-center
+      .footer-padding

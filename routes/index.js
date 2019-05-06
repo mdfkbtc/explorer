@@ -94,7 +94,7 @@ function route_get_tx(res, txid) {
 }
 
 function route_get_index(res, error) {
-  res.render('index', { active: 'home', error: error, warning: null});
+  res.render('index', { active: 'home', error: error, warning: null, is_index: true});
 }
 
 function route_get_address(res, hash, count) {
@@ -508,7 +508,7 @@ settings.masternodes.list_format.lastpaid = 6;
           mnItem.ip = key.trim().replace(':'+settings.masternodes.default_port, '');
         else if (settings.masternodes.list_format.ip > -1)
           mnItem.ip = mnData[settings.masternodes.list_format.ip - 1].trim().replace(':'+settings.masternodes.default_port, '');
- 
+
         mnList.push(mnItem);
       }
     }

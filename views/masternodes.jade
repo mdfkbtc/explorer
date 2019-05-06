@@ -11,7 +11,7 @@ block content
         responsive: true,
         lengthChange: true,
         processing: false,
-        bPaginate: true,
+        bPaginate: false,
         pageLength: 25,
         order: [[ 3, "desc" ]],
         ajax: {
@@ -42,16 +42,38 @@ block content
       ]
       });
     });
-  .col-md-12(style="margin-bottom: 4%")
-    .panel.panel-default
-      .panel-heading
-        strong #{settings.locale.net_connections}
-      table#masternodes-table.table.table-bordered.table-striped
-        thead
-          tr
-            th #{settings.locale.mn_address}
-            th.text-center #{settings.locale.mn_status}
-            th.text-center #{settings.locale.mn_lastseen}
-            th.text-center #{settings.locale.mn_lastpaid}
-            th. #{settings.locale.mn_ip}
-        tbody.text-center
+    
+  .container.light-color
+      h1.mt-4.mb-3#bread-text
+        span.grey The
+        | Masternodes 
+      .row
+        br
+      .col-md-12(style="margin-bottom: 4%")
+        .panel.panel-default
+          .panel-heading.panel-dashboard
+            .header-tile.panel-section
+              .tile-label
+                | Masternode collateral
+                span.tile-label-value 2000 VLS
+            .header-tile.panel-section
+              .tile-label
+                | Masternode reward
+                span.tile-label-value 9%
+            .header-tile.panel-section
+              .tile-label
+                | Masternode ROI
+                span.tile-label-value 44%
+            .header-tile.panel-section
+              .tile-label
+                | Masternode count
+                span.tile-label-value 190  
+          table#masternodes-table.table.table-bordered.table-striped
+            thead
+              tr
+                th #{settings.locale.mn_address}
+                th.text-center #{settings.locale.mn_status}
+                th.text-center #{settings.locale.mn_lastseen}
+                th.text-center #{settings.locale.mn_lastpaid}
+                th. #{settings.locale.mn_ip}
+            tbody.text-center

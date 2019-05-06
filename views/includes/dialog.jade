@@ -1,0 +1,99 @@
+  #block-detail-modal.modal.fade
+    .modal-dialog(style='width: 820px;')
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+          h4#modal-title.modal-title VLS block: 
+            span.block-hash
+        .modal-body
+          .panel
+            .panel-heading
+              strong Block Header
+            table.table.table-bordered.summary-table
+              thead
+                tr
+                  th Height
+                  th
+                  th Difficulty
+                  th Confirmations
+                  th.hidden-xs Size (kB)
+                  th.hidden-xs Bits
+                  th.hidden-xs Nonce
+                  th.hidden-xs Timestamp
+              tbody
+                tr.success
+                  td 83456
+                  td nist5
+                  td 14673.9933
+                  td 376
+                  td.hidden-xs 0.52
+                  td.hidden-xs 1b047750
+                  td.hidden-xs 305585431
+                  td.hidden-xs 16th Mar 2019 23:50:14
+          .panel
+            .panel-heading
+              strong Transactions
+            table.table.table-bordered.table-striped.summary-table
+              thead
+                tr
+                  th.hidden-xs Hash
+                  th Recipients
+                  th Amount (VLS)
+                  th
+              tbody
+        .modal-footer
+          button.btn.btn-default.btn-sm(type='button', data-dismiss='modal') OK
+
+  #tx-detail-modal.modal.fade
+    .modal-dialog(style='width: 940px;')
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+          h4#modal-title.modal-title VLS txid: 
+            span.tx-hash
+        .modal-body
+          .row
+            .col-md-12
+              .panel
+                .panel-heading.hidden-xs
+                  strong
+                    Transaction Summary
+                table.table.table-bordered.table-striped.summary-table
+                  thead
+                    tr
+                      th Confirmations
+                      th.hidden-xs Block Hash
+                      th Timestamp
+                      th
+                  tbody
+                    tr.danger
+                      td 7
+                      td.hidden-xs
+                        a.mono(href='/block/db23dae488df0ec98e2dea5f87587bf30a9795b39fb746973fb2ae209f891952') db23dae488df0ec98e2dea5f87587bf30a9795b39fb746973fb2ae209f891952
+                      td 19th Mar 2019 00:10:45
+                      td.view_tx
+                        a(href='/block/db23dae488df0ec98e2dea5f87587bf30a9795b39fb746973fb2ae209f891952')
+                          span.glyphicon.glyphicon-eye-open
+          .row
+            .col-md-6
+              .panel.panel-default
+                .panel-heading
+                  strong Input Addresses
+                  span.glyphicon.glyphicon-arrow-right.pull-right.hidden-xs
+                table.table.table-bordered.table-striped.summary-table
+                  thead
+                    tr
+                      th Address
+            .col-md-6
+              .panel.panel-default
+                .panel-heading
+                  strong Recipients
+                table.table.table-bordered.table-striped.summary-table
+                  thead
+                    tr
+                      th Address
+                      th.hidden-xs Amount (VLS)
+                  tbody
+        .modal-footer
+          button.btn.btn-default.btn-sm(type='button', data-dismiss='modal') OK
+
