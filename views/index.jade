@@ -93,7 +93,7 @@ block content
         .header-tile
           .tile-label
             | Maximum supply
-            span.tile-label-value(data-entity-id='market.price', data-attribute='max_supply', data-format='number', data-fixed-decimals='0', data-title='{max_supply} VLS', data-unit='VLS')
+            span.tile-label-value(data-entity-id='market.price', data-attribute='max_supply', data-format='number', data-fixed-decimals='0', data-title='{max_supply} VLS', data-unit='VLS') 2 500 000 VLS
         .header-tile
           .tile-label
             | Block time
@@ -101,23 +101,23 @@ block content
         .header-tile
           .tile-label
             | Maximum block reward
-            span.tile-label-value 5 VLS
-        .header-tile
-          .tile-label
-            | Avg. block reward 24h
-            span.tile-label-value 5 VLS
-        .header-tile
-          .tile-label
-            | Masternode reward
-            span.tile-label-value 9%
-        .header-tile
-          .tile-label
-            | Development reward
-            span.tile-label-value 4.65%
+            span.tile-label-value(data-entity-id='chain.halving.status', data-attribute='max_block_reward', data-format='number', data-fixed-decimals='2', data-unit='VLS') 5 VLS
         .header-tile
           .tile-label
             | Masternode collateral
-            span.tile-label-value 2000 VLS          
+            span.tile-label-value 2000 VLS
+        .header-tile
+          .tile-label
+            | Masternode reward
+            span.tile-label-value(data-entity-id='chain.stats.mining', data-attribute='block_reward_mn_percent', data-format='number', data-fixed-decimals='2', data-unit='%') 9 %
+        .header-tile
+          .tile-label
+            | Development reward
+            span.tile-label-value(data-entity-id='chain.stats.mining', data-attribute='block_reward_dev_percent', data-format='number', data-fixed-decimals='2', data-unit='%') 4.65 %
+        .header-tile
+          .tile-label
+            | Avg. block reward 24h
+            span.tile-label-value(data-entity-id='chain.stats.mining', data-attribute='block_reward_average', data-format='number', data-fixed-decimals='2', data-unit='VLS') 5 VLS
       if error !== null        
         .alert.alert-danger.alert-dismissable(role='alert')
           button.close(type='button', data-dismiss='alert') ×
