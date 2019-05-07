@@ -75,6 +75,10 @@ a:hover {
     background-color: #5bc0de88;
 }
 
+.table-bordered>thead>tr>th, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>tbody>tr>td, .table-bordered>tfoot>tr>td {
+    border: 1px solid #11111188;
+}
+
 .alert-danger {
     background-color: #ee5f5b88;
     border-color: #ed4d6388;
