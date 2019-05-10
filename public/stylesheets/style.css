@@ -1290,12 +1290,10 @@ table.jqplot-table-legend, table.jqplot-cursor-legend {
 }
 
 .panel-default>.panel-heading {
-    height: 50px;
     color: #c8c8c8;
     background-color: transparent;
-    margin-bottom: 3px;
+    margin-bottom: 15px;
     border: none;
-    margin-top: 10px;
     border-bottom: solid 1px #e4b99cbb;
 }
 
