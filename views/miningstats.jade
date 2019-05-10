@@ -110,7 +110,7 @@ block content
               for (var key in data) { 
                 daily.push([key, Number(data[key]['blocks_daily'])]);
                 hourly.push([key, Number(data[key]['blocks_hourly'])]);
-                weekly.push([key, Number(data[key]['blocks'])]);
+                weekly.push([key, Number(data[key]['blocks_total'])]);
               }
               pieChartDaily = $.jqplot('pieChartDaily', [daily], {
                 //title: "Algos",
@@ -126,12 +126,12 @@ block content
                       showDataLabels: true,
                     }
                   },
-                  grid: {borderWidth:0, shadow:false},
+                  grid: {borderWidth:0, shadow:false, background: 'transparent'},
                   legend: {
                     background: 'transparent',
                     show: true,
                     rendererOptions: {
-                        numberRows: 1,
+                        numberRows: 2,
                         border: 'none'
                     },
                     location: 's'
@@ -151,12 +151,12 @@ block content
                       showDataLabels: true,
                     }
                   },
-                  grid: {borderWidth:0, shadow:false},
+                  grid: {borderWidth:0, shadow:false, background: 'transparent'},
                   legend: {
                     background: 'transparent',
                     show: true,
                     rendererOptions: {
-                        numberRows: 1,
+                        numberRows: 2,
                         border: 'none'
                     },
                     location: 's'
@@ -176,12 +176,12 @@ block content
                       showDataLabels: true,
                     }
                   },
-                  grid: {borderWidth:0, shadow:false},
+                  grid: {borderWidth:0, shadow:false, background: 'transparent'},
                   legend: {
                     background: 'transparent',
                     show: true,
                     rendererOptions: {
-                        numberRows: 1,
+                        numberRows: 2,
                         border: 'none'
                     },
                     location: 's'
@@ -210,7 +210,7 @@ block content
               var current_unit = 0;
 
               if (data.length) {
-                var value = Number(data[0][column]);
+                var value = Number(data[0]);
                 while (value > 1000) {
                   value = value / 1000;
                   divider = divider * 1000;
@@ -219,7 +219,7 @@ block content
               }
 
               for (var key in data) { 
-                result.push(Number(data[key][column]) / divider);
+                result.push(Number(data[key]) / divider);
               }
 
               if (!result.length)
@@ -256,7 +256,8 @@ block content
                         numberRows: 1,
                         border: 'none'
                     }
-                  }
+                  },
+                  grid: {borderWidth:0, shadow:false, background: 'transparent', gridLineColor: '#2c2c2c'}
               });          
             }
           });
@@ -287,33 +288,11 @@ block content
     $(window).resize(function () {
       pieChartDaily.replot( { resetAxes: false } );
     });
-  #content-overlay
-    .overlay-gradient
-    .overlay-shadow
-      .stage(style='width: 120px; height: 120px;')
-        .cubespinner
-          .face1
-            | Preparing new API 
-            span.blink_text ...
-          .face2
-            | Loading 
-            span.blink_text ...
-          .face3
-            | Connecting blockchain 
-            span.blink_text ...
-          .face4
-            | Disconnecting 
-            span.blink_text ...
-          .face5
-            | Service disabled 
-            span.blink_text ...
-          .face6
-            | Under construction
-            span.blink_text ...
   .container.dark-color
       h1.mt-4.mb-3#bread-text
-        span.grey The
-        | Mining-stats 
+        | Mining Stat
+        span.grey(style="margin-right:0px") istic
+        |s 
       .row
         br
       .col-md-12
@@ -340,7 +319,7 @@ block content
             my1 Blocks Last Hour
             hr#hr-miningstats
             center
-              div#pieChartHourly(style="width:300px;height:350px;margin:0px;")
+              div#pieChartHourly(style="width:300px;height:380px;margin:0px;")
 
       .col-md-4
         .panel.panel-default
@@ -348,7 +327,7 @@ block content
             my1 Blocks Last 24 Hours
             hr#hr-miningstats
             center
-              div#pieChartDaily(style="width:300px;height:350px;margin:0px;")
+              div#pieChartDaily(style="width:300px;height:380px;margin:0px;")
 
       .col-md-4
         .panel.panel-default
@@ -356,7 +335,7 @@ block content
             my1 Blocks Last Week
             hr#hr-miningstats
             center
-              div#pieChartWeekly(style="width:300px;height:350px;margin:0px;")
+              div#pieChartWeekly(style="width:300px;height:380px;margin:0px;")
 
       .col-md-6
         .panel.panel-default
