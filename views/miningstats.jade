@@ -257,7 +257,7 @@ block content
                         border: 'none'
                     }
                   },
-                  grid: {borderWidth:0, shadow:false, background: 'transparent', gridLineColor: '#2c2c2c'}
+                  grid: {borderWidth:0, shadow:false, background: '#2c2c2c', gridLineColor: '#3c3c3c'}
               });          
             }
           });
@@ -266,6 +266,7 @@ block content
         console.log('redrawing-pies');
         var json_stats_url = 'http://explorer.veles.network/api/stats/mining/hours/168';
         var json_history_url = 'http://explorer.veles.network/api/stats/mining/history/{algo}/{column}/24';
+        $('canvas').remove();
         initPie(json_stats_url);
         initLineChart('sha256d', 'hashrate', json_history_url);
         initLineChart('scrypt', 'hashrate', json_history_url);
@@ -282,23 +283,116 @@ block content
       };
 
       drawPies();
-      //window.setInterval(function(){drawPies();}, 60000);
-      window.setInterval(function(){statsTable.ajaxStart();}, 30000);
+      // fetch halving information
+      drawHalvingTable = function() {
+        velesSocketClient.get_cmd_result('node', 'gethalvingstatus', {}, function(data) {
+          $('[data-halving-attribute]').each(function(){
+            if (data.hasOwnProperty($(this).attr('data-halving-attribute')))
+              $(this).text(data[$(this).attr('data-halving-attribute')]);
+          });
+
+          $('.halving-data-label').show('quick');
+          var lastTargetReached = 0;
+          var lastHalvingLength = 0;
+          var ep;
+
+          // Clean the old data
+          $('#halving-epoch-table').find('tbody').find('tr').remove();
+
+          for (var i = 0; i < data.epochs.length; i++) {
+            ep = data.epochs[i];
+            $('#halving-epoch-table').append(
+              '<tr' + (i == data.epochs.length - 1 ? ' style="color: ' + (ep['supply_target_reached'].replace('%', '') < 80 ? '#5bc0de' : '#8cff8c') + ';"' : '') 
+              + (i < 2 ? ' class="grey"' : '') + '>'
+              + '<td>' + ep['epoch_name'] + '</td>'
+              + '<td>' + ep['max_block_reward'] + '</td>'
+              + '<td>' + (ep['started_by_halving'] ? '<b>yes</b>' : 'no') + '</td>'
+              + '<td>' + ep['start_block'] + '</td>'
+              + '<td>' + (ep['end_block'] ? ep['end_block'] : '-') + '</td>'
+              + '<td>' + (ep['end_block'] ? ep['end_block'] - ep['start_block'] + 1 : '-') + '</td>'
+              + '<td>' + Math.round(ep['start_supply']) + '</td>'
+              + '<td>' + (ep['end_supply'] ? Math.round(ep['end_supply']) : '-') + '</td>'
+              + '<td>' + Math.round(ep['supply_this_epoch']) + '</td>'
+              + '<td>' + Math.round(ep['supply_since_halving']) + '</td>'
+              + '<td>' + (ep['supply_target_reached'].replace('%', '') >= 80 ? '<b>' + ep['supply_target_reached'] + '</b>' : ep['supply_target_reached']) + '</td>'
+              + '</tr>'
+            );
+            lastTargetReached = ep['supply_target_reached'].replace('%', '');
+            lastHalvingLength = ep['end_block'] - ep['start_block'] + 1;
+          }
+          $('#halving-epoch-table').append(
+            '<tr><td colspan="11" style="padding: 10px !important;">'
+            + '<div class="progbar-outer" style="width: 100%; height: 5px; background-color: #2c2c2c;">'
+            + '  <div class="progbar-inner supply-target-progbar" style="width: 0%; height: 5px; background-color: #5bc0de; float: left;"></div>'
+            + '</div>'
+            + '<span class="supply-progbar-left" style="float: left; font-size: 14px; margin-top: 5px;">'
+            + '  <b>' + lastTargetReached + '%</b> of the target has been mined this epoch'
+            + '</span>'
+            + '<span class="supply-progbar-right" style="float: right; font-size: 14px; margin-top: 5px;">'
+            + ' halving requires <b>80%</b> of the target 160 000 VLS'
+            + '</span>'
+            + '</td></tr>'
+          );
+          var halvingProggressPercent = data['blocks_to_next_epoch'] ? 100 - (100 / (lastHalvingLength / data['blocks_to_next_epoch'])) : 0;
+
+          $('.supply-target-progbar').css('width', lastTargetReached + '%');
+          $('.supply-target-progbar').css('background-color', (lastTargetReached < 80 ? '#5bc0de' : '#8cff8c'));
+          $('.halving-progbar').css('width', halvingProggressPercent + '%');
+          $('.halving-progbar').css('background-color', (lastTargetReached < 80 ? '#5bc0de' : '#F19B7E'));
+          $('.halving-progbar-length-label').text(lastHalvingLength);
+          $('.halving-progbar-area').show('slow');
+        });
+      };
+      velesSocketClient.on('connect', drawHalvingTable);
+      velesChain.on('chain.tip:state_changed', function(e) {
+        drawHalvingTable();
+        drawPies();
+        statsTable.ajaxStart();
+      });
     });
     $(window).resize(function () {
-      pieChartDaily.replot( { resetAxes: false } );
+      //pieChartDaily.replot( { resetAxes: true } );
+      drawPies();
     });
   .container.dark-color
-      h1.mt-4.mb-3#bread-text
+     h1.mt-4.mb-3#bread-text
         | Mining Stat
         span.grey(style="margin-right:0px") istic
         |s 
-      .row
-        br
       .col-md-12
         .panel.panel-default
-          .panel-heading
-            my1 Veles Mining Statistics
+          .panel-heading.panel-dashboard
+            .header-tile.panel-section
+              .tile-label
+                | Avg. block reward
+                span.tile-label-value(data-entity-id='chain.stats.mining', data-attribute='block_reward_average', data-format='number', data-fixed-decimals='2', data-unit='VLS') 5.00 %
+            .header-tile.panel-section
+              .tile-label
+                | Reward % 
+                b PoW
+                span.tile-label-value(data-entity-id='chain.stats.mining', data-attribute='block_reward_pow_percent', data-format='number', data-fixed-decimals='2', data-unit='%') 87.00 %
+            .header-tile.panel-section
+              .tile-label
+                | Reward % 
+                b MNs
+                span.tile-label-value(data-entity-id='chain.stats.mining', data-attribute='block_reward_mn_percent', data-format='number', data-fixed-decimals='2', data-unit='%') 8.00 %
+            .header-tile.panel-section
+              .tile-label
+                | Reward % 
+                b Dev 
+                | Fund
+                span.tile-label-value(data-entity-id='chain.stats.mining', data-attribute='block_reward_dev_percent', data-format='number', data-fixed-decimals='2', data-unit='%') 5.00 %
+            div.halving-progbar-area(style="padding: 10px; display: none;")
+              div.progbar-outer(style="width: 100%; height: 5px; background-color: #2c2c2c;")
+                div.progbar-inner.halving-progbar(style="width: 0%; height: 5px; background-color: #5bc0de; float: left;")
+              span.halving-progbar-left(style="float: left; font-size: 14px; margin: 10px;")
+                b(data-halving-attribute="blocks_to_next_epoch") ...
+                |  blocks left to next block reward halving check
+              span.halving-progbar-right(style="float: right; font-size: 14px; margin: 10px;")
+                | current halving interval  
+                b.halving-progbar-length-label
+                |  blocks
+
           table#mining-stats-table.table.table-bordered.table-striped
             thead
               tr
@@ -432,7 +526,88 @@ block content
             center
               div#lineChart-nist5-difficulty(style="width:100%;height:100px;margin:0px;")
               
+      .col-md-12(style="margin-bottom: 5px; margin-top: 20px;")
+        center
+        .panel.panel-default
+          .panel-header
+            my1 Halving Epochs
+            hr#hr-miningstats
+          table#halving-epoch-table.table.table-bordered.table-striped(style="margin-top: -5px;")
+            thead
+              tr
+                th Name
+                th.text-center Max Reward
+                th.text-center Starts halved
+                th.text-center Start Block
+                th.text-center End Block
+                th.text-center Length Blocks
+                th.text-center Start Supply
+                th.text-center End Supply
+                th.text-center Sup. this epoch
+                th.text-center Sup. since halving
+                th.text-center Sup. target reached
+            tbody.text-center
+              tr
+                td.table-loading(colspan=11) Loading ...        
+          
+      .col-md-12
+        blockquote.blockquote(style="font-size: 14px;") A 
+         b halving epoch 
+         | is the time between
+         | the start and end of block subsidy halving interval, where maximum block reward is the same for all the blocks 
+         | within the epoch. If not enough coins are mined during the epoch, the halving will not occur and the current epoch
+         |will repeat again (with the same interval and maximum block reward).
+         br
+         | Another Veles-specific nature of our halving schedule is that when the halving eventually occurs, 
+         | the halving interval, which is the minimal interval between halvings, 
+         b increases twofold.
+
       .col-md-12(style="margin-bottom: 4%")
         center
-        
-          
+        .panel.panel-default
+          table#halving-epoch-table.table.table-bordered.table-striped
+            thead
+              tr
+                th.text-center(style="min-width: 200px;") Column
+                th.text-center Description
+            tbody.text-center(style="font-size: 14px;")
+              tr
+                td Max Reward
+                td.text-left Maximum possible number of new coins mined within a single block, the sum of PoW, Masternode and Dev fund reward.
+              tr
+                td Starts halved
+                td.text-left If 'yes', the amount of block reward has been halved at the start of current epoch
+              tr
+                td Start Block
+                td.text-left Height of fist block in the halving epoch
+              tr
+                td End Block
+                td.text-left Height of last block of the epoch
+              tr
+                td Length Blocks
+                td.text-left Length of this epoch in blocks, the halving interval at the time
+              tr
+                td Start Supply
+                td.text-left Total number of coins in circulation before fist block of the epoch
+              tr
+                td End Supply
+                td.text-left Total number of coins in circulation at the last block of the epoch 
+              tr
+                td Sup
+                  span.grey ply
+                  | this epoch
+                td.text-left Actual number of coins that were released to the circulation during the epoch
+              tr
+                td Sup
+                  span.grey ply
+                  | since halving
+                td.text-left Actual number of coins that were released to the circulation since the last halving
+              tr
+                td Sup
+                  span.grey ply
+                  | target reached
+                td.text-left Ratio between the target supply (the supply reached on the optimal hashrate  
+                  | if maximal rewards would be awarded for every block) and between the  
+                  b Supply since halving 
+                  | in percents
+

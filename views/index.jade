@@ -71,6 +71,15 @@ block content
         rtable.api().ajax.reload(null, false);
         stable.api().ajax.reload(null, false);
       }, 60000 );
+
+      velesChain.on('chain.tip:state_changed', function(e) {
+        $('.progbar-inner.blocktime-progbar').removeClass('progbar-moving');
+        $('.progbar-inner.blocktime-progbar').addClass('progbar-filled');
+        window.setTimeout(function() {
+          $('.progbar-inner.blocktime-progbar').removeClass('progbar-filled');
+          $('.progbar-inner.blocktime-progbar').addClass('progbar-moving');
+        }, 2000); /* fill animation length */
+      });
     });
   .col-md-12.text-center
     .panel.panel-default#header
@@ -78,7 +87,7 @@ block content
       h3#header-text Veles-explorer
       br
       .container
-        form.form-inline(method='post', action='/search')      
+        form.form-inline(method='post', action='/search' style="margin-bottom: 5px; !important;")      
           - searchPlaceholder = (settings.baseType === 'ripple') ? settings.locale.ex_search_message_ripple : settings.locale.ex_search_message;
           input.form-control#search-bar(type='text', name='search', placeholder='#{searchPlaceholder}', style='min-width:63%;margin-right:5px;')
           button.button.button-effect(type='submit')
@@ -118,13 +127,18 @@ block content
           .tile-label
             | Avg. block reward 24h
             span.tile-label-value(data-entity-id='chain.stats.mining', data-attribute='block_reward_average', data-format='number', data-fixed-decimals='2', data-unit='VLS') 5 VLS
-      if error !== null        
+        div.blocktime-progbar-area(style="padding-top: 5px;")
+          span.halving-progbar-label(style="font-size: 14px;")
+            | Next block estimation
+          div.progbar-outer(style="width: 84%; height: 5px; background-color: #2c2c2c; margin: auto; margin-top: 5px;")
+            div.progbar-inner.blocktime-progbar
+      if error !== null
         .alert.alert-danger.alert-dismissable(role='alert')
-          button.close(type='button', data-dismiss='alert') ×
+          button.close(type='button', data-dismiss='alert')  ^
           strong #{settings.locale.ex_error} : #{error}
-      if warning !== null        
+      if warning !== null
         .alert.alert-warning.alert-dismissable(role='alert')
-          button.close(type='button', data-dismiss='alert') ×
+          button.close(type='button', data-dismiss='alert')  ^
           strong #{settings.locale.ex_warning} #{warning}
 
   .container.dark-index 
