@@ -6,15 +6,17 @@ body {
         font-family: 'Jura', sans-serif;
         font-size: 15px;
         color: #fff;
+	background-image: url(https://veles.network/images/bg-pattern.png);
         font-weight: 500;
         background-color: #c4bebe;
-      	background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAQAAABuBnYAAAAAU0lEQVQIHQXBwRGDIBAAwO2/AMcCDHAcPjIRxjJ8Je1kl1uqUgphsWu6w0sIG6npLpcUBql4e/wsVRKabrkNTacIYbMrwsF06rqUhsnXVKVT+Hj+Ue4rPSONk4kAAAAASUVORK5CYII=);
         text-rendering: optimizeLegibility;
         transition: 0.5s;
         overflow-x: hidden;
         padding: 30px;
         margin: -15px!important;
 }
+/* Old bg:      	background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAQAAABuBnYAAAAAU0lEQVQIHQXBwRGDIBAAwO2/AMcCDHAcPjIRxjJ8Je1kl1uqUgphsWu6w0sIG6npLpcUBql4e/wsVRKabrkNTacIYbMrwsF06rqUhsnXVKVT+Hj+Ue4rPSONk4kAAAAASUVORK5CYII=); */
+
 
 /* scroll bar */
 body::-webkit-scrollbar {
