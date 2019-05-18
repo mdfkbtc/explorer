@@ -1298,6 +1298,9 @@ table.jqplot-table-legend, table.jqplot-cursor-legend {
     border: none;
     border-bottom: solid 1px #e4b99cbb;
 }
+.panel-heading {
+  border-bottom: solid 1px #e4b99cbb;
+}
 
 .panel-default>.panel-heading.panel-dashboard {
     padding: 0;
