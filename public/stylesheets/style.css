@@ -6,15 +6,17 @@ body {
         font-family: 'Jura', sans-serif;
         font-size: 15px;
         color: #fff;
+	      background-image: url(https://veles.network/images/bg-pattern.png);
         font-weight: 500;
         background-color: #c4bebe;
-      	background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAQAAABuBnYAAAAAU0lEQVQIHQXBwRGDIBAAwO2/AMcCDHAcPjIRxjJ8Je1kl1uqUgphsWu6w0sIG6npLpcUBql4e/wsVRKabrkNTacIYbMrwsF06rqUhsnXVKVT+Hj+Ue4rPSONk4kAAAAASUVORK5CYII=);
         text-rendering: optimizeLegibility;
         transition: 0.5s;
         overflow-x: hidden;
         padding: 30px;
         margin: -15px!important;
 }
+/* Old bg:      	background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAQAAABuBnYAAAAAU0lEQVQIHQXBwRGDIBAAwO2/AMcCDHAcPjIRxjJ8Je1kl1uqUgphsWu6w0sIG6npLpcUBql4e/wsVRKabrkNTacIYbMrwsF06rqUhsnXVKVT+Hj+Ue4rPSONk4kAAAAASUVORK5CYII=); */
+
 
 /* scroll bar */
 body::-webkit-scrollbar {
@@ -1290,13 +1292,14 @@ table.jqplot-table-legend, table.jqplot-cursor-legend {
 }
 
 .panel-default>.panel-heading {
-    height: 50px;
     color: #c8c8c8;
     background-color: transparent;
-    margin-bottom: 3px;
+    margin-bottom: 15px;
     border: none;
-    margin-top: 10px;
     border-bottom: solid 1px #e4b99cbb;
+}
+.panel-heading {
+  border-bottom: solid 1px #e4b99cbb;
 }
 
 .panel-default>.panel-heading.panel-dashboard {
@@ -1841,4 +1844,87 @@ form.form-inline {
 
 #content {
 	transition: margin-top 0.5s ease-in-out;	/* support for easy transition when sliding out */
+}
+
+@-webkit-keyframes blocktime-fill {
+	0% {
+		width: 1%;
+	}
+	20% {
+		width: 75%;
+	}
+	40% {
+		width: 88%;
+	}
+	60% {
+		width: 94%;
+	}
+	80% {
+		width: 97%;
+	}
+	100% {
+		width: 99%;
+	}
+}
+@keyframes blocktime-fill {
+	0% {
+		width: 1%;
+                background-color: #5bc0de;
+	}
+	20% {
+		width: 75%;
+	}
+	40% {
+		width: 88%;
+                background-color: #8cff8c;
+	}
+	60% {
+		width: 94%;
+	}
+	80% {
+		width: 97%;
+	}
+	100% {
+		width: 99%;
+                background-color: #8cff8c;
+	}
+}
+.progbar-inner.blocktime-progbar {
+    width: 0%;
+    height: 5px;
+    background-color: #5bc0de;
+    float: left;
+    transition: all 2s ease-in;
+}
+.progbar-inner.blocktime-progbar.progbar-filled {
+    width: 100%;
+    background-color: #8cff8c;
+    transition: all 2s ease-in;
+}
+.progbar-inner.blocktime-progbar.progbar-moving {
+    width: 0%;
+    transition: all 2s ease-in;
+    -webkit-animation: blocktime-fill 600s linear;
+            animation: blocktime-fill 600s linear;
+}
+
+#connection-status {
+	width: 30px;
+	margin-right: -5px;
+	text-align: center;
+	padding: 0px 0px 0px 8px;
+	height: 40px;
+	overflow: hidden;
+}
+
+#connection-status .websocket-online {
+	font-size: 11.5px;
+	margin-top: 11px;
+	display: block;
+	color: rgb(187, 255, 170);
+}
+#connection-status .websocket-offline {
+	font-size: 11px;
+	margin-top: 10px;
+	color: rgb(238, 238, 238);
 }
